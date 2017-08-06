@@ -6,7 +6,7 @@
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-      ./configuration.nix
+      ./main.nix
     ];
 
   # Use GRUB for booting.
@@ -46,7 +46,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
-    networkmanagerapplet xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino
+    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino
   ]);
 
   services.xserver.synaptics = {

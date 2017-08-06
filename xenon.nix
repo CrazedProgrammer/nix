@@ -6,7 +6,7 @@
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-      ./configuration.nix
+      ./main.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

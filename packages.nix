@@ -12,11 +12,11 @@ pkgs: with pkgs; [
 
   # Languages
   ghc rustStable.rustc lua luajit openjdk gcc clang python36 ruby nodejs-8_x
-  # (import ./packages/urn.nix)
+  (import ./packages/urn.nix)
 
   # Games
   steam multimc minetest the-powder-toy dwarf-fortress gnome3.gnome-mines
-  # (import ./packages/ccemux.nix)
+  (import ./packages/ccemux.nix)
 
   # Emulators
   dolphinEmuMaster dosbox stella snes9x-gtk
