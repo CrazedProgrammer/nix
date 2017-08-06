@@ -42,11 +42,6 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
-    # Enable the SLiM login manager.
-  services.xserver.displayManager.sddm.enable = true;
-    # displayManager.slim.defaultUser = "casper";
-
-    # Enable the Xfce desktop environment.
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
   ]);
 }
