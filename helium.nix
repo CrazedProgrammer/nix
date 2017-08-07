@@ -46,7 +46,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
-    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino
+    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
   ]);
 
   services.xserver.synaptics = {

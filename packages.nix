@@ -15,7 +15,7 @@ pkgs: with pkgs; [
   (import ./packages/urn.nix)
 
   # Games
-  steam multimc minetest the-powder-toy dwarf-fortress gnome3.gnome-mines
+  multimc minetest the-powder-toy dwarf-fortress gnome3.gnome-mines
   (import ./packages/ccemux.nix)
 
   # Emulators

@@ -43,5 +43,6 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
+    (steam.override { newStdcpp = true; })
   ]);
 }
