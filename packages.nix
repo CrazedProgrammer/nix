@@ -13,11 +13,12 @@ pkgs: with pkgs; [
 
   # Languages
   ghc rustStable.rustc lua luajit openjdk gcc clang python36 ruby nodejs-8_x
-  (import ./packages/urn.nix)
+  (import packages/urn.nix)
 
   # Games
-  multimc minetest the-powder-toy dwarf-fortress gnome3.gnome-mines
-  (import ./packages/ccemux.nix)
+  multimc minetest dwarf-fortress gnome3.gnome-mines
+  (import packages/ccemux.nix)
+  (import packages/the-powder-toy.nix pkgs)
 
   # Emulators
   dolphinEmuMaster dosbox stella snes9x-gtk
@@ -38,7 +39,8 @@ pkgs: with pkgs; [
   gnome3.file-roller gnome3.gnome-calculator gimp audacity mpv libreoffice-fresh
 
   # Networking
-  openvpn openssh update-resolv-conf
+  openvpn openssh
+  (import packages/update-resolv-conf.nix pkgs)
 
   # Xfce plugins
   xfce.xfce4_cpugraph_plugin
