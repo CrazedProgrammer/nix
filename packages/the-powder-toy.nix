@@ -1,9 +1,9 @@
-pkgs:
+with import <nixpkgs> {};
 
-pkgs.the-powder-toy.overrideAttrs (old: rec {
+the-powder-toy.overrideAttrs (old: rec {
   version = "92.1.332";
   name = "tpt-${version}";
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "simtr";
     repo = "The-Powder-Toy";
     rev = "v${version}";
