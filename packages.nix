@@ -13,7 +13,7 @@ pkgs: with pkgs; [
 
   # Languages
   ghc rustStable.rustc lua luajit openjdk gcc clang python36 ruby nodejs-8_x
-  (import ../urn {})
+  (import ../urn { enableLuaJit = true; })
 
   # Games
   multimc minetest dwarf-fortress gnome3.gnome-mines
