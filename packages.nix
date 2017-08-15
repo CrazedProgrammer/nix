@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl git htop jq loc
+  wget curl git htop jq loc fdupes
 
   # Utilities
   xsel xclip gnome3.gnome-screenshot qemu
@@ -46,5 +46,5 @@ pkgs: with pkgs; [
   xfce.xfce4_cpugraph_plugin
 
   # System utilities
-  pavucontrol polkit_gnome exfat-utils
+  pavucontrol polkit_gnome exfat-utils ntfs3g
 ]
