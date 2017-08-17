@@ -26,8 +26,8 @@ pkgs: with pkgs; [
   # Shell and editor
   fish neovim
 
-  # Browser
-  firefox-bin
+  # Browsers
+  firefox-bin w3m
 
   # Web chat
   quasselClient teamspeak_client mumble
