@@ -40,9 +40,13 @@
 
   nix.maxJobs = lib.mkDefault 12;
 
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement = {
+    cpuFreqGovernor = "performance";
+    powerUpCommands = "${pkgs.hdparm}/sbin/hdparm -S 30 /dev/sdb";
+  };
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
     (steam.override { newStdcpp = true; })
+    hdparm
   ]);
 }
