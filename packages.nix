@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl git htop jq loc fdupes
+  wget curl git htop jq bc loc fdupes
 
   # Utilities
   xsel xclip gnome3.gnome-screenshot qemu
