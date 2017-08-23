@@ -46,5 +46,5 @@ pkgs: with pkgs; [
   xfce.xfce4_cpugraph_plugin
 
   # System utilities
-  pavucontrol polkit_gnome exfat-utils ntfs3g
+  pavucontrol polkit_gnome exfat-utils ntfs3g btrfs-progs
 ]
