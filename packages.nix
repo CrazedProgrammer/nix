@@ -3,7 +3,7 @@ pkgs: with pkgs; [
   wget curl git htop jq bc loc fdupes
 
   # Utilities
-  xsel xclip gnome3.gnome-screenshot qemu
+  xsel xclip gnome3.gnome-screenshot qemu calcurse
 
   # Build systems
   pkgs.gnumake cmake rustStable.cargo gradle
@@ -35,8 +35,11 @@ pkgs: with pkgs; [
   # GTK+ and icon theme
   arc-theme paper-icon-theme
 
-  # Graphical utilities
-  gnome3.file-roller gnome3.gnome-calculator gimp audacity mpv libreoffice-fresh
+  # Office suite
+  gnome3.gnome-calculator libreoffice-fresh
+
+  # Multimedia
+  gimp audacity mpv gnome3.file-roller
 
   # Networking
   openvpn openssh
