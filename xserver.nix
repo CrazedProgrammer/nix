@@ -13,4 +13,17 @@
     # Enable the Xfce desktop environment.
     desktopManager.xfce.enable = true;
   };
+
+  fonts = {
+    fonts = with pkgs; [
+      corefonts dejavu_fonts
+      nerdfonts ubuntu_font_family
+      noto-fonts-cjk
+    ];
+    fontconfig = {
+      hinting.enable = false;
+      subpixel.rgba = "none";
+      subpixel.lcdfilter = "none";
+    };
+  };
 }

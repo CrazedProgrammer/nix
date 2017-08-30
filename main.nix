@@ -15,12 +15,6 @@
   # $ nix-env -qaP | grep wget
   nixpkgs.config.allowUnfree = true;
 
-  fonts.fonts = with pkgs; [
-    corefonts dejavu_fonts
-    nerdfonts ubuntu_font_family
-    noto-fonts-cjk
-  ];
-
   # Select internationalisation properties.
   i18n = {
   #   consoleFont = "Lat2-Terminus16";
@@ -49,5 +43,4 @@
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "17.09";
-
 }
