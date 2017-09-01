@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl git htop jq bc loc fdupes
+  wget curl git htop jq bc loc fdupes pandoc
 
   # Utilities
   xsel xclip gnome3.gnome-screenshot qemu calcurse
@@ -12,7 +12,7 @@ pkgs: with pkgs; [
   SDL2
 
   # Languages
-  ghc rustStable.rustc lua luajit openjdk gcc clang python36 ruby nodejs-8_x
+  ghc rustStable.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
   (import ../urn { enableLuaJit = true; })
 
   # Games
