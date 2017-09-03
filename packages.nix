@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl git htop jq bc loc fdupes pandoc
+  wget curl git htop jq bc loc fdupes pandoc texlive.combined.scheme-medium
 
   # Utilities
   xsel xclip gnome3.gnome-screenshot qemu calcurse
