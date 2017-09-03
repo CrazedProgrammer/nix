@@ -9,7 +9,7 @@ pkgs: with pkgs; [
   pkgs.gnumake cmake rustStable.cargo gradle
 
   # Libraries
-  SDL2
+  SDL2 boost wxGTK30
 
   # Languages
   ghc rustStable.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x

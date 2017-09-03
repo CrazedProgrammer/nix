@@ -47,6 +47,7 @@
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
     xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
+    eclipses.eclipse-cpp
   ]);
 
   services.xserver.synaptics = {
