@@ -43,11 +43,11 @@
   swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "ondemand";
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
     xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
-    eclipses.eclipse-cpp
+    eclipses.eclipse-cpp eclipses.eclipse-modeling
   ]);
 
   services.xserver.synaptics = {

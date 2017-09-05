@@ -1,6 +1,9 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl git htop jq bc loc fdupes pandoc texlive.combined.scheme-medium
+  wget curl htop jq bc loc fdupes pandoc texlive.combined.scheme-medium
+
+  # Version control
+  git mercurial darcs
 
   # Utilities
   xsel xclip gnome3.gnome-screenshot qemu calcurse
@@ -30,7 +33,7 @@ pkgs: with pkgs; [
   firefox-bin w3m
 
   # Web chat
-  quasselClient teamspeak_client mumble
+  teamspeak_client mumble
 
   # GTK+ and icon theme
   arc-theme paper-icon-theme
