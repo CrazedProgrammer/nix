@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # Basic tools
-  wget curl htop jq bc loc fdupes pandoc texlive.combined.scheme-medium
+  wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
   # Version control
   git mercurial darcs

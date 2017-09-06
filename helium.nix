@@ -47,7 +47,7 @@
 
   environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
     xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
-    eclipses.eclipse-cpp eclipses.eclipse-modeling
+    eclipses.eclipse-cpp (callPackage packages/astah-community.nix {})
   ]);
 
   services.xserver.synaptics = {
