@@ -30,7 +30,7 @@ pkgs: with pkgs; [
   fish neovim
 
   # Browsers
-  firefox-bin w3m
+  (import packages/mozilla/firefox-overlay.nix pkgs pkgs).firefox-nightly-bin w3m
 
   # Web chat
   teamspeak_client mumble
