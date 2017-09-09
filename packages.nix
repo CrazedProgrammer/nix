@@ -1,4 +1,9 @@
-pkgs: with pkgs; [
+pkgs:
+let
+  firefoxOverlay = (import packages/mozilla/firefox-overlay.nix pkgs pkgs);
+  rustOverlay = (import packages/mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
+in
+with pkgs; [
   # Basic tools
   wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
@@ -9,13 +14,13 @@ pkgs: with pkgs; [
   xsel xclip gnome3.gnome-screenshot qemu calcurse
 
   # Build systems
-  pkgs.gnumake cmake rustStable.cargo gradle
+  pkgs.gnumake cmake rustOverlay.cargo gradle
 
   # Libraries
   SDL2 boost wxGTK30
 
   # Languages
-  ghc rustStable.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
+  ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
   (import ../urn { enableLuaJit = true; })
 
   # Games
@@ -30,7 +35,7 @@ pkgs: with pkgs; [
   fish neovim
 
   # Browsers
-  (import packages/mozilla/firefox-overlay.nix pkgs pkgs).firefox-nightly-bin w3m
+  firefoxOverlay.firefox-nightly-bin w3m
 
   # Web chat
   teamspeak_client mumble
