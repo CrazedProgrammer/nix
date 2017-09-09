@@ -19,7 +19,7 @@ pkgs: with pkgs; [
   (import ../urn { enableLuaJit = true; })
 
   # Games
-  multimc minetest dwarf-fortress gnome3.gnome-mines
+  multimc minetest dwarf-fortress gnome3.gnome-mines love
   (import packages/ccemux.nix)
   (import packages/the-powder-toy.nix)
 
@@ -48,8 +48,8 @@ pkgs: with pkgs; [
   openvpn openssh
   (import packages/update-resolv-conf.nix)
 
-  # Xfce plugins
-  xfce.xfce4_cpugraph_plugin
+  # Xfce plugins and i3 status bar
+  xfce.xfce4_cpugraph_plugin polybar
 
   # System utilities
   pavucontrol polkit_gnome exfat-utils ntfs3g

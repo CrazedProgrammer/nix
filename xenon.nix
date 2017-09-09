@@ -58,5 +58,13 @@
       Identifier "DVI-D-1"
       Option "LeftOf" "DP-1"
     EndSection
+    Section "InputClass"
+      Identifier "Logitech G403 Prodigy Gaming Mouse"
+      MatchIsPointer "yes"
+      Option "AccelerationProfile" "-1"
+      Option "AccelerationScheme" "none"
+      Option "AccelSpeed" "-1"
+      Option "Resolution" "3500"
+    EndSection
   '';
 }
