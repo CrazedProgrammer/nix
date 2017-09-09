@@ -48,4 +48,15 @@
     (steam.override { newStdcpp = true; })
     hdparm
   ]);
+
+  services.xserver.config = ''
+    Section "Monitor"
+      Identifier "DP-1"
+      VertRefresh 144.0 - 144.0
+    EndSection
+    Section "Monitor"
+      Identifier "DVI-D-1"
+      Option "LeftOf" "DP-1"
+    EndSection
+  '';
 }

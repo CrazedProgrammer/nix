@@ -10,8 +10,9 @@
     # Enable the SDDM login manager.
     displayManager.sddm.enable = true;
 
-    # Enable the Xfce desktop environment.
+    # Enable the Xfce desktop environment and the i3 window manager.
     desktopManager.xfce.enable = true;
+    windowManager.i3.enable = true;
   };
 
   fonts = {
