@@ -53,8 +53,8 @@ with pkgs; [
   openvpn openssh
   (import packages/update-resolv-conf.nix)
 
-  # Xfce plugins and i3 status bar
-  xfce.xfce4_cpugraph_plugin polybar
+  # Xfce plugins and i3 utilities
+  xfce.xfce4_cpugraph_plugin polybar rofi feh
 
   # System utilities
   pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
