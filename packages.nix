@@ -54,7 +54,7 @@ with pkgs; [
   (import packages/update-resolv-conf.nix)
 
   # Xfce plugins and i3 utilities
-  xfce.xfce4_cpugraph_plugin polybar rofi feh
+  xfce.xfce4_cpugraph_plugin (polybar.override { i3Support = true; }) rofi feh
 
   # System utilities
   pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
