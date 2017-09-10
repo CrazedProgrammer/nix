@@ -57,5 +57,5 @@ with pkgs; [
   xfce.xfce4_cpugraph_plugin polybar
 
   # System utilities
-  pavucontrol polkit_gnome exfat-utils ntfs3g
+  pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
 ]
