@@ -36,8 +36,8 @@ in
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk
 
-    # Shell and editor
-    fish neovim
+    # Shell, terminal and editor
+    fish termite neovim
 
     # Browsers
     firefoxOverlay.firefox-nightly-bin w3m

@@ -55,7 +55,8 @@
     minSpeed = "1";
     accelFactor = "0.002";
     maxSpeed = "2";
-    horizTwoFingerScroll = true;
+    twoFingerScroll = true;
+    scrollDelta = -75;
     palmDetect = true;
     additionalOptions = ''
       Option "PalmMinWidth" "4"
