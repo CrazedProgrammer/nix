@@ -45,16 +45,17 @@
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = "ondemand";
 
-  environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
+  environment.systemPackages = with pkgs; [
     xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
     eclipses.eclipse-cpp (callPackage packages/astah-community.nix {})
-  ]);
+  ];
 
   services.xserver.synaptics = {
     enable = true;
     minSpeed = "1";
     accelFactor = "0.002";
     maxSpeed = "2";
+    horizTwoFingerScroll = true;
     palmDetect = true;
     additionalOptions = ''
       Option "PalmMinWidth" "4"

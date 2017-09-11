@@ -1,61 +1,67 @@
-pkgs:
+{ config, lib, pkgs, ... }:
+
 let
   firefoxOverlay = (import packages/mozilla/firefox-overlay.nix pkgs pkgs);
   rustOverlay = (import packages/mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
 in
-with pkgs; [
-  # Basic tools
-  wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
-  # Version control
-  git mercurial darcs
+{
+  imports = [ ];
 
-  # Utilities
-  xsel xclip gnome3.gnome-screenshot qemu calcurse
+  environment.systemPackages = with pkgs; [
+    # Basic tools
+    wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
-  # Build systems
-  pkgs.gnumake cmake rustOverlay.cargo gradle
+    # Version control
+    git mercurial darcs
 
-  # Libraries
-  SDL2 boost wxGTK30
+    # Utilities
+    xsel xclip gnome3.gnome-screenshot qemu calcurse
 
-  # Languages
-  ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
-  (import ../urn { enableLuaJit = true; })
+    # Build systems
+    pkgs.gnumake cmake rustOverlay.cargo gradle
 
-  # Games
-  multimc minetest dwarf-fortress gnome3.gnome-mines love
-  (import packages/ccemux.nix)
-  (import packages/the-powder-toy.nix)
+    # Libraries
+    SDL2 boost wxGTK30
 
-  # Emulators
-  dolphinEmuMaster dosbox stella snes9x-gtk
+    # Languages
+    ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
+    (import ../urn { enableLuaJit = true; })
 
-  # Shell and editor
-  fish neovim
+    # Games
+    multimc minetest dwarf-fortress gnome3.gnome-mines love
+    (import packages/ccemux.nix)
+    (import packages/the-powder-toy.nix)
 
-  # Browsers
-  firefoxOverlay.firefox-nightly-bin w3m
+    # Emulators
+    dolphinEmuMaster dosbox stella snes9x-gtk
 
-  # Web chat
-  teamspeak_client mumble
+    # Shell and editor
+    fish neovim
 
-  # GTK+ and icon theme
-  (import packages/arc-theme.nix) paper-icon-theme
+    # Browsers
+    firefoxOverlay.firefox-nightly-bin w3m
 
-  # Office suite
-  gnome3.gnome-calculator libreoffice-fresh
+    # Web chat
+    teamspeak_client mumble
 
-  # Multimedia
-  gimp audacity mpv gnome3.file-roller
+    # GTK+ and icon theme
+    (import packages/arc-theme.nix) paper-icon-theme
 
-  # Networking
-  openvpn openssh
-  (import packages/update-resolv-conf.nix)
+    # Office suite
+    gnome3.gnome-calculator libreoffice-fresh
 
-  # Xfce plugins and i3 utilities
-  xfce.xfce4_cpugraph_plugin (polybar.override { i3Support = true; }) rofi feh
+    # Multimedia
+    gimp audacity mpv gnome3.file-roller
 
-  # System utilities
-  pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
-]
+    # Networking
+    openvpn openssh
+    (import packages/update-resolv-conf.nix)
+
+    # Xfce plugins and i3 utilities
+    xfce.xfce4_cpugraph_plugin (polybar.override { i3Support = true; }) rofi feh
+
+    # System utilities
+    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
+  ];
+}

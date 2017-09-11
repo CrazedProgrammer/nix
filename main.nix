@@ -7,6 +7,7 @@
 {
   imports =
     [ # Import all other configurations.
+      ./packages.nix
       ./users.nix
       ./xserver.nix
     ];

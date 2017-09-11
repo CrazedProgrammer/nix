@@ -44,10 +44,10 @@
     cpuFreqGovernor = "performance";
   };
 
-  environment.systemPackages = (import ./packages.nix pkgs) ++ (with pkgs; [
+  environment.systemPackages = with pkgs; [
     (steam.override { newStdcpp = true; })
     hdparm
-  ]);
+  ];
 
   services.xserver.config = ''
     Section "Monitor"
