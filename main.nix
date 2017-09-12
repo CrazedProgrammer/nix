@@ -16,6 +16,9 @@
   # $ nix-env -qaP | grep wget
   nixpkgs.config.allowUnfree = true;
 
+  # Kernel package
+  boot.kernelPackages = pkgs.linuxPackages_4_13;
+
   # Select internationalisation properties.
   i18n = {
   #   consoleFont = "Lat2-Terminus16";
@@ -43,5 +46,5 @@
   '';
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "17.09";
+  system.stateVersion = "18.03";
 }

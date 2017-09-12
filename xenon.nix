@@ -15,8 +15,6 @@
 
   networking.hostName = "xenon"; # Define your hostname.
 
-  boot.kernelPackages = pkgs.linuxPackages_4_13;
-
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -40,9 +38,7 @@
 
   nix.maxJobs = lib.mkDefault 12;
 
-  powerManagement = {
-    cpuFreqGovernor = "performance";
-  };
+  powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [
     hdparm
