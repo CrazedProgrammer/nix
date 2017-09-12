@@ -15,7 +15,7 @@
 
   networking.hostName = "xenon"; # Define your hostname.
 
-  boot.kernelPackages = pkgs.linuxPackages_4_12;
+  boot.kernelPackages = pkgs.linuxPackages_4_13;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -45,7 +45,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (steam.override { newStdcpp = true; })
     hdparm
   ];
 

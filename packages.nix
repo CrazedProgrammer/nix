@@ -30,6 +30,7 @@ in
 
     # Games
     multimc minetest dwarf-fortress gnome3.gnome-mines love
+    (steam.override { newStdcpp = true; })
     (import packages/ccemux.nix)
     (import packages/the-powder-toy.nix)
 

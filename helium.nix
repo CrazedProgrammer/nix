@@ -30,7 +30,7 @@
 
   networking.hostName = "helium"; # Define your hostname.
 
-  boot.kernelPackages = pkgs.linuxPackages_4_12;
+  boot.kernelPackages = pkgs.linuxPackages_4_13;
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -46,7 +46,7 @@
   powerManagement.cpuFreqGovernor = "ondemand";
 
   environment.systemPackages = with pkgs; [
-    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino steam
+    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino xorg.xbacklight
     eclipses.eclipse-cpp (callPackage packages/astah-community.nix {})
   ];
 
