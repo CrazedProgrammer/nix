@@ -47,13 +47,13 @@ in
     teamspeak_client mumble
 
     # GTK+ and icon theme
-    (import packages/arc-theme.nix) paper-icon-theme
+    arc-theme paper-icon-theme
 
     # Office suite
     gnome3.gnome-calculator libreoffice-fresh
 
     # Multimedia
-    gimp audacity mpv gnome3.file-roller
+    gimp audacity mpv gnome3.file-roller cli-visualizer
 
     # Networking
     openvpn openssh
