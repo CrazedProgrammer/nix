@@ -29,8 +29,7 @@ in
     (import ../urn { enableLuaJit = true; })
 
     # Games
-    multimc minetest dwarf-fortress gnome3.gnome-mines love
-    (steam.override { newStdcpp = true; })
+    multimc minetest dwarf-fortress gnome3.gnome-mines love steam
     (import packages/ccemux.nix)
     (import packages/the-powder-toy.nix)
 
