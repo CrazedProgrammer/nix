@@ -61,5 +61,10 @@
       Option "AccelSpeed" "-1"
       Option "Resolution" "3500"
     EndSection
+    Section "Device"
+      Identifier "AMD"
+      Driver "amdgpu"
+      Option "TearFree" "true"
+    EndSection
   '';
 }

@@ -6,8 +6,6 @@ let
 in
 
 {
-  imports = [ ];
-
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
@@ -16,7 +14,7 @@ in
     git mercurial darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse
+    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
 
     # Build systems
     pkgs.gnumake cmake rustOverlay.cargo gradle
@@ -36,8 +34,8 @@ in
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk
 
-    # Shell, terminal and editor
-    fish termite neovim
+    # Terminal and editor
+    termite neovim
 
     # Browsers
     firefoxOverlay.firefox-nightly-bin w3m

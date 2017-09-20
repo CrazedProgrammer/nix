@@ -1,32 +1,28 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
+
+let bobthefish = (import packages/bobthefish.nix {}); in
 
 {
   imports =
-    [ # Import all other configurations.
+    [
       ./packages.nix
       ./users.nix
       ./xserver.nix
     ];
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+  # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
-  # Kernel package
+  # Kernel package.
   boot.kernelPackages = pkgs.linuxPackages_4_13;
 
-  # Select internationalisation properties.
+  # Internationalisation properties.
   i18n = {
-  #   consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
-  # Set your time zone.
+  # Time zone.
   time.timeZone = "Europe/Amsterdam";
 
   # Use NetworkManager for networking.
@@ -45,6 +41,31 @@
     DefaultTimeoutStopSec=10s
   '';
 
-  # The NixOS release to be compatible with for stateful data such as databases.
+  environment.systemPackages = [ bobthefish ];
+  programs.fish = {
+    enable = true;
+
+    shellAliases = {
+      l = "ls -la";
+      vim = "nvim";
+      lgit = "git add -A; and git commit; and git push;";
+      clgit = "git add -A; and git commit; and git pull; and git push";
+      cdcc = "cd ~/.local/share/ccemux/computer/0";
+      sysa = "sudo nixos-rebuild switch";
+      sysu = "sysa --upgrade";
+      sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
+      clip = "xclip -selection clipboard";
+      qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
+      cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
+    };
+
+    shellInit = ''
+      set -g theme_date_format "+%H:%M:%S "
+      test -f $HOME/.ssh-fish; and . $HOME/.ssh-fish
+      for file in ${bobthefish}/lib/bobthefish/*.fish; . $file; end
+    '';
+  };
+
+  # The NixOS release version.
   system.stateVersion = "18.03";
 }
