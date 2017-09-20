@@ -50,17 +50,26 @@
     eclipses.eclipse-cpp (callPackage packages/astah-community.nix {})
   ];
 
-  services.xserver.synaptics = {
-    enable = true;
-    minSpeed = "1";
-    accelFactor = "0.002";
-    maxSpeed = "2";
-    twoFingerScroll = true;
-    scrollDelta = -75;
-    palmDetect = true;
-    additionalOptions = ''
-      Option "PalmMinWidth" "4"
-      Option "PalmMinZ" "50"
+  services.xserver = {
+    synaptics = {
+      enable = true;
+      minSpeed = "1";
+      accelFactor = "0.002";
+      maxSpeed = "2";
+      twoFingerScroll = true;
+      scrollDelta = -75;
+      palmDetect = true;
+      additionalOptions = ''
+        Option "PalmMinWidth" "4"
+        Option "PalmMinZ" "50"
+      '';
+    };
+    config = ''
+      Section "Device"
+        Identifier "Intel Graphics"
+        Driver "intel"
+        Option "TearFree" "true"
+      EndSection
     '';
   };
 }
