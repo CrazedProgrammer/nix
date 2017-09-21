@@ -50,14 +50,14 @@ in
     gnome3.gnome-calculator libreoffice-fresh
 
     # Multimedia
-    gimp audacity mpv gnome3.file-roller cli-visualizer
+    gimp audacity mpv gnome3.file-roller cli-visualizer xfce.thunar
 
     # Networking
     openvpn openssh
     (import packages/update-resolv-conf.nix)
 
-    # Xfce plugins and i3 utilities
-    xfce.xfce4_cpugraph_plugin (polybar.override { i3Support = true; }) rofi feh
+    # i3 utilities
+    (polybar.override { i3Support = true; }) rofi feh
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g psmisc
