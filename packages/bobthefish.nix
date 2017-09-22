@@ -4,7 +4,7 @@
 
 stdenv.mkDerivation rec {
   name = "bobthefish";
-  version = "2017-08-07";
+  version = "2017-09-07";
 
   src = fetchFromGitHub {
     owner = "oh-my-fish";
