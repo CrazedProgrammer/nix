@@ -10,6 +10,9 @@ let bobthefish = (import packages/bobthefish.nix {}); in
       ./xserver.nix
     ];
 
+  # Boot select timeout of 2 seconds
+  boot.loader.timeout = 2;
+
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
@@ -40,6 +43,8 @@ let bobthefish = (import packages/bobthefish.nix {}); in
     DefaultTimeoutStartSec=10s
     DefaultTimeoutStopSec=10s
   '';
+
+  services.udisks2.enable = true;
 
   environment.systemPackages = [ bobthefish ];
   programs.fish = {
