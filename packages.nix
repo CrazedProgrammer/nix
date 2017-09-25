@@ -23,7 +23,7 @@ in
     SDL2 boost wxGTK30
 
     # Languages
-    ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x sbcl haskellPackages.idris
+    ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x sbcl haskellPackages.idris nix-repl
     (import ../urn { enableLuaJit = true; })
 
     # Games

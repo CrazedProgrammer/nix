@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
     cat > $out/bin/astah <<EOL
     #!/usr/bin/env bash
 
-    java -jar $out/lib/astah/astah-community.jar
+    java -jar $out/lib/astah/astah-community.jar $@
     EOL
     chmod +x $out/bin/astah
   '';
