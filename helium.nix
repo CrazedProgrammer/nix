@@ -41,7 +41,8 @@
 
   swapDevices = [ ];
 
-  nix.maxJobs = lib.mkDefault 4;
+  nix.maxJobs = 4;
+  nix.buildCores = 4;
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
