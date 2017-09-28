@@ -10,14 +10,20 @@ let bobthefish = (import packages/bobthefish.nix {}); in
       ./xserver.nix
     ];
 
-  # Boot select timeout of 2 seconds
-  boot.loader.timeout = 2;
+  boot = {
+    # Boot select timeout of 2 seconds.
+    loader.timeout = 2;
+
+    # /tmp on tmpfs.
+    tmpOnTmpfs = true;
+
+    # Kernel package.
+    kernelPackages = pkgs.linuxPackages_4_13;
+  };
 
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
-  # Kernel package.
-  boot.kernelPackages = pkgs.linuxPackages_4_13;
 
   # Internationalisation properties.
   i18n = {
@@ -28,15 +34,24 @@ let bobthefish = (import packages/bobthefish.nix {}); in
   # Time zone.
   time.timeZone = "Europe/Amsterdam";
 
-  # Use NetworkManager for networking.
-  networking.networkmanager.enable = true;
+  networking = {
+    # Use NetworkManager for networking.
+    networkmanager.enable = true;
 
-  # Enable PulseAudio.
-  hardware.pulseaudio.enable = true;
+    # Extra hosts.
+    extraHosts = ''
+      173.212.197.244 argon
+    '';
+  };
 
-  # 32 bit compatibility for Steam.
-  hardware.opengl.driSupport32Bit = true;
-  hardware.pulseaudio.support32Bit = true;
+  hardware = {
+    # Enable PulseAudio.
+    pulseaudio.enable = true;
+
+    # 32 bit compatibility for Steam.
+    opengl.driSupport32Bit = true;
+    pulseaudio.support32Bit = true;
+  };
 
   # Systemd stop job timeout.
   systemd.extraConfig = ''
@@ -51,14 +66,18 @@ let bobthefish = (import packages/bobthefish.nix {}); in
     enable = true;
 
     shellAliases = {
-      l = "ls -la";
+      l = "ls -lah";
       vim = "nvim";
       lgit = "git add -A; and git commit; and git push";
-      clgit = "git add -A; and git commit; and git pull; and git push";
+      lgitf = "git add -A; and git commit; and git pull; and git push";
       cdcc = "cd ~/.local/share/ccemux/computer/0";
       sysa = "sudo nixos-rebuild switch";
       sysu = "sysa --upgrade";
+      sysuf = "while not sysu; end";
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
+      ovpn = "sudo openvpn --config ~/.ovpn-client";
+      argonssh = "ssh -p 13493 crazed@argon";
+      argonsshr = "argonssh -t tmux";
       clip = "xclip -selection clipboard";
       qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
@@ -66,7 +85,6 @@ let bobthefish = (import packages/bobthefish.nix {}); in
 
     shellInit = ''
       set -g theme_date_format "+%H:%M:%S "
-      test -f $HOME/.ssh-fish; and . $HOME/.ssh-fish
       for file in ${bobthefish}/lib/bobthefish/*.fish; . $file; end
     '';
   };
