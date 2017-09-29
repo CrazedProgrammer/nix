@@ -1,11 +1,14 @@
 { config, lib, pkgs, ... }:
 
 let
-  firefoxOverlay = (import packages/mozilla/firefox-overlay.nix pkgs pkgs);
-  rustOverlay = (import packages/mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
+  firefoxOverlay = (import ../pkgs/mozilla/firefox-overlay.nix pkgs pkgs);
+  rustOverlay = (import ../pkgs/mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
 in
 
 {
+  # Allow unfree packages.
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
@@ -24,12 +27,12 @@ in
 
     # Languages
     ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x sbcl haskellPackages.idris nix-repl
-    (import ../urn { enableLuaJit = true; })
+    (import ../pkgs/urn { enableLuaJit = true; })
 
     # Games
     multimc minetest dwarf-fortress gnome3.gnome-mines love steam
-    (import packages/ccemux.nix)
-    (import packages/the-powder-toy.nix)
+    (import ../pkgs/ccemux)
+    (import ../pkgs/the-powder-toy.nix)
 
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk
@@ -54,7 +57,7 @@ in
 
     # Networking
     openvpn openssh
-    (import packages/update-resolv-conf.nix)
+    (import ../pkgs/update-resolv-conf.nix)
 
     # i3 utilities
     (polybar.override { i3Support = true; }) rofi feh
