@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 
 let
-  firefoxOverlay = (import ../pkgs/mozilla/firefox-overlay.nix pkgs pkgs);
-  rustOverlay = (import ../pkgs/mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
+  # Poor nix.
+  pkgs' = import ../pkgs pkgs;
 in
 
 {
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs'; [
     # Basic tools
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
@@ -20,19 +20,18 @@ in
     xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
 
     # Build systems
-    pkgs.gnumake cmake rustOverlay.cargo gradle
+    pkgs.gnumake cmake rustChannels.nightly.cargo gradle
 
     # Libraries
     SDL2 boost wxGTK30
 
     # Languages
-    ghc rustOverlay.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x sbcl haskellPackages.idris nix-repl
-    (import ../pkgs/urn { enableLuaJit = true; })
+    ghc rustChannels.nightly.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
+    sbcl haskellPackages.idris nix-repl urn
 
     # Games
-    multimc minetest dwarf-fortress gnome3.gnome-mines love steam
-    (import ../pkgs/ccemux)
-    (import ../pkgs/the-powder-toy.nix)
+    multimc minetest dwarf-fortress gnome3.gnome-mines
+    love steam ccemux the-powder-toy
 
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk
@@ -41,7 +40,7 @@ in
     termite neovim
 
     # Browsers
-    firefoxOverlay.firefox-nightly-bin w3m
+    firefox-nightly-bin w3m
 
     # Web chat
     teamspeak_client mumble
@@ -56,8 +55,7 @@ in
     gimp audacity mpv gnome3.file-roller cli-visualizer xfce.thunar xfce.exo shared_mime_info
 
     # Networking
-    openvpn openssh
-    (import ../pkgs/update-resolv-conf.nix)
+    openvpn openssh update-resolv-conf
 
     # i3 utilities
     (polybar.override { i3Support = true; }) rofi feh

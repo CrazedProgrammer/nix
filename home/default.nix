@@ -9,7 +9,6 @@
     ./xserver.nix
   ];
 
-
   # Internationalisation properties.
   i18n = {
     consoleKeyMap = "us";
