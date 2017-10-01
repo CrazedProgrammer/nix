@@ -16,7 +16,7 @@
       sysuf = "while not sysu; end";
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
       ovpn = "sudo openvpn --config ~/.ovpn-client";
-      argonssh = "ssh -p 13493 crazed@argon";
+      argonssh = "ssh -p 18903 casper@argon";
       argonsshr = "argonssh -t tmux";
       clip = "xclip -selection clipboard";
       qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
