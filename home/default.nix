@@ -9,6 +9,8 @@
     ./xserver.nix
   ];
 
+  nixpkgs.config.packageOverrides = pkgs: import ../pkgs pkgs;
+
   # Internationalisation properties.
   i18n = {
     consoleKeyMap = "us";

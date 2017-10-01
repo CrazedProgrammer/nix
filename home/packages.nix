@@ -1,15 +1,10 @@
 { config, lib, pkgs, ... }:
 
-let
-  # Poor nix.
-  pkgs' = import ../pkgs pkgs;
-in
-
 {
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs'; [
+  environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 

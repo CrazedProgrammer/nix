@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
-let pkgs' = import ../pkgs pkgs; in
-
 {
-  environment.systemPackages = [ pkgs'.bobthefish ];
+  environment.systemPackages = [ pkgs.bobthefish ];
   programs.fish = {
     enable = true;
 
@@ -27,7 +25,7 @@ let pkgs' = import ../pkgs pkgs; in
 
     shellInit = ''
       set -g theme_date_format "+%H:%M:%S "
-      for file in ${pkgs'.bobthefish}/lib/bobthefish/*.fish; . $file; end
+      for file in ${pkgs.bobthefish}/lib/bobthefish/*.fish; . $file; end
     '';
   };
 }

@@ -1,6 +1,6 @@
 pkgs:
 
-pkgs // {
+{
   astah-community = (import ./astah-community.nix {});
   bobthefish = (import ./bobthefish.nix {});
   ccemux = (import ./ccemux.nix);
