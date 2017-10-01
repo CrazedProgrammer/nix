@@ -8,7 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
+      ../server
     ];
+  nixpkgs.config.packageOverrides = pkgs: import ../pkgs pkgs;
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" ];
   boot.kernelModules = [ ];
@@ -39,7 +41,7 @@
       fsType = "ext4";
     };
   };
-  
+
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -63,14 +65,13 @@
   # };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Berlin";
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs htop neovim
+    wget git curl nodejs htop neovim nodejs
   ];
-  programs.fish.enable = true;
 
   # List services that you want to enable:
 
@@ -95,11 +96,11 @@
   # services.xserver.displayManager.kdm.enable = true;
   # services.xserver.desktopManager.kde4.enable = true;
 
-  environment.sessionVariables = { TERM = "xterm"; };
+  environment.sessionVariables = { TERM = "xterm-256color"; };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
-  
+
   users.extraUsers.casper = {
      isNormalUser = true;
      uid = 1000;
@@ -107,18 +108,6 @@
      hashedPassword = "$6$GKBbbT/yOA$x/PfuKYavlP8Dqf7svWAYir1hd8t8wcoDuuwevC8HYGqMI0zutpuUkUImWHJVMJZxfRuOfyBPlY2OmbD06heP1";
      home = "/home/casper";
      shell = pkgs.fish;
-  };
-
-  services.caddy = {
-    enable = true;
-    agree = true;
-    email = "crazedprogrammer@gmail.com";
-    config = ''
-      http://cc.crzd.me https://cc.crzd.me {
-        root /var/www/cc.crzd.me
-        browse /maven
-      }
-    '';
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
