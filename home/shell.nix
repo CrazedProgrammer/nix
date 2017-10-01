@@ -17,7 +17,7 @@
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
       ovpn = "sudo openvpn --config ~/.ovpn-client";
       argonsshr = "ssh -p 18903 casper@argon";
-      argonssh = "argonssh -t tmux";
+      argonssh = "argonsshr -t tmux";
       clip = "xclip -selection clipboard";
       qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
