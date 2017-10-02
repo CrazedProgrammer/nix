@@ -1,12 +1,15 @@
-pkgs:
+pkgs: with pkgs; {
+  # Custom packages
+  astah-community = callPackage ./astah-community.nix {};
+  bobthefish = callPackage ./bobthefish.nix {};
+  ccemux = callPackage ./ccemux.nix {};
+  urn = callPackage ./urn.nix { enableLuaJit = true; };
 
-{
-  astah-community = (import ./astah-community.nix {});
-  bobthefish = (import ./bobthefish.nix {});
-  ccemux = (import ./ccemux.nix);
-  the-powder-toy = (import ./the-powder-toy.nix);
-  update-resolv-conf = (import ./update-resolv-conf.nix);
-  urn = (import ./urn.nix { enableLuaJit = true; });
+  # Package overrides
+  the-powder-toy = import ./the-powder-toy.nix pkgs;
+  update-resolv-conf = import ./update-resolv-conf.nix pkgs;
+
+  # Overlays
   rustChannels.nightly = (import ./mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
   firefox-nightly-bin = (import ./mozilla/firefox-overlay.nix pkgs pkgs).firefox-nightly-bin;
 }

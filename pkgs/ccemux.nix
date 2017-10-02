@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, openjdk8, gradle }:
 
 stdenv.mkDerivation rec {
   name = "ccemux";
