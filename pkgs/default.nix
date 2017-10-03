@@ -4,6 +4,7 @@ pkgs: with pkgs; {
   bobthefish = callPackage ./bobthefish.nix {};
   ccemux = callPackage ./ccemux.nix {};
   urn = callPackage ./urn.nix { enableLuaJit = true; };
+  thelounge = callPackage ./thelounge.nix {};
 
   # Package overrides
   the-powder-toy = import ./the-powder-toy.nix pkgs;
