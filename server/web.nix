@@ -6,6 +6,13 @@ let
   shittydlPort = 24001;
   theloungePort = 24002;
   theloungeHome = "/var/lib/thelounge";
+  theloungeConfig = ''
+    module.exports = {
+      port: ${toString theloungePort},
+      prefetch: true,
+      prefetchStorage: true
+    }
+  '';
 in
 
 {
@@ -36,17 +43,35 @@ in
     '';
   };
 
-  systemd.services.shittydl = {
-    description = "shittydl Service";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
+  systemd.services = {
+    shittydl = {
+      description = "shittydl Service";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
 
-    serviceConfig = {
-      User = "casper";
-      Group = "users";
-      Type = "simple";
-      WorkingDirectory = "/home/casper/Programs/shittydl";
-      ExecStart = "${pkgs.nodejs}/bin/node index.js";
+      serviceConfig = {
+        User = "casper";
+        Group = "users";
+        Type = "simple";
+        WorkingDirectory = "/home/casper/Programs/shittydl";
+        ExecStart = "${pkgs.nodejs}/bin/node index.js";
+      };
+    };
+    thelounge = {
+      description = "The Lounge web IRC client";
+      wantedBy = [ "multi-user.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
+      preStart = "ln -sf ${pkgs.writeText "config.js" theloungeConfig} ${theloungeHome}/config.js";
+      script = ''
+        ${pkgs.thelounge}/bin/lounge start --home ${theloungeHome}
+      '';
+      serviceConfig = {
+        User = "thelounge";
+        ProtectHome = "true";
+        ProtectSystem = "full";
+        PrivateTmp = "true";
+      };
     };
   };
 
@@ -55,27 +80,5 @@ in
     description = "The Lounge daemon user";
     home = theloungeHome;
     createHome = true;
-  };
-
-  systemd.services.thelounge = {
-    description = "The Lounge web IRC client";
-    wantedBy = [ "multi-user.target" ];
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-    preStart = "ln -sf ${pkgs.writeText "config.js" "module.exports = { port: 24002 }"} ${theloungeHome}/config.js";
-    script = ''
-      ${pkgs.thelounge}/bin/lounge start --home ${theloungeHome}
-    '';
-#   concatStringsSep " " [
-#     "${pkgs.thelounge}/bin/lounge"
-#     "start"
-#     "--home " theloungeHome
-#   ];
-    serviceConfig = {
-      User = "thelounge";
-      ProtectHome = "true";
-      ProtectSystem = "full";
-      PrivateTmp = "true";
-    };
   };
 }

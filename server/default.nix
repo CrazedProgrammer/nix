@@ -6,6 +6,10 @@
     ./web.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    wget git curl nodejs htop neovim nodejs thelounge
+  ];
+
   programs.tmux = {
     enable = true;
     extraTmuxConf = ''
