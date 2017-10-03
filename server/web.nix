@@ -13,6 +13,15 @@
       https://i.crzd.me {
         proxy / localhost:24001
       }
+      https://ccemux.crzd.me {
+        root /var/www/ccemux.crzd.me
+
+        browse /dist
+        redir 302 {
+          if {path} is /
+          / /dist
+        }
+      }
     '';
   };
 
