@@ -70,7 +70,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs htop neovim nodejs
+    wget git curl nodejs htop neovim nodejs thelounge
   ];
 
   # List services that you want to enable:
@@ -97,6 +97,8 @@
   # services.xserver.desktopManager.kde4.enable = true;
 
   environment.sessionVariables = { TERM = "xterm-256color"; };
+
+  security.sudo.wheelNeedsPassword = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
