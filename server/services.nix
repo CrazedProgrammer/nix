@@ -6,15 +6,14 @@ with import ./vars.nix;
 {
   systemd.services = {
     shittydl = {
-      description = "shittydl Service";
+      description = "shittydl service";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        User = "casper";
-        Group = "users";
+        User = "shittydl";
         Type = "simple";
-        WorkingDirectory = "/home/casper/Programs/shittydl";
+        WorkingDirectory = shittydlHome;
         ExecStart = "${pkgs.nodejs}/bin/node index.js";
       };
     };

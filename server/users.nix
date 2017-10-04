@@ -16,6 +16,11 @@ with import ./vars.nix;
       shell = pkgs.fish;
     };
     # Application-specific users
+    shittydl = {
+      description = "shittydl user";
+      home = shittydlHome;
+      createHome = true;
+    };
     thelounge = {
       description = "The Lounge daemon user";
       home = theloungeHome;
