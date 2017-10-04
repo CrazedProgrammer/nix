@@ -15,6 +15,7 @@
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.tmpOnTmpfs = true;
 
   swapDevices = [ ];
 
