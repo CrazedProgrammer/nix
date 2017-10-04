@@ -3,11 +3,13 @@
 {
   imports = [
     ../home/shell.nix
+    ./users.nix
+    ./services.nix
     ./web.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs htop neovim nodejs
+    wget git curl nodejs htop neovim
   ];
 
   programs.tmux = {

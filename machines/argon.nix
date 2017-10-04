@@ -68,18 +68,6 @@
   # Fix every terminal issue...
   environment.sessionVariables = { TERM = "xterm-256color"; };
 
-  security.sudo.wheelNeedsPassword = false;
-  users.mutableUsers = false;
-
-  users.extraUsers.casper = {
-     isNormalUser = true;
-     uid = 1000;
-     extraGroups = [ "wheel" ];
-     hashedPassword = "$6$GKBbbT/yOA$x/PfuKYavlP8Dqf7svWAYir1hd8t8wcoDuuwevC8HYGqMI0zutpuUkUImWHJVMJZxfRuOfyBPlY2OmbD06heP1";
-     home = "/home/casper";
-     shell = pkgs.fish;
-  };
-
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "18.03";
 }

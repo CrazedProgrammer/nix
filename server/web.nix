@@ -1,19 +1,6 @@
 { config, pkgs, lib, ... }:
 
-with lib;
-
-let
-  shittydlPort = 24001;
-  theloungePort = 24002;
-  theloungeHome = "/var/lib/thelounge";
-  theloungeConfig = ''
-    module.exports = {
-      port: ${toString theloungePort},
-      prefetch: true,
-      prefetchStorage: true
-    }
-  '';
-in
+with import ./vars.nix;
 
 {
   services.caddy = {
@@ -41,44 +28,5 @@ in
         }
       }
     '';
-  };
-
-  systemd.services = {
-    shittydl = {
-      description = "shittydl Service";
-      after = [ "network.target" ];
-      wantedBy = [ "multi-user.target" ];
-
-      serviceConfig = {
-        User = "casper";
-        Group = "users";
-        Type = "simple";
-        WorkingDirectory = "/home/casper/Programs/shittydl";
-        ExecStart = "${pkgs.nodejs}/bin/node index.js";
-      };
-    };
-    thelounge = {
-      description = "The Lounge web IRC client";
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ];
-      after = [ "network-online.target" ];
-      preStart = "ln -sf ${pkgs.writeText "config.js" theloungeConfig} ${theloungeHome}/config.js";
-      script = ''
-        ${pkgs.thelounge}/bin/lounge start --home ${theloungeHome}
-      '';
-      serviceConfig = {
-        User = "thelounge";
-        ProtectHome = "true";
-        ProtectSystem = "full";
-        PrivateTmp = "true";
-      };
-    };
-  };
-
-  users.extraUsers = singleton {
-    name = "thelounge";
-    description = "The Lounge daemon user";
-    home = theloungeHome;
-    createHome = true;
   };
 }
