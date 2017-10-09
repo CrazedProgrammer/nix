@@ -36,7 +36,7 @@ with import ./vars.nix;
     c3i = {
       description = "ComputerCraft build server";
       restartIfChanged = false;
-      path = with pkgs; [ (python36.withPackages (ps: [ ps.pystache ])) openjdk jre gradle git ];
+      path = with pkgs; [ (python36.withPackages (ps: [ ps.pystache ])) openjdk jre gradle git bash ];
       script = ''
         python3.6 fetch.py
       '';
