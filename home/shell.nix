@@ -7,7 +7,6 @@
 
     shellAliases = {
       l = "ls -lah";
-      vim = "nvim";
       lgit = "git add -A; and git commit; and git push";
       lgitf = "git add -A; and git commit; and git pull; and git push";
       cdcc = "cd ~/.local/share/ccemux/computer/0";

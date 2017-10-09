@@ -9,6 +9,7 @@ pkgs: with pkgs; {
   # Package overrides
   the-powder-toy = import ./the-powder-toy.nix pkgs;
   update-resolv-conf = import ./update-resolv-conf.nix pkgs;
+  neovim = import ./neovim.nix pkgs;
 
   # Overlays
   rustChannels.nightly = (import ./mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;

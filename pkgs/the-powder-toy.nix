@@ -1,4 +1,4 @@
-pkgs: with pkgs;
+{ the-powder-toy, fetchFromGitHub, ...}:
 
 the-powder-toy.overrideAttrs (old: rec {
   version = "92.1.332";
