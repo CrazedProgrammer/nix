@@ -1,4 +1,4 @@
-pkgs: with pkgs;
+{ update-resolv-conf, lib, coreutils, openresolv, systemd, ... }:
 
 # nix-collect-garbage -d kept removing the script, so I made this workaround.
 
