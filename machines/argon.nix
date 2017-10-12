@@ -47,10 +47,6 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
 
-  networking.hostName = "argon"; # Define your hostname.
-
-  networking.firewall.allowedTCPPorts = [ 80 443 18903 ];
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
