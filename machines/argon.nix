@@ -62,6 +62,11 @@
     };
   };
 
+  i18n = {
+    consoleKeyMap = "us";
+    defaultLocale = "en_US.UTF-8";
+  };
+
   # Fix every terminal issue...
   environment.sessionVariables = { TERM = "xterm-256color"; };
 
