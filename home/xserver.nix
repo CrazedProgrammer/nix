@@ -13,7 +13,7 @@
     # Enable the Xfce desktop environment and the i3 window manager.
     windowManager.i3 = {
       enable = true;
-      configFile = ../dotfiles/i3-config;
+      configFile = ./dotfiles/i3-config;
     };
     desktopManager.xfce = {
       enable = true;
