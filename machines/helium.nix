@@ -6,6 +6,7 @@
   ];
 
   boot = {
+    supportedFilesystems = [ "zfs" ];
     loader.grub = {
       # Use GRUB for booting.
       device = "/dev/sda";
@@ -34,9 +35,20 @@
   };
 
   networking.hostName = "helium"; # Hostname.
+  networking.hostId = "98345052";
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/13ef86d6-611f-4f34-9e99-1c90a8c77fec";
+    { device = "hpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "hpool/home";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/48a92c3e-89c7-42f7-a16b-fecdb75b20b9";
       fsType = "ext4";
     };
 
