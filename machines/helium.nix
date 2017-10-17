@@ -10,6 +10,7 @@
       # Use GRUB for booting.
       device = "/dev/sda";
       efiSupport = false;
+      gfxmodeBios = "1920x1080";
       # Dual boot.
       extraEntries = ''
         menuentry "Windows 10" {

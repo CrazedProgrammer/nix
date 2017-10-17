@@ -2,14 +2,14 @@
 
 {
   boot = {
-    # Boot select timeout of 2 seconds.
-    loader.timeout = 2;
+    # Boot select timeout of 1 second.
+    loader.timeout = 1;
 
     # /tmp on tmpfs.
     tmpOnTmpfs = true;
 
     # Kernel package.
-    kernelPackages = pkgs.linuxPackages_4_13;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking = {
@@ -37,5 +37,5 @@
     DefaultTimeoutStopSec=10s
   '';
 
-  services.udisks2.enable = true;
+  # services.udisks2.enable = true;
 }

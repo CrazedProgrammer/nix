@@ -35,6 +35,7 @@ highlight LineNr ctermfg=darkgrey
 highlight CursorLineNr ctermfg=grey
 highlight ColorColumn ctermbg=black
 highlight FoldColumn ctermbg=none
+highlight Pmenu ctermbg=darkgrey
 
 
 " Keyboard mappings

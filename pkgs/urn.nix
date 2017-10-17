@@ -9,7 +9,7 @@
 
 let
   inherit (nixpkgs) stdenv;
-  ourVersion = "0.5.1";
+  ourVersion = "0.6.0";
 
   # Build a sort of "union package" with all the native dependencies we
   # have: Lua (or LuaJIT), readline, etc. Then, we can depend on this
@@ -30,8 +30,8 @@ in
     src = fetchFromGitLab {
       owner = "urn";
       repo = "urn";
-      rev = "cd0a6e2bb9fc6f397c5924359413e12fe9e94e78";
-      sha256 = "0rac78fv8jqsjxvliaibqlrpc0vc1pnyqgaw1z00b1zd9z6qr4y2";
+      rev = "f8af67e4c846865c68621fe2a0259bd6a66aedd0";
+      sha256 = "12b7n7p0f6vsb5474yqrg052x2yndy5dlv91zgv88wydarhyb3ka";
     };
 
     buildInputs = [ runtime nixpkgs.pkgs.makeWrapper ];

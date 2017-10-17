@@ -47,7 +47,7 @@
     gnome3.gnome-calculator libreoffice-fresh
 
     # Multimedia
-    gimp audacity mpv gnome3.file-roller cli-visualizer xfce.thunar xfce.exo shared_mime_info
+    gimp audacity mpv gnome3.file-roller cli-visualizer # xfce.thunar xfce.exo shared_mime_info
 
     # Networking
     openvpn openssh update-resolv-conf
@@ -56,6 +56,6 @@
     (polybar.override { i3Support = true; }) rofi feh
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc udiskie
+    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc # udiskie
   ];
 }
