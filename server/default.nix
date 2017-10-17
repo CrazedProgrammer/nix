@@ -6,6 +6,7 @@
     ./users.nix
     ./services.nix
     ./web.nix
+    ./networking.nix
   ];
 
   environment.systemPackages = with pkgs; [
