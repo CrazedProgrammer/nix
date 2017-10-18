@@ -42,14 +42,19 @@
       fsType = "zfs";
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/48a92c3e-89c7-42f7-a16b-fecdb75b20b9";
+      fsType = "ext4";
+    };
+
   fileSystems."/home" =
     { device = "hpool/home";
       fsType = "zfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/48a92c3e-89c7-42f7-a16b-fecdb75b20b9";
-      fsType = "ext4";
+  fileSystems."/mnt/games" =
+    { device = "hpool/games";
+      fsType = "zfs";
     };
 
   swapDevices = [ ];

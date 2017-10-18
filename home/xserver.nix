@@ -14,6 +14,7 @@
     windowManager.i3 = {
       enable = true;
       configFile = ./dotfiles/i3-config;
+      package = pkgs.i3-gaps;
     };
     desktopManager.xfce = {
       enable = true;

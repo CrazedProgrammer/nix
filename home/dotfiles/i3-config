@@ -33,15 +33,19 @@ client.focused_inactive	#444444 #333333 #dddddd #333333 #555555
 client.unfocused	#444444 #333333 #dddddd #333333 #555555
 
 # Title format
+for_window [class="^.*"] border pixel 1
+
+# Gaps
+gaps inner 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec "termite --config=$HOME/Projects/nix/home/dotfiles/termite-config"
 
 # start the application launcher
-bindsym $mod+p exec rofi -show run
+bindsym $mod+p exec "rofi -config $HOME/Projects/nix/home/dotfiles/rofi-config -show run"
 
 # start the browser
 bindsym $mod+b exec firefox
@@ -189,6 +193,4 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 #        status_command i3status
 #}
 
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-exec_always --no-startup-id "feh --bg-tile $HOME/Pictures/Background.png"
-exec --no-startup-id "$HOME/Programs/startup.sh"
+exec --no-startup-id "$HOME/Projects/nix/home/dotfiles/startup.sh"
