@@ -56,6 +56,6 @@
     (polybar.override { i3Support = true; }) rofi feh
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc # udiskie
+    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop
   ];
 }

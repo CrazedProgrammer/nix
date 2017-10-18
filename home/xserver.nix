@@ -23,23 +23,27 @@
     };
   };
 
-# environment.etc = {
-#   "gtk-2.0/gtkrc" = {
-#     mode = "0666";
-#     text = ''
-#       gtk-theme-name = "Arc-Dark"
-#       gtk-icon-theme-name = "Paper"
-#     '';
-#   };
-#   "gtk-3.0/settings.ini" = {
-#     mode = "0666";
-#     text = ''
-#       [Settings]
-#       gtk-theme-name = Arc-Dark
-#       gtk-icon-theme-name = Paper
-#     '';
-#   };
-# };
+  environment.extraInit = ''
+    export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+  '';
+
+  environment.etc = {
+    "xdg/gtk-2.0/gtkrc" = {
+      mode = "444";
+      text = ''
+        gtk-theme-name = "Arc-Dark"
+        gtk-icon-theme-name = "Paper"
+      '';
+    };
+    "xdg/gtk-3.0/settings.ini" = {
+      mode = "444";
+      text = ''
+        [Settings]
+        gtk-theme-name = Arc-Dark
+        gtk-icon-theme-name = Paper
+      '';
+    };
+  };
 
   fonts = {
     fonts = with pkgs; [
