@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  # Testing sway
+  imports = [ ./modules/sway.nix ];
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;

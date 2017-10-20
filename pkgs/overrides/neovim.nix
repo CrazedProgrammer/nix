@@ -3,7 +3,7 @@
 neovim.override {
   vimAlias = true;
   configure = {
-    customRC = builtins.readFile ../home/dotfiles/init.vim;
+    customRC = builtins.readFile ../../home/dotfiles/init.vim;
     vam.pluginDictionaries = [{
       names = [
         "deoplete-nvim"

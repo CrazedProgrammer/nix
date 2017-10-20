@@ -22,6 +22,7 @@
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       vis = "vis -c \"${./dotfiles/vis-config}\"";
       iotop = "sudo iotop";
+      fslist = "zfs list -o name,compressratio,used,available";
     };
 
     shellInit = ''

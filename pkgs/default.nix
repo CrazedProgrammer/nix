@@ -7,9 +7,11 @@ pkgs: with pkgs; {
   thelounge = callPackage ./thelounge.nix {};
 
   # Package overrides
-  the-powder-toy = import ./the-powder-toy.nix pkgs;
-  update-resolv-conf = import ./update-resolv-conf.nix pkgs;
-  neovim = import ./neovim.nix pkgs;
+  the-powder-toy = import ./overrides/the-powder-toy.nix pkgs;
+  update-resolv-conf = import ./overrides/update-resolv-conf.nix pkgs;
+  neovim = import ./overrides/neovim.nix pkgs;
+  sway = import ./overrides/sway.nix pkgs;
+  wlc = import ./overrides/wlc.nix pkgs;
 
   # Overlays
   rustChannels.nightly = (import ./mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
