@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Testing sway
-  imports = [ ./modules/sway.nix ];
-
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -13,21 +10,38 @@
     # Enable the SDDM login manager.
     displayManager.sddm.enable = true;
 
-    # Enable the Xfce desktop environment and the i3 window manager.
-    windowManager.i3 = {
-      enable = true;
-      configFile = ./dotfiles/i3-config;
-      package = pkgs.i3-gaps;
+    # i3 and sway window manager.
+    windowManager = {
+      i3 = {
+        enable = true;
+        configFile = ./dotfiles/i3-config;
+        package = pkgs.i3-gaps;
+      };
+      session = [{
+        name = "sway";
+        start = ''
+          sway &
+          waitPID=$!
+        '';
+      }];
     };
-    desktopManager.xfce = {
-      enable = true;
-      noDesktop = true;
-      enableXfwm = false;
+
+    # Xfce utils
+    desktopManager = {
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+      xterm.enable = false;
     };
   };
 
+  programs.sway.enable = true;
+
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+    export DOTFILES=${./dotfiles}
   '';
 
   environment.etc = {
