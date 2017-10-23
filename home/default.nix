@@ -14,6 +14,7 @@
   nix = {
     daemonIONiceLevel = 7;
     daemonNiceLevel = 19;
+#   useSandbox = true;
   };
 
   # Internationalisation properties.

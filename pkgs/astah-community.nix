@@ -1,21 +1,10 @@
-{ stdenv, lib, fetchurl, makeDesktopItem, unzip, jre }:
+{ stdenv, fetchurl, makeDesktopItem, unzip, jre }:
 
 let
 
   name = "astah-community";
   version = "7.2.0";
   postfix = "1ff236";
-  desktopItem = makeDesktopItem {
-    name = name;
-    exec = "astah %U";
-    icon = "${name}.png";
-    comment = "Lightweight, easy-to-use, and free UML2.x modeler";
-    desktopName = "Astah* Community";
-    genericName = "Astah* Community";
-    mimeType = "application/x-astah";
-    categories = "Application;Development;";
-    extraEntries = "NoDisplay=false";
-  };
   desktopIcon = fetchurl {
     name = "${name}.png";
     url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.png?h=astah-community";
@@ -26,6 +15,17 @@ let
     url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.xml?h=astah-community";
     sha256 = "096n2r14ddm97r32i4sbp7v4qdmwn9sxy7lwphcx1nydppb0m97b";
   };
+  desktopItem = makeDesktopItem {
+    name = name;
+    exec = "astah %U";
+    icon = "${desktopIcon}";
+    comment = "Lightweight, easy-to-use, and free UML2.x modeler";
+    desktopName = "Astah* Community";
+    genericName = "Astah* Community";
+    mimeType = "application/x-astah";
+    categories = "Application;Development;";
+    extraEntries = "NoDisplay=false";
+  };
 
 in
 
@@ -33,7 +33,7 @@ stdenv.mkDerivation {
   name = "${name}-${version}";
 
   src = fetchurl {
-    url = "http://cdn.change-vision.com/files/${name}-${lib.replaceStrings ["."] ["_"] version}-${postfix}.zip";
+    url = "http://cdn.change-vision.com/files/${name}-${stdenv.lib.replaceStrings ["."] ["_"] version}-${postfix}.zip";
     sha256 = "1lkl30jdjiarvh2ap9rjabvrq9qhrlmfrasv3vvkag22y9w4l499";
   };
 
