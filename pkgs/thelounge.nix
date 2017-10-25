@@ -4,13 +4,13 @@
 
 stdenv.mkDerivation {
   name = "thelounge";
-  version = "2.5.0-rc.2";
+  version = "2.5.0-rc.5";
 
   src = fetchFromGitHub {
     owner = "thelounge";
     repo = "lounge";
-    rev = "fc0af518c6dd5251123d71f54d702453ab08f6eb";
-    sha256 = "042kslxbwnsfcd3wchasxwfxyx1p7jssyyxjbw3413nla24ixdcn";
+    rev = "69ef6831b9bf59e842cf4c3c17578260d9b83c34";
+    sha256 = "19scp431lx3s6qncvgcb0c2mzlbd7dlgpk3dgxm21kgsrxxdb4bi";
   };
 
   buildInputs = [ nodejs ];
