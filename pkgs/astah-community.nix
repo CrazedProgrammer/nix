@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, makeDesktopItem, unzip, jre }:
+{ stdenv, fetchurl, makeWrapper, makeDesktopItem, unzip, jre }:
 
 let
 
@@ -7,12 +7,12 @@ let
   postfix = "1ff236";
   desktopIcon = fetchurl {
     name = "${name}.png";
-    url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.png?h=astah-community";
+    url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.png?h=astah-community&id=94710b5a6aadcaf489022b0f0e61f8832ae6fa87";
     sha256 = "0knlknwfqqnhg63sxxpia5ykn397id31gzr956wnn6yjj58k3ckm";
   };
   mimeXml = fetchurl {
     name = "${name}.xml";
-    url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.xml?h=astah-community";
+    url = "https://aur.archlinux.org/cgit/aur.git/plain/astah_community.xml?h=astah-community&id=94710b5a6aadcaf489022b0f0e61f8832ae6fa87";
     sha256 = "096n2r14ddm97r32i4sbp7v4qdmwn9sxy7lwphcx1nydppb0m97b";
   };
   desktopItem = makeDesktopItem {
@@ -37,25 +37,22 @@ stdenv.mkDerivation {
     sha256 = "1lkl30jdjiarvh2ap9rjabvrq9qhrlmfrasv3vvkag22y9w4l499";
   };
 
-  buildInputs = [ unzip ];
+  nativeBuildInputs = [ unzip makeWrapper ];
 
   installPhase = ''
-    mkdir -p $out/share
-    mkdir -p $out/share/pixmaps
-    mkdir -p $out/share/mime/packages
-    mkdir -p $out/bin/
+    runHook preInstall
+
+    mkdir -p $out/{bin,share}
     cp -r . $out/share/astah
     cp -r ${desktopItem}/share/applications $out/share/applications
-    cp ${desktopIcon} $out/share/pixmaps/${name}.png
-    cp ${mimeXml} $out/share/mime/packages/${name}.xml
 
-    cat > $out/bin/astah <<EOF
-    #!${stdenv.shell}
+    install -D ${desktopIcon} $out/share/pixmaps/${name}.png
+    install -D ${mimeXml} $out/share/mime/packages/${name}.xml
 
-    ${jre}/bin/java -jar $out/share/astah/astah-community.jar "\$@"
-    EOF
+    makeWrapper ${jre}/bin/java $out/bin/astah \
+      --add-flags "-jar $out/share/astah/astah-community.jar"
 
-    chmod +x $out/bin/astah
+    runHook postInstall
   '';
 
   meta = with stdenv.lib; {

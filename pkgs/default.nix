@@ -1,4 +1,10 @@
-pkgs: with pkgs; {
+pkgs:
+
+let
+  mozillaOverlay = (import ./mozilla pkgs pkgs);
+in
+
+with pkgs; {
   # Custom packages
   astah-community = callPackage ./astah-community.nix {};
   bobthefish = callPackage ./bobthefish.nix {};
@@ -14,6 +20,6 @@ pkgs: with pkgs; {
   wlc = import ./overrides/wlc.nix pkgs;
 
   # Overlays
-  rustChannels.nightly = (import ./mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
-  firefox-nightly-bin = (import ./mozilla/firefox-overlay.nix pkgs pkgs).firefox-nightly-bin;
+  rustChannels.nightly = mozillaOverlay.latest.rustChannels.nightly;
+  firefox-nightly-bin = mozillaOverlay.latest.firefox-nightly-bin;
 }
