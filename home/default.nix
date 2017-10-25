@@ -11,6 +11,12 @@
 
   nixpkgs.config.packageOverrides = pkgs: import ../pkgs pkgs;
 
+  nix = {
+    daemonIONiceLevel = 7;
+    daemonNiceLevel = 19;
+#   useSandbox = true;
+  };
+
   # Internationalisation properties.
   i18n = {
     consoleKeyMap = "us";

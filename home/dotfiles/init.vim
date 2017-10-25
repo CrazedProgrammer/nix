@@ -35,6 +35,7 @@ highlight LineNr ctermfg=darkgrey
 highlight CursorLineNr ctermfg=grey
 highlight ColorColumn ctermbg=black
 highlight FoldColumn ctermbg=none
+highlight Pmenu ctermbg=darkgrey
 
 
 " Keyboard mappings
@@ -62,6 +63,7 @@ endfor
 autocmd FileType lisp :setlocal et ts=2 sw=2
 autocmd FileType php :setlocal et ts=4 sw=4
 autocmd FileType lua :setlocal ts=4 sw=4
+autocmd FileType cpp :setlocal ts=4 sw=4
 autocmd FileType markdown.pandoc,text,plaintex :setlocal foldcolumn=4 colorcolumn=73
 
 augroup pandoc_syntax

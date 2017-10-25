@@ -6,10 +6,12 @@
   ];
 
   boot = {
+    supportedFilesystems = [ "zfs" ];
     loader.grub = {
       # Use GRUB for booting.
       device = "/dev/sda";
       efiSupport = false;
+      gfxmodeBios = "1920x1080";
       # Dual boot.
       extraEntries = ''
         menuentry "Windows 10" {
@@ -33,10 +35,27 @@
   };
 
   networking.hostName = "helium"; # Hostname.
+  networking.hostId = "98345052";
+  networking.firewall.allowedTCPPorts = [ 12345 ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/13ef86d6-611f-4f34-9e99-1c90a8c77fec";
+    { device = "hpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/48a92c3e-89c7-42f7-a16b-fecdb75b20b9";
       fsType = "ext4";
+    };
+
+  fileSystems."/home" =
+    { device = "hpool/home";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/games" =
+    { device = "hpool/games";
+      fsType = "zfs";
     };
 
   swapDevices = [ ];
@@ -50,8 +69,7 @@
   powerManagement.cpuFreqGovernor = "ondemand";
 
   environment.systemPackages = with pkgs; [
-    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino xorg.xbacklight
-    eclipses.eclipse-cpp (callPackage ../pkgs/astah-community.nix {})
+    arduino xorg.xbacklight (callPackage ../pkgs/astah-community.nix {})
   ];
 
   services.xserver = {

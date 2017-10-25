@@ -1,4 +1,10 @@
-pkgs: with pkgs; {
+pkgs:
+
+let
+  mozillaOverlay = (import ./mozilla pkgs pkgs);
+in
+
+with pkgs; {
   # Custom packages
   astah-community = callPackage ./astah-community.nix {};
   bobthefish = callPackage ./bobthefish.nix {};
@@ -7,11 +13,13 @@ pkgs: with pkgs; {
   thelounge = callPackage ./thelounge.nix {};
 
   # Package overrides
-  the-powder-toy = import ./the-powder-toy.nix pkgs;
-  update-resolv-conf = import ./update-resolv-conf.nix pkgs;
-  neovim = import ./neovim.nix pkgs;
+  the-powder-toy = import ./overrides/the-powder-toy.nix pkgs;
+  update-resolv-conf = import ./overrides/update-resolv-conf.nix pkgs;
+  neovim = import ./overrides/neovim.nix pkgs;
+  sway = import ./overrides/sway.nix pkgs;
+  wlc = import ./overrides/wlc.nix pkgs;
 
   # Overlays
-  rustChannels.nightly = (import ./mozilla/rust-overlay.nix pkgs pkgs).latest.rustChannels.nightly;
-  firefox-nightly-bin = (import ./mozilla/firefox-overlay.nix pkgs pkgs).firefox-nightly-bin;
+  rustChannels.nightly = mozillaOverlay.latest.rustChannels.nightly;
+  firefox-nightly-bin = mozillaOverlay.latest.firefox-nightly-bin;
 }
