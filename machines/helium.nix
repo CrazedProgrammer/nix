@@ -36,6 +36,7 @@
 
   networking.hostName = "helium"; # Hostname.
   networking.hostId = "98345052";
+  networking.firewall.allowedTCPPorts = [ 12345 ];
 
   fileSystems."/" =
     { device = "hpool/root";
@@ -68,8 +69,7 @@
   powerManagement.cpuFreqGovernor = "ondemand";
 
   environment.systemPackages = with pkgs; [
-    xfce.xfce4_battery_plugin xfce.xfce4-sensors-plugin arduino xorg.xbacklight
-    eclipses.eclipse-cpp (callPackage ../pkgs/astah-community.nix {})
+    arduino xorg.xbacklight (callPackage ../pkgs/astah-community.nix {})
   ];
 
   services.xserver = {
