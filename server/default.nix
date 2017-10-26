@@ -10,7 +10,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs htop neovim
+    wget git curl nodejs-8_x htop neovim
   ];
 
   programs.tmux = {

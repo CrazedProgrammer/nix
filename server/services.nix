@@ -9,12 +9,15 @@ with import ./vars.nix;
       description = "shittydl service";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
+      path = with pkgs; [ nodejs-8_x python gcc ];
+      script = ''
+        node index.js
+      '';
 
       serviceConfig = {
         User = "shittydl";
         Type = "simple";
         WorkingDirectory = shittydlHome;
-        ExecStart = "${pkgs.nodejs}/bin/node index.js";
       };
     };
     thelounge = {
@@ -36,7 +39,7 @@ with import ./vars.nix;
     c3i = {
       description = "ComputerCraft build server";
       restartIfChanged = false;
-      path = with pkgs; [ (python36.withPackages (ps: [ ps.pystache ])) openjdk jre gradle git bash ];
+      path = with pkgs; [ (python36.withPackages (ps: [ ps.pystache ])) openjdk gradle git bash which ];
       script = ''
         python3.6 fetch.py
       '';
