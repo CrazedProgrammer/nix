@@ -9,12 +9,15 @@ with import ./vars.nix;
       description = "shittydl service";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
+      path = with pkgs; [ nodejs-8_x python gcc ];
+      script = ''
+        node index.js
+      '';
 
       serviceConfig = {
         User = "shittydl";
         Type = "simple";
         WorkingDirectory = shittydlHome;
-        ExecStart = "${pkgs.nodejs}/bin/node index.js";
       };
     };
     thelounge = {
