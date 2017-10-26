@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  secrets = import ./secrets.nix;
+in
+
 {
   services.xserver = {
     # Enable the X11 windowing system.
@@ -42,6 +46,8 @@
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export DOTFILES=${./dotfiles}
+    export SHITTYDL_URL=${secrets.shittydl.url}
+    export SHITTYDL_PASSWORD=${secrets.shittydl.password}
   '';
 
   environment.etc = {

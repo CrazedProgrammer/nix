@@ -11,6 +11,7 @@ with pkgs; {
   ccemux = callPackage ./ccemux.nix {};
   urn = callPackage ./urn.nix { enableLuaJit = true; };
   thelounge = callPackage ./thelounge.nix {};
+  dotfiles-bin = callPackage ./dotfiles-bin.nix {};
 
   # Package overrides
   the-powder-toy = import ./overrides/the-powder-toy.nix pkgs;

@@ -55,6 +55,9 @@
     # i3 utilities
     (polybar.override { i3Support = true; }) rofi feh dunst libnotify
 
+    # Scripts
+    dotfiles-bin
+
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop
   ];

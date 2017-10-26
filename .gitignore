@@ -1,4 +1,2 @@
-pkgs/mozilla/
-pkgs/ccemux/
-pkgs/urn/
-
+/pkgs/mozilla/
+/home/secrets.nix

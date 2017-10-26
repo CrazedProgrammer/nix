@@ -176,9 +176,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # screenshot shortcuts
-bindsym Print exec "$HOME/Programs/upload/shot.sh m"
-bindsym Ctrl+Print exec "$HOME/Programs/upload/shot.sh s"
-bindsym Shift+Print exec "$HOME/Programs/upload/shot.sh u"
+bindsym Print exec "shot m"
+bindsym Ctrl+Print exec "shot s"
+bindsym Shift+Print exec "shot u"
 
 # volume keys
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +3%"
@@ -196,7 +196,7 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 #}
 
 # startup file
-exec --no-startup-id "$DOTFILES/startup.sh"
+exec --no-startup-id "startup"
 
 # default programs on workspaces
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 9; exec "termite -c $DOTFILES/termite-config -e htop"; workspace 1'
