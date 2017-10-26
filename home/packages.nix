@@ -53,7 +53,7 @@
     openvpn openssh update-resolv-conf
 
     # i3 utilities
-    (polybar.override { i3Support = true; }) rofi feh
+    (polybar.override { i3Support = true; }) rofi feh dunst libnotify
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop

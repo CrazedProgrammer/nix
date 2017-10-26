@@ -2,3 +2,4 @@
 
 feh --bg-tile $HOME/Pictures/Background.png
 polybar --config="$DOTFILES/polybar-config" laptop &
+dunst -config "$DOTFILES/dunst-config"
