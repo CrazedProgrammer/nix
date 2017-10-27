@@ -6,7 +6,6 @@ in
 
 with pkgs; {
   # Custom packages
-  astah-community = callPackage ./astah-community.nix {};
   bobthefish = callPackage ./bobthefish.nix {};
   ccemux = callPackage ./ccemux.nix {};
   urn = callPackage ./urn.nix { enableLuaJit = true; };

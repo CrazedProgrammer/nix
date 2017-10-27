@@ -69,7 +69,7 @@
   powerManagement.cpuFreqGovernor = "ondemand";
 
   environment.systemPackages = with pkgs; [
-    arduino xorg.xbacklight (callPackage ../pkgs/astah-community.nix {})
+    arduino xorg.xbacklight astah-community
   ];
 
   services.xserver = {
