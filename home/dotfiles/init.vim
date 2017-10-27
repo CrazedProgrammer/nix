@@ -147,40 +147,14 @@ endfunction
 " Commands
 
 command Term :belowright new | :terminal
-command TOOhtml :call TooHTML()
 command Upload :call UploadBuffer()
-command UploadH :call UploadBufferH()
 command Pan :call Pandoc()
-
-function TooHTML()
-	let rcpath = '$HOME/.config/xfce4/terminal/terminalrc'
-	let backcolor = Chomp(system('cat ' . rcpath . ' | grep ColorBackground= | tail -c 8'))
-	let colors = split(Chomp(system('cat ' . rcpath . ' | grep ColorPalette= | tail -c +14')), ';')
-	let nil = 'asdfasdfasdfasdfasdf'
-	let basecolors = [nil, '#c00000', '#008000', '#ffff00', '#0000c0', '#c000c0', '#008080', '#000000', nil, nil, nil, nil, nil, nil, nil, nil]
-	let basebackcolor = '#ffffff'
-
-	execute ":TOhtml"
-
-	let idx = 0
-	while idx < 16
-		execute 'silent :%s/' . basecolors[idx] . ';/' . colors[idx] . ';/ge'
-		let idx += 1
-	endwhile
-	execute 'silent :%s/' . basebackcolor . ';/' . backcolor . ';/ge'
-endfunction
 
 function UploadBuffer()
 	let sourcepath = TempPath()
 	execute 'w' fnameescape(sourcepath)
-	execute 'silent :!~/Programs/upload/upload.sh' fnameescape(sourcepath)
+	execute 'silent :!upload' fnameescape(sourcepath)
 	execute 'silent :!rm' fnameescape(sourcepath)
-endfunction
-
-function UploadBufferH()
-	TOOhtml
-	Upload
-	q!
 endfunction
 
 function Pandoc()
