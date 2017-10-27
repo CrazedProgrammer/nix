@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  secrets = import ./secrets.nix;
+  secrets = if builtins.pathExists ./secrets.nix then import ./secrets.nix else { };
 in
 
 {
