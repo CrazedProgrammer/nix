@@ -46,8 +46,8 @@ in
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export DOTFILES=${./dotfiles}
-    export SHITTYDL_URL=${secrets.shittydl.url}
-    export SHITTYDL_PASSWORD=${secrets.shittydl.password}
+    export SHITTYDL_URL=${if secrets ? shittydl.url then secrets.shittydl.url else ""}
+    export SHITTYDL_PASSWORD=${if secrets ? shittydl.password then secrets.shittydl.password else ""}
   '';
 
   environment.etc = {
