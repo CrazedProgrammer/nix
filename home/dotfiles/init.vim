@@ -161,7 +161,7 @@ function Pandoc()
 	let sourcepath = TempPath()
 	let outpath = TempPath('pdf')
 	execute 'w' sourcepath
-	execute 'silent :!pandoc -s -f markdown ' sourcepath '-o' outpath
+	execute 'silent :!pandoc -s --number-sections -f markdown ' sourcepath '-o' outpath
 	if !filereadable(outpath)
 		echoerr 'Failed to convert to PDF.'
 		return
