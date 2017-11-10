@@ -29,7 +29,7 @@
     love steam ccemux the-powder-toy
 
     # Emulators
-    dolphinEmuMaster dosbox stella snes9x-gtk
+    dolphinEmuMaster dosbox stella #snes9x-gtk
 
     # Terminal and editor
     termite neovim
