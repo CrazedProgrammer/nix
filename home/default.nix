@@ -9,7 +9,7 @@
     ./xserver.nix
   ];
 
-  nixpkgs.config.packageOverrides = pkgs: import ../pkgs pkgs;
+  nixpkgs.overlays = import ../pkgs/overlays;
 
   nix = {
     daemonIONiceLevel = 7;

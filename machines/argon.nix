@@ -10,7 +10,7 @@
       <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
       ../server
     ];
-  nixpkgs.config.packageOverrides = pkgs: import ../pkgs pkgs;
+  nixpkgs.overlays = import ../pkgs/overlays;
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" ];
   boot.kernelModules = [ ];

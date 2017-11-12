@@ -21,7 +21,7 @@
     SDL2
 
     # Languages
-    ghc rustChannels.nightly.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
+    ghc latest.rustChannels.nightly.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
     sbcl haskellPackages.idris nix-repl urn
 
     # Games
@@ -35,7 +35,7 @@
     termite neovim
 
     # Browsers
-    firefox-nightly-bin w3m
+    latest.firefox-nightly-bin w3m
 
     # Web chat
     teamspeak_client mumble
