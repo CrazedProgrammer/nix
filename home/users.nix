@@ -14,7 +14,7 @@
     extraGroups = [
       "wheel" "networkmanager"
     ];
-    hashedPassword = "$6$gsxZ41b6ml3$mPrf4LEDuPeuIbptA9WjqJwOTPfipU52pHOHNwVORC8eV.khoEYsvKmU/T3fZtz/zJ6zoeJ9qgG1iso0juOoy/";
+    hashedPassword = "$6$ubbEPgKNVlt$OuKWoA.IqJyxxebEdCO8iDIX045XhtxWuhRvZwrFAp5eizycgMOt8rvdVuwwyAsKKtuXjjwOtYGsBJ6zV53SP/";
     home = "/home/casper";
     shell = pkgs.fish;
   };

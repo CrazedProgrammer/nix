@@ -29,7 +29,7 @@
     love steam ccemux the-powder-toy
 
     # Emulators
-    dolphinEmuMaster dosbox stella #snes9x-gtk
+    dolphinEmuMaster dosbox stella snes9x-gtk
 
     # Terminal and editor
     termite neovim
@@ -38,7 +38,7 @@
     latest.firefox-nightly-bin w3m
 
     # Web chat
-    teamspeak_client mumble
+    mumble #teamspeak_client
 
     # GTK+ and icon theme
     arc-theme paper-icon-theme
