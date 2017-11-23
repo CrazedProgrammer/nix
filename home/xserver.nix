@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  secrets = if builtins.pathExists ./secrets.nix then import ./secrets.nix else { };
-in
-
 {
   services.xserver = {
     # Enable the X11 windowing system.
@@ -46,8 +42,6 @@ in
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export DOTFILES=${./dotfiles}
-    export SHITTYDL_URL=${if secrets ? shittydl.url then secrets.shittydl.url else ""}
-    export SHITTYDL_PASSWORD=${if secrets ? shittydl.password then secrets.shittydl.password else ""}
   '';
 
   environment.etc = {
