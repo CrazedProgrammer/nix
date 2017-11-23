@@ -23,6 +23,7 @@
       vis = "vis -c \"${./dotfiles/vis-config}\"";
       iotop = "sudo iotop";
       fslist = "zfs list -o name,compressratio,used,available";
+      aubuild = "nix-shell -p automake autoconf libtool --run \"sh autogen.sh\"; and nix-build .";
     };
 
     shellInit = ''
