@@ -219,7 +219,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 0.5
 format = <ramp-coreload>
-format-prefix = " "
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f94444
 label = CPU %percentage-cores%%
@@ -236,7 +236,7 @@ ramp-coreload-7 = █
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-format-prefix = " "
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f94444
 label = CPU %percentage%%
@@ -245,7 +245,7 @@ label = CPU %percentage%%
 [module/memory]
 type = internal/memory
 interval = 0.5
-format-prefix = " "
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f97444
 label = RAM %gb_used%
@@ -276,7 +276,7 @@ date = "%A, %B %d"
 
 time = %H:%M
 
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f97444
 
@@ -300,15 +300,15 @@ battery = BAT0
 adapter = ADP0
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging>
 format-charging-underline = #f94444
 label-charging = CHR %percentage%%
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 label-discharging = BAT %percentage%%
 
-format-full-prefix = " "
+format-full-prefix = 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
@@ -328,9 +328,9 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f94444
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
 label = %temperature%
