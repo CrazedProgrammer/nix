@@ -58,6 +58,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/vms" =
+    { device = "hpool/vms";
+      fsType = "zfs";
+    };
+
   swapDevices = [ ];
 
   nix.maxJobs = 4;

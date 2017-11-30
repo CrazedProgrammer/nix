@@ -81,7 +81,7 @@ visualizer.spectrum.falloff.weight=0.93
 
 ##Configures what character the lorenz visualizer will use. Specifying a space (e.g " ") means the
 ##background will be colored instead of the character. Defaults to "█".
-#visualizer.lorenz.character=#
+visualizer.lorenz.character=#
 
 ##Specifies the color scheme. The color scheme must be in ~/.config/vis/colors/ directory. The default scheme is "colors".
 #colors.scheme=rainbow
