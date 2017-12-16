@@ -9,7 +9,10 @@
     tmpOnTmpfs = true;
 
     # Kernel package.
-    kernelPackages = pkgs.linuxPackages_4_13;
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    # Use unstable ZFS.
+    zfs.enableUnstable = true;
   };
 
   networking = {
