@@ -19,7 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/main]
-modules-left = memory cpu cpugraph
+modules-left = memory cpuload cpugraph
 modules-center = i3
 modules-right = wired volume date
 
@@ -65,7 +65,7 @@ font-0 = monospace:size=9;1
 ;scroll-down = i3wm-wsprev
 
 [bar/laptop]
-modules-left = memory cpu cpugraph temperature
+modules-left = memory cpuload cpufreq cpugraph temperature
 modules-center = i3
 modules-right = wireless battery volume date
 
@@ -232,6 +232,19 @@ ramp-coreload-4 = ▅
 ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
+
+[module/cpuload]
+type = custom/script
+exec = cat /proc/loadavg | cut -d " " -f1
+format-prefix = "CPU "
+format-underline = #f94444
+interval = 1
+
+[module/cpufreq]
+type = custom/script
+exec = echo $(awk "BEGIN { a="`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`" / 1000000; b=GHz; c=a b; print c }" | cut -c1-4) GHz
+format-underline = #f94444
+interval = 0.5
 
 [module/cpu]
 type = internal/cpu
