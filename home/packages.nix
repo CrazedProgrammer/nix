@@ -22,11 +22,11 @@
 
     # Languages
     ghc latest.rustChannels.nightly.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
-    sbcl haskellPackages.idris nix-repl urn
+    sbcl nix-repl urn #haskellPackages.idris
 
     # Games
     multimc minetest dwarf-fortress gnome3.gnome-mines
-    love steam ccemux the-powder-toy
+    love steam steam.run ccemux the-powder-toy
 
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk

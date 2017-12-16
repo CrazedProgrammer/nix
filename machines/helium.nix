@@ -44,7 +44,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/48a92c3e-89c7-42f7-a16b-fecdb75b20b9";
+    { device = "/dev/sda3";
       fsType = "ext4";
     };
 
@@ -63,7 +63,7 @@
       fsType = "zfs";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ {device = "/dev/sda5";} ];
 
   nix.maxJobs = 4;
   nix.buildCores = 4;
@@ -71,7 +71,7 @@
   # Intel wifi firmware
   hardware.enableRedistributableFirmware = true;
 
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [
     arduino xorg.xbacklight astah-community

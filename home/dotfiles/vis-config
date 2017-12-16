@@ -73,7 +73,7 @@ visualizer.spectrum.falloff.weight=0.93
 
 ##Configures what character the ellipse visualizer will use. Specifying a space (e.g " ") means the
 ##background will be colored instead of the character. Defaults to "█".
-#visualizer.ellipse.character=#
+visualizer.ellipse.character=#
 
 ##The radius of each color ring in the ellipse visualizer. Defaults to 2.
 #visualizer.ellipse.radius=2

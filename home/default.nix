@@ -10,6 +10,9 @@
   ];
 
   nixpkgs.overlays = import ../pkgs/overlays;
+  nixpkgs.config.permittedInsecurePackages = [
+         "linux-4.13.16"
+       ];
 
   nix = {
     daemonIONiceLevel = 7;

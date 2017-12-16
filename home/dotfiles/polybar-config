@@ -290,7 +290,7 @@ format-volume-underline = #f94444
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = 
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = MUTED
 
