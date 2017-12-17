@@ -5,7 +5,7 @@
 
   networking = {
     hostName = "argon"; # Define your hostname.
-    firewall.allowedTCPPorts = [ 80 443 1194 18903 ];
+    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 ];
 
     nat = {
       enable = true;

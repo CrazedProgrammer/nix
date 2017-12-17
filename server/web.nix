@@ -57,5 +57,13 @@ with import ./vars.nix;
         port = nodeExporterPort;
       };
     };
+    terraria = {
+      enable = true;
+      autoCreatedWorldSize = "large";
+      worldPath = "/var/lib/terraria/world.wld";
+      password = if builtins.pathExists /home/casper/.terraria-pw
+                   then builtins.readFile /home/casper/.terraria-pw
+                   else null;
+    };
   };
 }
