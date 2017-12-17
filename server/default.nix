@@ -9,6 +9,8 @@
     ./networking.nix
   ];
 
+  services.xserver.enable = false;
+
   environment.systemPackages = with pkgs; [
     wget git curl nodejs-8_x htop neovim
   ];
