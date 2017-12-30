@@ -10,9 +10,6 @@
 
     # Kernel package.
     kernelPackages = pkgs.linuxPackages_latest;
-
-    # Use unstable ZFS.
-    zfs.enableUnstable = true;
   };
 
   networking = {

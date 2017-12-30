@@ -38,6 +38,9 @@
   networking.hostId = "98345052";
   networking.firewall.allowedTCPPorts = [ 12345 ];
 
+  # Use unstable ZFS.
+  zfs.enableUnstable = true;
+
   fileSystems."/" =
     { device = "hpool/root";
       fsType = "zfs";
