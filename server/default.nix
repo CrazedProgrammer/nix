@@ -9,6 +9,10 @@
     ./networking.nix
   ];
 
+  services.xserver.enable = false;
+
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     wget git curl nodejs-8_x htop neovim
   ];
