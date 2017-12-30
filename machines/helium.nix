@@ -6,7 +6,10 @@
   ];
 
   boot = {
+    # Use unstable ZFS.
     supportedFilesystems = [ "zfs" ];
+    zfs.enableUnstable = true;
+
     loader.grub = {
       # Use GRUB for booting.
       device = "/dev/sda";
@@ -37,9 +40,6 @@
   networking.hostName = "helium"; # Hostname.
   networking.hostId = "98345052";
   networking.firewall.allowedTCPPorts = [ 12345 ];
-
-  # Use unstable ZFS.
-  zfs.enableUnstable = true;
 
   fileSystems."/" =
     { device = "hpool/root";
