@@ -9,7 +9,7 @@
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
     # Version control
-    git mercurial darcs
+    git mercurial # darcs
 
     # Utilities
     xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
@@ -26,7 +26,7 @@
 
     # Games
     multimc minetest dwarf-fortress gnome3.gnome-mines
-    love steam steam.run ccemux the-powder-toy
+    love steam steam.run ccemux the-powder-toy #riko4
 
     # Emulators
     dolphinEmuMaster dosbox stella snes9x-gtk
@@ -38,7 +38,7 @@
     latest.firefox-nightly-bin w3m
 
     # Web chat
-    mumble #teamspeak_client
+    mumble teamspeak_client
 
     # GTK+ and icon theme
     arc-theme paper-icon-theme

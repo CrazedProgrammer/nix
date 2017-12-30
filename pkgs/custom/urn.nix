@@ -31,7 +31,7 @@ in
       owner = "urn";
       repo = "urn";
       rev = "6a4eda6f342fa5f3ed88b84c063795e1c6983a2b";
-      sha256 = "1f14gjj9n8y8gns7zqyxgj8ja0yqpinp5x60bpjscr39f4p3479i";
+      sha256 = "0als4akmqz1f7in6xlmc4yaa8w3drw59b8d4qfhzqz7kzcgv1880";
     };
 
     buildInputs = [ runtime nixpkgs.pkgs.makeWrapper ];
