@@ -13,14 +13,6 @@ stdenv.mkDerivation {
 
   name = "luakit-2018.01.05";
 
-  meta = with stdenv.lib; {
-    description = "Fast, small, webkit based browser framework extensible in Lua";
-    homepage    = "http://luakit.org";
-    license     = licenses.gpl3;
-    maintainers = with maintainers; [ matthiasbeyer ];
-    platforms   = platforms.linux; # I only tested linux
-  };
-
   src = fetchFromGitHub {
     owner = "luakit";
     repo = "luakit";
@@ -30,30 +22,30 @@ stdenv.mkDerivation {
 
   buildInputs = [ gtk3 luajit webkitgtk pkgconfig sqlite makeWrapper ];
 
- postPatch = ''
-   #sed -i -e "s/DESTDIR/INSTALLDIR/" ./Makefile
-   #sed -i -e "s|LUAKIT_LIB_PATH|\"$out/lib/luakit\"|" ./ipc.c
-   sed -i -e "s|/etc/xdg/luakit/|$out/etc/xdg/luakit/|" lib/lousy/util.lua
-   patchShebangs ./build-utils
- '';
+  postPatch = ''
+    sed -i -e "s|/etc/xdg/luakit/|$out/etc/xdg/luakit/|" lib/lousy/util.lua
+    patchShebangs ./build-utils
+  '';
 
   buildPhase = ''
     make DEVELOPMENT_PATHS=0 USE_LUAJIT=1 INSTALLDIR=$out DESTDIR=$out PREFIX=$out MANPREFIX=$out/share/man DOCDIR=$out/share/luakit/doc PIXMAPDIR=$out/share/pixmaps APPDIR=$out/share/applications LIBDIR=$out/lib/luakit USE_GTK3=1 LUA_PATH='?/init.lua;?.lua;${luaPath}' LUA_CPATH='${luaCPath}'
     cat buildopts.h
-
   '';
 
- installPhase = let
-   luaKitPath = "$out/share/luakit/lib/?/init.lua;$out/share/luakit/lib/?.lua";
- in ''
-   make DEVELOPMENT_PATHS=0 INSTALLDIR=$out DESTDIR=$out PREFIX=$out USE_GTK3=1 install
-   wrapProgram $out/bin/luakit                                         \
-     --prefix GIO_EXTRA_MODULES : "${glib_networking.out}/lib/gio/modules" \
-     --prefix XDG_DATA_DIRS : "${gsettings_desktop_schemas}/share:$out/usr/share/:$out/share/:$GSETTINGS_SCHEMAS_PATH"     \
-     --prefix XDG_CONFIG_DIRS : "$out/etc/xdg"                         \
-     --set LUA_PATH '${luaKitPath};${luaPath};'                      \
-     --set LUA_CPATH '${luaCPath};'
- '';
+  installPhase = let luaKitPath = "$out/share/luakit/lib/?/init.lua;$out/share/luakit/lib/?.lua"; in
+    ''
+      make DEVELOPMENT_PATHS=0 INSTALLDIR=$out DESTDIR=$out PREFIX=$out USE_GTK3=1 install
+      wrapProgram $out/bin/luakit                                         \
+        --prefix GIO_EXTRA_MODULES : "${glib_networking.out}/lib/gio/modules" \
+        --prefix XDG_DATA_DIRS : "${gsettings_desktop_schemas}/share:$out/usr/share/:$out/share/:$GSETTINGS_SCHEMAS_PATH"     \
+        --prefix XDG_CONFIG_DIRS : "$out/etc/xdg"                         \
+        --set LUA_PATH '${luaKitPath};${luaPath};'                      \
+        --set LUA_CPATH '${luaCPath};'
+    '';
 
+  meta = with stdenv.lib; {
+    description = "Fast, small, webkit based browser framework extensible in Lua";
+    homepage    = http://luakit.org;
+    license     = licenses.gpl3;
+  };
 }
-
