@@ -39,5 +39,8 @@ stdenv.mkDerivation rec {
     home = https://github.com/lignum/ccemux;
     license = lib.licenses.mit;
   };
+
+  # Cannot be built in a sandbox because gradle requires networking.
+  __noChroot = true;
 }
 

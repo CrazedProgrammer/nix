@@ -35,7 +35,7 @@
     termite neovim
 
     # Browsers
-    latest.firefox-nightly-bin w3m
+    latest.firefox-nightly-bin w3m qutebrowser
 
     # Web chat
     mumble teamspeak_client

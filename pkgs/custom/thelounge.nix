@@ -26,6 +26,9 @@ stdenv.mkDerivation {
     chmod +x $out/lib/lounge/index.js
     ln -s $out/lib/lounge/index.js $out/bin/lounge
   '';
+
+  # Cannot be built inside a sandbox because npm requires networking.
+  __noChroot = true;
 }
 
 
