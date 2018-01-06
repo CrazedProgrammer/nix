@@ -1,11 +1,13 @@
 { config, pkgs, lib, ... }:
 
+with import ./vars.nix;
+
 {
   boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
 
   networking = {
     hostName = "argon"; # Define your hostname.
-    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 ];
+    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 25565 ];
 
     nat = {
       enable = true;
@@ -16,8 +18,10 @@
 
   services.openvpn.servers.server = {
     config = ''
-      port 1194
+      port 443
       proto tcp
+
+      port-share 127.0.0.1 ${toString caddyPort}
 
       dev tun
 

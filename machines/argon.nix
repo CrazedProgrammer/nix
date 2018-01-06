@@ -19,8 +19,11 @@
 
   swapDevices = [ ];
 
-  nix.maxJobs = 4;
-  nix.buildCores = 4;
+  nix = {
+    maxJobs = 4;
+    buildCores = 4;
+    useSandbox = "relaxed";
+  };
 
   ## Everything below is generated from nixos-in-place; modify with caution!
   boot.kernelParams = ["boot.shell_on_fail"];

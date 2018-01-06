@@ -3,32 +3,46 @@
 with import ./vars.nix;
 
 {
-  security.sudo.wheelNeedsPassword = false;
-  users.mutableUsers = false;
+  security = {
+    sudo.wheelNeedsPassword = false;
+    pam.loginLimits = [
+      { domain = "lur"; item = "nofile"; type = "-"; value = "10000000"; }
+    ];
+  };
 
+  users.mutableUsers = false;
   users.extraUsers = {
     casper = {
       isNormalUser = true;
       uid = 1000;
       extraGroups = [ "wheel" ];
-      hashedPassword = "$6$GKBbbT/yOA$x/PfuKYavlP8Dqf7svWAYir1hd8t8wcoDuuwevC8HYGqMI0zutpuUkUImWHJVMJZxfRuOfyBPlY2OmbD06heP1";
+      hashedPassword = builtins.readFile ../../.casper-passwd;
       home = "/home/casper";
       shell = pkgs.fish;
     };
+    lur = {
+      isNormalUser = true;
+      uid = 1001;
+      hashedPassword = builtins.readFile ../../.lur-passwd;
+      home = "/home/lur";
+    };
     # Application-specific users
+    c3i = {
+      uid = 1002;
+      description = "c3i user";
+      home = c3iHome;
+      createHome = true;
+    };
     shittydl = {
+      uid = 1003;
       description = "shittydl user";
       home = shittydlHome;
       createHome = true;
     };
     thelounge = {
+      uid = 1004;
       description = "The Lounge daemon user";
       home = theloungeHome;
-      createHome = true;
-    };
-    c3i = {
-      description = "c3i user";
-      home = c3iHome;
       createHome = true;
     };
   };
