@@ -6,6 +6,6 @@ terraria-server.overrideAttrs (old: rec {
 
   src = fetchurl {
     url = "http://terraria.org/server/terraria-server-${lib.replaceChars ["."] [""] version}.zip";
-    sha256 = "0b254wj967ih7bfpndxxqcj6c7jcl4i9iddqrfx9nlz6sj09x32q";
+    sha256 = "0l7j2n6ip4hxph7dfal7kzdm3dqnm1wba6zc94gafkh97wr35ck3";
   };
 })
