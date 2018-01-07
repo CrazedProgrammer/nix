@@ -25,6 +25,7 @@ with import ./vars.nix;
       uid = 1001;
       hashedPassword = builtins.readFile ../../.lur-passwd;
       home = "/home/lur";
+      shell = pkgs.zsh;
     };
     # Application-specific users
     c3i = {
