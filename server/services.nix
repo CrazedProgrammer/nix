@@ -9,7 +9,7 @@ with import ./vars.nix;
       description = "shittydl service";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ nodejs-8_x python gcc ];
+      path = with pkgs; [ nodejs-8_x python gcc sqlite ];
       script = ''
         node index.js
       '';
@@ -17,7 +17,7 @@ with import ./vars.nix;
       serviceConfig = {
         User = "shittydl";
         Type = "simple";
-        WorkingDirectory = shittydlHome;
+        WorkingDirectory = shittydlHome + "/shittydl";
       };
     };
     thelounge = {

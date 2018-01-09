@@ -14,4 +14,6 @@ rec {
       prefetchStorage: true
     }
   '';
+  mysqlPort = 24006;
+  caddyPort = 24007;
 }

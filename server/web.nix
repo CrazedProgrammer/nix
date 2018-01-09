@@ -3,6 +3,11 @@
 with import ./vars.nix;
 
 {
+  systemd.services.caddy.serviceConfig.ExecStart = lib.mkForce (
+    let cfg = config.services.caddy; configFile = pkgs.writeText "Caddyfile" cfg.config; in
+    ''${cfg.package.bin}/bin/caddy -conf=${configFile} \
+          -ca=${cfg.ca} -email=${cfg.email} ${lib.optionalString cfg.agree "-agree"} -https-port ${toString caddyPort}
+    '');
   services = {
     caddy = {
       enable = true;
@@ -30,6 +35,19 @@ with import ./vars.nix;
             if {path} is /
             / /dist
           }
+        }
+
+        http://i.crzd.me {
+          redir https://i.crzd.me{uri}
+        }
+        http://lounge.crzd.me {
+          redir https://lounge.crzd.me{uri}
+        }
+        http://grafana.crzd.me {
+          redir https://grafana.crzd.me{uri}
+        }
+        http://ccemux.crzd.me {
+          redir https://ccemux.crzd.me{uri}
         }
       '';
     };
@@ -64,6 +82,11 @@ with import ./vars.nix;
       password = if builtins.pathExists /home/casper/.terraria-pw
                    then builtins.readFile /home/casper/.terraria-pw
                    else null;
+    };
+    mysql = {
+      enable = true;
+      port = mysqlPort;
+      package = pkgs.mysql;
     };
   };
 }
