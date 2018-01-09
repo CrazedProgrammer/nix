@@ -39,7 +39,7 @@
 
   networking.hostName = "helium"; # Hostname.
   networking.hostId = "98345052";
-  networking.firewall.allowedTCPPorts = [ 12345 ];
+  networking.firewall.allowedTCPPorts = lib.range 12000 12100;
 
   fileSystems."/" =
     { device = "hpool/root";
