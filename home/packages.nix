@@ -38,7 +38,7 @@
     latest.firefox-nightly-bin w3m qutebrowser luakit
 
     # Web chat
-    mumble teamspeak_client
+    teamspeak_client #mumble
 
     # GTK+ and icon theme
     arc-theme paper-icon-theme
