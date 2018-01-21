@@ -25,7 +25,7 @@
     sbcl nix-repl urn #haskellPackages.idris
 
     # Games
-    multimc minetest dwarf-fortress gnome3.gnome-mines
+    multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
     love steam steam.run ccemux the-powder-toy #riko4
 
     # Emulators
