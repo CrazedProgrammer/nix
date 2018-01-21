@@ -15,13 +15,13 @@
     xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
 
     # Build systems
-    pkgs.gnumake cmake rustChannels.nightly.cargo gradle
+    pkgs.gnumake cmake gradle
 
     # Libraries
     SDL2
 
     # Languages
-    ghc latest.rustChannels.nightly.rustc lua5_3 luajit openjdk gcc clang python36 ruby nodejs-8_x
+    ghc lua5_3 rustChannels.nightly.rust luajit openjdk gcc clang python36 ruby nodejs-8_x
     sbcl nix-repl urn #haskellPackages.idris
 
     # Games
@@ -59,6 +59,6 @@
     dotfiles-bin
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop
+    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop bmon
   ];
 }
