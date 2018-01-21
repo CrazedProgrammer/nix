@@ -4,5 +4,6 @@ killall polybar
 killall dunst
 
 feh --bg-tile $HOME/Pictures/Background.png &
-polybar --config="$DOTFILES/polybar-config" laptop &
+polybar --config="$DOTFILES/polybar-config" $(hostname) &
+
 dunst -config "$DOTFILES/dunst-config" &

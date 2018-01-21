@@ -47,7 +47,7 @@
     gnome3.gnome-calculator libreoffice-fresh
 
     # Multimedia
-    gimp audacity mpv gnome3.file-roller cli-visualizer
+    gimp audacity mpv gnome3.file-roller cli-visualizer deadbeef
 
     # Networking
     openvpn openssh update-resolv-conf

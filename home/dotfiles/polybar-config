@@ -18,7 +18,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/main]
+[bar/xenon]
 modules-left = memory cpuload cpugraph
 modules-center = i3
 modules-right = wired volume date
@@ -64,7 +64,7 @@ font-0 = monospace:size=9;1
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-[bar/laptop]
+[bar/helium]
 modules-left = memory cpuload cpufreq cpugraph temperature
 modules-center = i3
 modules-right = wireless battery volume date
