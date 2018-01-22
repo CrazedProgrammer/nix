@@ -7,3 +7,7 @@ feh --bg-tile $HOME/Pictures/Background.png &
 polybar --config="$DOTFILES/polybar-config" $(hostname) &
 
 dunst -config "$DOTFILES/dunst-config" &
+
+if [ $(hostname) == "xenon" ]; then
+	sleep 5 && sudo hdparm -y /dev/sdb
+fi
