@@ -9,7 +9,7 @@
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
     # Version control
-    git mercurial # darcs
+    git mercurial darcs
 
     # Utilities
     xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
@@ -18,11 +18,11 @@
     pkgs.gnumake cmake gradle
 
     # Libraries
-    SDL2
+    SDL2 SDL2_image
 
     # Languages
-    ghc lua5_3 rustChannels.nightly.rust luajit openjdk gcc clang python36 ruby nodejs-8_x
-    sbcl nix-repl urn #haskellPackages.idris
+    ghc lua5_3 rustChannels.nightly.rust luajit openjdk python36 ruby nodejs-8_x
+    sbcl nix-repl urn haskellPackages.idris
 
     # Games
     multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
@@ -46,8 +46,11 @@
     # Office suite
     gnome3.gnome-calculator libreoffice-fresh
 
+    # Visual editors
+    gimp tiled
+
     # Multimedia
-    gimp audacity mpv gnome3.file-roller cli-visualizer deadbeef
+    audacity mpv gnome3.file-roller cli-visualizer deadbeef
 
     # Networking
     openvpn openssh update-resolv-conf
@@ -59,6 +62,6 @@
     dotfiles-bin
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop bmon
+    pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop bmon linuxPackages.perf
   ];
 }

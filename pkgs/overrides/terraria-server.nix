@@ -1,8 +1,8 @@
 { terraria-server, fetchurl, lib, ... }:
 
 terraria-server.overrideAttrs (old: rec {
-  version = "1.3.5.3";
   name = "terraria-server-${version}";
+  version = "1.3.5.3";
 
   src = fetchurl {
     url = "http://terraria.org/server/terraria-server-${lib.replaceChars ["."] [""] version}.zip";
