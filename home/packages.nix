@@ -12,7 +12,7 @@
     git mercurial darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git
+    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped
 
     # Build systems
     pkgs.gnumake cmake gradle
@@ -21,7 +21,7 @@
     SDL2 SDL2_image
 
     # Languages
-    ghc lua5_3 rustChannels.nightly.rust luajit openjdk python36 ruby nodejs-8_x
+    ghc lua5_3 rustChannels.nightly.rust gcc luajit openjdk python36 ruby nodejs-8_x
     sbcl nix-repl urn haskellPackages.idris
 
     # Games

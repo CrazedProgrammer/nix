@@ -43,6 +43,7 @@
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export DOTFILES=${./dotfiles}
+    export RUST_BACKTRACE=1
   '';
 
   environment.etc = {
