@@ -41,6 +41,9 @@
     hdparm
   ];
 
+  # AMD polaris firmware
+  hardware.enableRedistributableFirmware = true;
+
   services.xserver.config = ''
     Section "Monitor"
       Identifier "DP-1"

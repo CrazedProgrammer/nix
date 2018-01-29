@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+DISPLAY=$(ps -u $(id -u) -o pid= | \
+    while read pid; do
+        cat /proc/$pid/environ 2>/dev/null | tr '\0' '\n' | grep '^DISPLAY=:'
+    done | grep -o ':[0-9]*' | sort -u)
+
+REC_PATH=/tmp/rec-$(date +"%Y%m%d-%H%M%S").mp4
+FRAMERATE=60
+
+# list of upload destinations
+
+# region select & record the video
+read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
+W2=$(echo "($W / 2) * 2" | bc)
+H2=$(echo "($H / 2) * 2" | bc)
+ffmpeg -f x11grab -show_region 1 -framerate $FRAMERATE -video_size "${W2}x${H2}" -i "$DISPLAY.0+$X,$Y" -c:v libx264 -pix_fmt yuv420p -maxrate 200k $REC_PATH
+
+# upload
+upload $REC_PATH
+
+# remove video file
+rm $REC_PATH

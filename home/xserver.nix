@@ -16,6 +16,7 @@
         enable = true;
         configFile = ./dotfiles/i3-config;
         package = pkgs.i3-gaps;
+        extraSessionCommands = "xrdb $DOTFILES/Xresources";
       };
       session = [{
         name = "sway";
@@ -42,6 +43,7 @@
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export DOTFILES=${./dotfiles}
+    export RUST_BACKTRACE=1
   '';
 
   environment.etc = {

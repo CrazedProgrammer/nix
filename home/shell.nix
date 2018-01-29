@@ -7,6 +7,7 @@
 
     shellAliases = {
       l = "ls -lah";
+      vim = "vim -p";
       lgit = "git add -A; and git commit; and git push";
       lgitf = "git add -A; and git commit; and git pull; and git push";
       cdcc = "cd ~/.local/share/ccemux/computer/0";
@@ -22,6 +23,7 @@
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       vis = "vis -c \"${./dotfiles/vis-config}\"";
       iotop = "sudo iotop";
+      bmon = "sudo bmon";
       fslist = "zfs list -o name,compressratio,used,available";
       aubuild = "nix-shell -p automake autoconf libtool --run \"sh autogen.sh\"; and nix-build .";
     };

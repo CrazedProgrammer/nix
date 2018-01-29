@@ -175,10 +175,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# screenshot shortcuts
+# screenshot and record shortcuts
 bindsym Print exec "shot m"
 bindsym Ctrl+Print exec "shot s"
 bindsym Shift+Print exec "shot u"
+bindsym $mod+Print exec "record"
+bindsym $mod+Ctrl+Print exec "killall ffmpeg"
 
 # volume keys
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +3%"
