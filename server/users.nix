@@ -46,5 +46,11 @@ with import ./vars.nix;
       home = theloungeHome;
       createHome = true;
     };
+    jamrogue = {
+      uid = 1005;
+      description = "Jamrogue server user";
+      home = jamrogueHome;
+      createHome = true;
+    };
   };
 }

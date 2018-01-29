@@ -20,6 +20,21 @@ with import ./vars.nix;
         WorkingDirectory = shittydlHome + "/shittydl";
       };
     };
+    jamrogue = {
+      description = "Jamrogue server service";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      path = with pkgs; [ nodejs-8_x ];
+      script = ''
+        node main
+      '';
+
+      serviceConfig = {
+        User = "jamrogue";
+        Type = "simple";
+        WorkingDirectory = jamrogueHome + "/jamROGUE/server/dist";
+      };
+    };
     thelounge = {
       description = "The Lounge web IRC client";
       wantedBy = [ "multi-user.target" ];
