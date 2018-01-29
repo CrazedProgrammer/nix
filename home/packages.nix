@@ -12,7 +12,7 @@
     git mercurial darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped
+    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop
 
     # Build systems
     pkgs.gnumake cmake gradle
@@ -50,7 +50,7 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer deadbeef
+    audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg
 
     # Networking
     openvpn openssh update-resolv-conf
