@@ -70,31 +70,31 @@ modules-center = i3
 modules-right = wireless battery volume date
 
 monitor = ${env:MONITOR:eDP1}
-width = ${bar/main.width}
-height = ${bar/main.height}
+width = ${bar/xenon.width}
+height = ${bar/xenon.height}
 
-radius = ${bar/main.radius}
-fixed-center = ${bar/main.fixed-center}
+radius = ${bar/xenon.radius}
+fixed-center = ${bar/xenon.fixed-center}
 
-background = ${bar/main.background}
-foreground = ${bar/main.foreground}
+background = ${bar/xenon.background}
+foreground = ${bar/xenon.foreground}
 
-line-size = ${bar/main.line-size}
-line-color = ${bar/main.line-color}
+line-size = ${bar/xenon.line-size}
+line-color = ${bar/xenon.line-color}
 
-border-size = ${bar/main.border-size}
-border-color = ${bar/main.border-color}
+border-size = ${bar/xenon.border-size}
+border-color = ${bar/xenon.border-color}
 
-padding-left = ${bar/main.padding-left}
-padding-right = ${bar/main.padding-right}
+padding-left = ${bar/xenon.padding-left}
+padding-right = ${bar/xenon.padding-right}
 
-module-margin-left = ${bar/main.module-margin-left}
-module-margin-right = ${bar/main.module-margin-right}
+module-margin-left = ${bar/xenon.module-margin-left}
+module-margin-right = ${bar/xenon.module-margin-right}
 
-font-0 = ${bar/main.font-0}
+font-0 = ${bar/xenon.font-0}
 
-;tray-position = ${bar/main.tray-position}
-;tray-padding = ${bar/main.tray-padding}
+;tray-position = ${bar/xenon.tray-position}
+;tray-padding = ${bar/xenon.tray-padding}
 
 [module/xwindow]
 type = internal/xwindow
