@@ -19,4 +19,5 @@ rec {
   mongodbPort = 24008;
   jamrogueHome = "/var/lib/jamrogue";
   jamroguePort = 24009;
+  modmc1Home = "/var/lib/modmc1";
 }

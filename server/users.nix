@@ -52,5 +52,11 @@ with import ./vars.nix;
       home = jamrogueHome;
       createHome = true;
     };
+    modmc1 = {
+      uid = 1006;
+      description = "Minecraft modded server";
+      home = modmc1Home;
+      createHome = true;
+    };
   };
 }

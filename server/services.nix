@@ -35,6 +35,21 @@ with import ./vars.nix;
         WorkingDirectory = jamrogueHome + "/jamROGUE/server/dist";
       };
     };
+    modmc1 = {
+      description = "Modded minecraft server";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      path = with pkgs; [ jre ];
+      script = ''
+        java -jar forge-1.11.2-13.20.1.2386-universal.jar -nogui
+      '';
+
+      serviceConfig = {
+        User = "modmc1";
+        Type = "simple";
+        WorkingDirectory = modmc1Home + "/modmc1";
+      };
+    };
     thelounge = {
       description = "The Lounge web IRC client";
       wantedBy = [ "multi-user.target" ];
