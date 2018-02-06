@@ -16,4 +16,8 @@ rec {
   '';
   mysqlPort = 24006;
   caddyPort = 24007;
+  mongodbPort = 24008;
+  jamrogueHome = "/var/lib/jamrogue";
+  jamroguePort = 24009;
+  modmc1Home = "/var/lib/modmc1";
 }
