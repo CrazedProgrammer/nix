@@ -12,7 +12,7 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [
-      "wheel" "networkmanager" "wireshark"
+      "wheel" "networkmanager" "wireshark" "dialout"
     ];
     hashedPassword = "$6$ubbEPgKNVlt$OuKWoA.IqJyxxebEdCO8iDIX045XhtxWuhRvZwrFAp5eizycgMOt8rvdVuwwyAsKKtuXjjwOtYGsBJ6zV53SP/";
     home = "/home/casper";
