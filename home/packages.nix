@@ -9,7 +9,7 @@
     wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
     # Version control
-    git mercurial darcs subversion
+    git mercurial darcs
 
     # Utilities
     xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop
