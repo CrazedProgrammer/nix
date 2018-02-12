@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, makeWrapper, jre }:
+{ stdenv, fetchurl, makeWrapper, jre, openal }:
 
 let version = "4.355"; in
 
@@ -10,14 +10,15 @@ stdenv.mkDerivation {
     sha256 = "0f6f094d7m7bhg7h4fwpv1iillp5fsmk3rwy06lmg9pfp9gq9ixc";
   };
 
-  buildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
+  buildInputs = [ openal ];
 
   phases = "installPhase";
 
   installPhase = ''
     mkdir -p $out/share/java
     ln -s $jar $out/share/java/technic.jar
-    makeWrapper ${jre}/bin/java $out/bin/technic --add-flags "-jar $out/share/java/technic.jar"
+    makeWrapper ${jre}/bin/java $out/bin/technic --add-flags "-jar $out/share/java/technic.jar" --prefix LD_LIBRARY_PATH : ${openal}/lib
   '';
 
   meta = with stdenv.lib; {
