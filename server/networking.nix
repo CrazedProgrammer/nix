@@ -7,7 +7,7 @@ with import ./vars.nix;
 
   networking = {
     hostName = "argon"; # Define your hostname.
-    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 25565 ];
+    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 25565 25566 ];
 
     nat = {
       enable = true;

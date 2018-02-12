@@ -37,9 +37,12 @@
     extraModulePackages = [ ];
   };
 
-  networking.hostName = "helium"; # Hostname.
-  networking.hostId = "98345052";
-  networking.firewall.allowedTCPPorts = lib.range 12000 12100;
+  networking = {
+    hostName = "helium"; # Hostname.
+    hostId = "98345052";
+    firewall.allowedTCPPorts = lib.range 12000 12100;
+  };
+  boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
 
   fileSystems."/" =
     { device = "hpool/root";
@@ -79,6 +82,11 @@
   environment.systemPackages = with pkgs; [
     arduino xorg.xbacklight astah-community
   ];
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   services.xserver = {
     synaptics = {

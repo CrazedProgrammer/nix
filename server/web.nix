@@ -27,6 +27,9 @@ with import ./vars.nix;
         https://grafana.crzd.me {
           proxy / localhost:${toString grafanaPort}
         }
+        http://jamrogue.crzd.me {
+          proxy / localhost:${toString jamroguePort}
+        }
         https://ccemux.crzd.me {
           root /var/www/ccemux.crzd.me
 
@@ -87,6 +90,13 @@ with import ./vars.nix;
       enable = true;
       port = mysqlPort;
       package = pkgs.mysql;
+    };
+    mongodb = {
+      enable = true;
+      bind_ip = "0.0.0.0";
+      extraConfig = ''
+        net.port: ${toString mongodbPort}
+      '';
     };
   };
 }
