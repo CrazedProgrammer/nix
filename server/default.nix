@@ -7,6 +7,7 @@
     ./services.nix
     ./web.nix
     ./networking.nix
+    ./backup.nix
   ];
 
   services.xserver.enable = false;
