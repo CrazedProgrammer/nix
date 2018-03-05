@@ -18,6 +18,9 @@ with import ./vars.nix;
           root /var/www/cc.crzd.me
           browse /maven
         }
+        https://codechallenge.crzd.me {
+          proxy / localhost:12000
+        }
         https://i.crzd.me {
           proxy / localhost:${toString shittydlPort}
         }
@@ -42,6 +45,9 @@ with import ./vars.nix;
 
         http://i.crzd.me {
           redir https://i.crzd.me{uri}
+        }
+        http://codechallenge.crzd.me {
+          redir https://codechallenge.crzd.me{uri}
         }
         http://lounge.crzd.me {
           redir https://lounge.crzd.me{uri}
