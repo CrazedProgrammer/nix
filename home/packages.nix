@@ -53,7 +53,7 @@
     audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg
 
     # Networking
-    openvpn openssh update-resolv-conf
+    openvpn openssh update-resolv-conf sshfs
 
     # i3 utilities
     (polybar.override { i3Support = true; }) rofi feh dunst libnotify

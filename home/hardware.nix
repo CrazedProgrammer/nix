@@ -18,7 +18,7 @@
 
     # Extra hosts.
     extraHosts = ''
-      173.212.197.244 argon
+      91.205.173.25 argon
     '';
   };
 
