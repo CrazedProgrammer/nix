@@ -80,7 +80,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [
-    arduino xorg.xbacklight astah-community subversion
+    arduino xorg.xbacklight astah-community subversion fritzing
   ];
 
   programs.wireshark = {
