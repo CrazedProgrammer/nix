@@ -12,7 +12,7 @@
     git mercurial darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop
+    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop xdotool
 
     # Build systems
     pkgs.gnumake cmake gradle
