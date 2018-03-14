@@ -1,4 +1,4 @@
-{ linux_4_15, fetchFromGitHub, stdenv, lz4, ... }:
+{ linux_4_15, kernelPatches, fetchFromGitHub, stdenv, lz4, ... }:
 
 let kernel_gcc_patch = stdenv.mkDerivation {
   name = "kernel_gcc_patch";
@@ -14,17 +14,22 @@ let kernel_gcc_patch = stdenv.mkDerivation {
   '';
 }; in
 
-linux_4_15.override {
-  nativeBuildPackages = [ lz4 ];
+(linux_4_15.override {
   extraConfig = ''
-    KERNEL_XZ n
-    KERNEL_LZ4 y
+    #KERNEL_XZ n
+    #KERNEL_LZ4 y
     MODULE_COMPRESS_XZ n
-    MODULE_COMPRESS_GZIP y
+    #MODULE_COMPRESS_GZIP y
     PREEMPT y
-    NR_CPUS 12
+    NR_CPUS 16
   '';
-}
+  kernelPatches = with kernelPatches; [
+    bridge_stp_helper
+    modinst_arg_list_too_long
+  ];
+}).overrideDerivation (old: {
+  nativeBuildInputs = old.nativeBuildInputs ++ [ lz4 ];
+})
 
   # MZEN y
   #kernelPatches = [{
