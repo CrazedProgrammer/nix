@@ -1,4 +1,4 @@
-{ linux_4_15, fetchFromGitHub, stdenv, ... }:
+{ linux_4_15, fetchFromGitHub, stdenv, lz4, ... }:
 
 let kernel_gcc_patch = stdenv.mkDerivation {
   name = "kernel_gcc_patch";
@@ -15,12 +15,19 @@ let kernel_gcc_patch = stdenv.mkDerivation {
 }; in
 
 linux_4_15.override {
+  nativeBuildPackages = [ lz4 ];
   extraConfig = ''
+    KERNEL_XZ n
+    KERNEL_LZ4 y
+    MODULE_COMPRESS_XZ n
+    MODULE_COMPRESS_GZIP y
     PREEMPT y
+    NR_CPUS 12
   '';
+}
+
   # MZEN y
   #kernelPatches = [{
   #  name = "gcc_patch";
   #  patch = builtins.toPath "${kernel_gcc_patch}/lib/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v4.13+.patch";
   #}];
-}
