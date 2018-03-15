@@ -9,16 +9,16 @@
     tmpOnTmpfs = true;
 
     # Kernel package.
-    kernelPackages = pkgs.linuxPackages_4_15;
+    kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor (pkgs.callPackage ./kernel/linux-4.15.nix {
+      kernelPatches = with pkgs.kernelPatches; [
+        bridge_stp_helper
+        modinst_arg_list_too_long
+      ];
+    }));
 
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" "libahci.ignore_sss=1" ];
   };
-
-  # Use custom kernel
-  nixpkgs.overlays = [
-    (import ../pkgs/overlays/linux-custom.nix)
-  ];
 
   networking = {
     # Use NetworkManager for networking.

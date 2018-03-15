@@ -22,7 +22,7 @@
 
     # Languages
     ghc lua5_3 rustChannels.nightly.rust gcc luajit openjdk python36 ruby nodejs-8_x
-    sbcl nix-repl urn haskellPackages.idris
+    sbcl urn haskellPackages.idris
 
     # Games
     multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
