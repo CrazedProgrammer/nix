@@ -24,13 +24,14 @@ with stdenv.lib;
   # Compress kernel modules for a sizable disk space savings.
   ${optionalString (versionAtLeast version "3.18") ''
     #MODULE_COMPRESS y
-    #MODULE_COMPRESS_XZ y
+    #MODULE_COMPRESS_LZ4 y
   ''}
 
   # enable preemption
   PREEMPT y
 
-    #KERNEL_XZ y
+  # compress kernel with lz4
+  KERNEL_LZ4 y
 
   # Debugging.
   DEBUG_KERNEL y
@@ -55,7 +56,7 @@ with stdenv.lib;
   # Bump the maximum number of CPUs to support systems like EC2 x1.*
   # instances and Xeon Phi.
   ${optionalString (stdenv.hostPlatform.system == "x86_64-linux" || stdenv.hostPlatform.system == "aarch64-linux") ''
-    NR_CPUS 384
+    NR_CPUS 16
   ''}
 
   # Unix domain sockets.
@@ -189,7 +190,9 @@ with stdenv.lib;
   # Enable various FB devices.
   FB y
   FB_EFI y
-  FB_NVIDIA_I2C y # Enable DDC Support
+  # Disable NVIDIA framebuffer and drm driver
+  FB_NVIDIA n
+  DRM_NOUVEAU n
   FB_RIVA_I2C y
   FB_ATY_CT y # Mach64 CT/VT/GT/LT (incl. 3D RAGE) support
   FB_ATY_GX y # Mach64 GX support
@@ -285,7 +288,8 @@ with stdenv.lib;
   XFS_POSIX_ACL? y
   XFS_RT? y # XFS Realtime subvolume support
   OCFS2_DEBUG_MASKLOG? n
-  BTRFS_FS_POSIX_ACL y
+  # disable BTRFS
+  BTRFS_FS n
   UBIFS_FS_ADVANCED_COMPR? y
   F2FS_FS m
   F2FS_FS_SECURITY? y

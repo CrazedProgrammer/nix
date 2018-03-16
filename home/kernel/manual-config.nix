@@ -1,4 +1,4 @@
-{ buildPackages, runCommand, nettools, bc, bison, flex, perl, gmp, libmpc, mpfr, openssl
+{ buildPackages, runCommand, nettools, bc, bison, flex, perl, gmp, libmpc, mpfr, openssl, lz4
 , ncurses ? null
 , libelf
 , utillinux
@@ -258,7 +258,7 @@ stdenv.mkDerivation ((drvAttrs config hostPlatform.platform kernelPatches config
   enableParallelBuilding = true;
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [ perl bc nettools openssl gmp libmpc mpfr ]
+  nativeBuildInputs = [ perl bc nettools openssl gmp libmpc mpfr lz4 ]
       ++ optional (stdenv.hostPlatform.platform.kernelTarget == "uImage") buildPackages.ubootTools
       ++ optional (stdenv.lib.versionAtLeast version "4.14") libelf
       ++ optional (stdenv.lib.versionAtLeast version "4.15") utillinux
