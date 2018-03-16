@@ -9,12 +9,7 @@
     tmpOnTmpfs = true;
 
     # Kernel package.
-    kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor (pkgs.callPackage ./kernel/linux-4.15.nix {
-      kernelPatches = with pkgs.kernelPatches; [
-        bridge_stp_helper
-        modinst_arg_list_too_long
-      ];
-    }));
+    kernelPackages = import ./kernel pkgs;
 
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" "libahci.ignore_sss=1" ];
