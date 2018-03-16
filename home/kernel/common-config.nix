@@ -89,6 +89,7 @@ with stdenv.lib;
 
   # Optimize with -O2, not -Os.
   CC_OPTIMIZE_FOR_SIZE n
+  MNATIVE y
 
   # Enable the kernel's built-in memory tester.
   MEMTEST y
