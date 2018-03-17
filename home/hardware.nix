@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   boot = {
@@ -24,6 +24,14 @@
       91.205.173.25 argon
     '';
   };
+
+  # Improve boot time by not waiting for the network to come up
+  systemd.services."network-manager" = {
+    wantedBy = lib.mkForce [ ];
+  };
+  # Yes, this is a hack.
+  services.xserver.displayManager.sddm.setupScript = "${pkgs.systemd}/bin/systemctl start network-manager";
+
 
   hardware = {
     # Enable PulseAudio.

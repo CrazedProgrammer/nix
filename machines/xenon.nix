@@ -37,8 +37,6 @@
   nix.maxJobs = 12;
   nix.buildCores = 12;
 
-  powerManagement.cpuFreqGovernor = "performance";
-
   environment.systemPackages = with pkgs; [
     hdparm
   ];
