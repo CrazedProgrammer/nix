@@ -74,7 +74,7 @@ let
     inherit ignoreConfigErrors autoModules preferBuiltin kernelArch;
     name = "linux-config-${version}";
 
-    generateConfig = ./generate-config.pl;
+    generateConfig = <nixpkgs/pkgs/os-specific/linux/kernel/generate-config.pl>;
 
     kernelConfig = kernelConfigFun config;
 

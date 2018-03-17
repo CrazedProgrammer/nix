@@ -121,7 +121,7 @@ with stdenv.lib;
   # Enable various subsystems.
   ACCESSIBILITY y # Accessibility support
   AUXDISPLAY y # Auxiliary Display support
-  DONGLE y # Serial dongle support
+  #DONGLE y # Serial dongle support
   HIPPI y
   MTD_COMPLEX_MAPPINGS y # needed for many devices
   SCSI_LOWLEVEL y # enable lots of SCSI devices
@@ -280,22 +280,18 @@ with stdenv.lib;
   EXT4_FS_POSIX_ACL y
   EXT4_ENCRYPTION? ${if versionOlder version "4.8" then "m" else "y"}
   EXT4_FS_SECURITY y
-  REISERFS_FS_XATTR? y
-  REISERFS_FS_POSIX_ACL? y
-  REISERFS_FS_SECURITY? y
-  JFS_POSIX_ACL? y
-  JFS_SECURITY? y
-  XFS_QUOTA? y
-  XFS_POSIX_ACL? y
-  XFS_RT? y # XFS Realtime subvolume support
-  OCFS2_DEBUG_MASKLOG? n
-  # disable BTRFS
+  # disable unused filesystems
+  REISERFS_FS n
+  JFS_FS n
+  XFS_FS n
+  OCFS2_FS n
   BTRFS_FS n
-  UBIFS_FS_ADVANCED_COMPR? y
-  F2FS_FS m
-  F2FS_FS_SECURITY? y
-  F2FS_FS_ENCRYPTION? y
+  UBIFS_FS n
+  F2FS_FS n
+  # filesystems as modules
   UDF_FS m
+
+
   ${optionalString (versionAtLeast version "4.0" && versionOlder version "4.6") ''
     NFSD_PNFS y
   ''}
@@ -358,7 +354,10 @@ with stdenv.lib;
   # Security related features.
   RANDOMIZE_BASE? y
   STRICT_DEVMEM? y # Filter access to /dev/mem
-  SECURITY_SELINUX_BOOTPARAM_VALUE 0 # Disable SELinux by default
+  # Disable page table isolation
+  PAGE_TABLE_ISOLATION n
+  SECURITY_SELINUX n
+  #SECURITY_SELINUX_BOOTPARAM_VALUE 0 # Disable SELinux by default
   SECURITY_YAMA? y # Prevent processes from ptracing non-children processes
   DEVKMEM n # Disable /dev/kmem
   ${optionalString (! stdenv.hostPlatform.isArm)
@@ -428,7 +427,7 @@ with stdenv.lib;
   ${optionalString (versionAtLeast version "4.3") ''
     IDLE_PAGE_TRACKING y
   ''}
-  IRDA_ULTRA y # Ultra (connectionless) protocol
+  #IRDA_ULTRA y # Ultra (connectionless) protocol
   JOYSTICK_IFORCE_232? y # I-Force Serial joysticks and wheels
   JOYSTICK_IFORCE_USB? y # I-Force USB joysticks and wheels
   JOYSTICK_XPAD_FF? y # X-Box gamepad rumble support
@@ -499,9 +498,9 @@ with stdenv.lib;
     CGROUP_PIDS y
   ''}
 
-  # Enable staging drivers.  These are somewhat experimental, but
+  # Disable staging drivers.  These are somewhat experimental, but
   # they generally don't hurt.
-  STAGING y
+  STAGING n
 
   # PROC_EVENTS requires that the netlink connector is not built
   # as a module.  This is required by libcgroup's cgrulesengd.
@@ -621,14 +620,14 @@ with stdenv.lib;
   TRANSPARENT_HUGEPAGE_MADVISE? y
 
   # zram support (e.g for in-memory compressed swap).
-  ZRAM m
-  ZSWAP? y
-  ZBUD? y
+  #ZRAM n
+  ZSWAP? n
+  ZBUD? n
   ${optionalString (versionOlder version "3.18") ''
-    ZSMALLOC y
+    ZSMALLOC n
   ''}
   ${optionalString (versionAtLeast version "3.18") ''
-    ZSMALLOC m
+    ZSMALLOC n
   ''}
 
   # Enable PCIe and USB for the brcmfmac driver
