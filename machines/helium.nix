@@ -77,6 +77,7 @@
   # Intel wifi firmware
   hardware.enableRedistributableFirmware = true;
 
+  services.logind.lidSwitch = "ignore";
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [

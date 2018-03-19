@@ -146,8 +146,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+u exec "i3-nagbar -t warning -m 'You pressed the shutdown shortcut. Do you really want to shutdown? This will end your X session.' -b 'Yes, shutdown' 'shutdown -h now'"
 # reboot
 bindsym $mod+Shift+i exec "i3-nagbar -t warning -m 'You pressed the reboot shortcut. Do you really want to reboot? This will end your X session.' -b 'Yes, reboot' 'reboot'"
-# lock screen
+# lock screen and suspend
 bindsym $mod+Shift+Delete exec "i3lock -c 000000"
+bindsym $mod+Ctrl+Delete exec "systemctl suspend; i3lock -c 000000"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
