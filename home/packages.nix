@@ -12,7 +12,7 @@
     git mercurial darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop
+    xsel xclip gnome3.gnome-screenshot qemu calcurse nix-prefetch-git binutils-unwrapped slop xdotool
 
     # Build systems
     pkgs.gnumake cmake gradle
@@ -22,7 +22,7 @@
 
     # Languages
     ghc lua5_3 rustChannels.nightly.rust gcc luajit openjdk python36 ruby nodejs-8_x
-    sbcl nix-repl urn haskellPackages.idris
+    sbcl urn haskellPackages.idris
 
     # Games
     multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
@@ -53,7 +53,7 @@
     audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg
 
     # Networking
-    openvpn openssh update-resolv-conf
+    openvpn openssh update-resolv-conf sshfs
 
     # i3 utilities
     (polybar.override { i3Support = true; }) rofi feh dunst libnotify

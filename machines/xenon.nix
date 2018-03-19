@@ -18,6 +18,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/423c4347-554a-43af-b449-707ae45c5d76";
       fsType = "ext4";
+      options = [ "discard" "noatime" ];
     };
 
   fileSystems."/boot" =
@@ -28,14 +29,13 @@
   fileSystems."/mnt/hdd" =
     { device = "/dev/disk/by-uuid/243205de-6503-42f7-baa6-12aaf3c2a68e";
       fsType = "ext4";
+      options = [ "noatime" ];
     };
 
   swapDevices = [ ];
 
   nix.maxJobs = 12;
   nix.buildCores = 12;
-
-  powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [
     hdparm

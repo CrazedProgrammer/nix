@@ -17,7 +17,7 @@ stdenv.mkDerivation {
     owner = "luakit";
     repo = "luakit";
     rev = "5f3555244a56526cb36dd31d25bffefc8589294d";
-    sha256 = "1q0h9abkkk059hggc7rr2z27diy7krmqq3q904z7mhw1sr2cckb5";
+    sha256 = "1z66s18jzlw2gp8ih3mijr76fwa3wlk8sfg1xsmj6v4fbzqnr1z3";
   };
 
   buildInputs = [ gtk3 luajit webkitgtk pkgconfig sqlite makeWrapper ];

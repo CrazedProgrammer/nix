@@ -77,10 +77,11 @@
   # Intel wifi firmware
   hardware.enableRedistributableFirmware = true;
 
+  services.logind.lidSwitch = "ignore";
   powerManagement.cpuFreqGovernor = "performance";
 
   environment.systemPackages = with pkgs; [
-    arduino xorg.xbacklight astah-community subversion
+    arduino xorg.xbacklight astah-community subversion fritzing
   ];
 
   programs.wireshark = {

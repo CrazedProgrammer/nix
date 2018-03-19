@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   boot = {
@@ -9,7 +9,10 @@
     tmpOnTmpfs = true;
 
     # Kernel package.
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = import ./kernel pkgs;
+
+    # Quiet console at startup.
+    kernelParams = [ "quiet" "vga=current" "libahci.ignore_sss=1" ];
   };
 
   networking = {
@@ -18,9 +21,17 @@
 
     # Extra hosts.
     extraHosts = ''
-      173.212.197.244 argon
+      91.205.173.25 argon
     '';
   };
+
+  # Improve boot time by not waiting for the network to come up
+  systemd.services."network-manager" = {
+    wantedBy = lib.mkForce [ ];
+  };
+  # Yes, this is a hack.
+  services.xserver.displayManager.sddm.setupScript = "${pkgs.systemd}/bin/systemctl start network-manager";
+
 
   hardware = {
     # Enable PulseAudio.

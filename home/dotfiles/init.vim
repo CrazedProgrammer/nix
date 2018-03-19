@@ -65,6 +65,7 @@ autocmd FileType php :setlocal et ts=4 sw=4
 autocmd FileType lua :setlocal ts=4 sw=4
 autocmd FileType cpp :setlocal ts=4 sw=4
 autocmd FileType markdown.pandoc,text,plaintex :setlocal foldcolumn=4 colorcolumn=73
+autocmd BufNewFile,BufFilePre,BufRead *.ino set filetype=cpp
 
 augroup pandoc_syntax
 	au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
