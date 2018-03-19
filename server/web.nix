@@ -3,23 +3,16 @@
 with import ./vars.nix;
 
 {
-  systemd.services.caddy.serviceConfig.ExecStart = lib.mkForce (
-    let cfg = config.services.caddy; configFile = pkgs.writeText "Caddyfile" cfg.config; in
-    ''${cfg.package.bin}/bin/caddy -conf=${configFile} \
-          -ca=${cfg.ca} -email=${cfg.email} ${lib.optionalString cfg.agree "-agree"} -https-port ${toString caddyPort}
-    '');
   services = {
     caddy = {
       enable = true;
       agree = true;
       email = "crazedprogrammer@gmail.com";
       config = ''
-        http://cc.crzd.me https://cc.crzd.me {
+        http://cc.crzd.me  https://cc.crzd.me
+        {
           root /var/www/cc.crzd.me
           browse /maven
-        }
-        https://codechallenge.crzd.me {
-          proxy / localhost:12000
         }
         https://i.crzd.me {
           proxy / localhost:${toString shittydlPort}
@@ -43,21 +36,18 @@ with import ./vars.nix;
           }
         }
 
-        http://i.crzd.me {
-          redir https://i.crzd.me{uri}
-        }
-        http://codechallenge.crzd.me {
-          redir https://codechallenge.crzd.me{uri}
-        }
-        http://lounge.crzd.me {
-          redir https://lounge.crzd.me{uri}
-        }
-        http://grafana.crzd.me {
-          redir https://grafana.crzd.me{uri}
-        }
-        http://ccemux.crzd.me {
-          redir https://ccemux.crzd.me{uri}
-        }
+#       http://i.crzd.me {
+#         redir https://i.crzd.me{uri}
+#       }
+#       http://lounge.crzd.me {
+#         redir https://lounge.crzd.me{uri}
+#       }
+#       http://grafana.crzd.me {
+#         redir https://grafana.crzd.me{uri}
+#       }
+#       http://ccemux.crzd.me {
+#         redir https://ccemux.crzd.me{uri}
+#       }
       '';
     };
     grafana = {
@@ -85,7 +75,7 @@ with import ./vars.nix;
       };
     };
     terraria = {
-      enable = true;
+      enable = false;
       autoCreatedWorldSize = "large";
       worldPath = "/var/lib/terraria/world.wld";
       password = if builtins.pathExists /home/casper/.terraria-pw

@@ -11,11 +11,12 @@ with import ./vars.nix;
   };
 
   users.mutableUsers = false;
+  users.groups = { media = { }; };
   users.extraUsers = {
     casper = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "media" ];
       hashedPassword = builtins.readFile ../../.casper-passwd;
       home = "/home/casper";
       shell = pkgs.fish;
@@ -27,6 +28,30 @@ with import ./vars.nix;
       home = "/home/lur";
       shell = pkgs.zsh;
     };
+    unp = {
+      isNormalUser = true;
+      uid = 1007;
+      description = "Generic unprivileged user";
+      home = "/home/unp";
+    };
+    # Media users
+    media = {
+      uid = 1008;
+      description = "Main media user";
+      group = "media";
+      home = mediaHome;
+      isNormalUser = true;
+      openssh.authorizedKeys.keys = authorizedKeys;
+    };
+    ccfuse = {
+      uid = 1009;
+      description = "CCFuse user";
+      home = ccfuseHome;
+      createHome = true;
+      isNormalUser = true;
+      openssh.authorizedKeys.keys = authorizedKeys;
+    };
+
     # Application-specific users
     c3i = {
       uid = 1002;
