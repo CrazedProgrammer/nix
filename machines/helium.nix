@@ -78,7 +78,7 @@
   hardware.enableRedistributableFirmware = true;
 
   services.logind.lidSwitch = "ignore";
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "powersave";
 
   environment.systemPackages = with pkgs; [
     arduino xorg.xbacklight astah-community subversion fritzing

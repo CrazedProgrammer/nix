@@ -39,10 +39,10 @@ for_window [class="^.*"] border pixel 1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "termite --config=$DOTFILES/termite-config"
+bindsym $mod+Return exec "termite --config=$(dotfiles)/termite-config"
 
 # start the application launcher
-bindsym $mod+p exec "rofi -config $DOTFILES/rofi-config -show run"
+bindsym $mod+p exec "rofi -config $(dotfiles)/rofi-config -show run"
 
 # start the browser
 bindsym $mod+b exec firefox
@@ -202,4 +202,4 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 exec --no-startup-id "startup"
 
 # default programs on workspaces
-exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 9; exec "termite -c $DOTFILES/termite-config -e htop"; workspace 1'
+exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 9; exec "termite -c $(dotfiles)/termite-config -e htop"; workspace 1'

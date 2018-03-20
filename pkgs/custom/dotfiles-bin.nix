@@ -2,9 +2,16 @@
 
 stdenv.mkDerivation {
   name = "dotfiles-bin";
-  src = ../../home/dotfiles/bin;
+  src = ../../home/dotfiles;
   installPhase = ''
-    mkdir -p $out/bin
-    cp ./* $out/bin
+    mkdir -p $out/lib/dotfiles
+    cp -r ./* $out/lib/dotfiles
+    mv $out/lib/dotfiles/bin $out/bin
+    cat <<EOF > $out/bin/dotfiles
+    #!/usr/bin/env bash
+
+    echo $out/lib/dotfiles
+    EOF
+    chmod +x $out/bin/dotfiles
   '';
 }

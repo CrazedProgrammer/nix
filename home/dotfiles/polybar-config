@@ -67,7 +67,7 @@ font-0 = monospace:size=9;1
 [bar/helium]
 modules-left = memory cpuload cpufreq cpugraph temperature
 modules-center = i3
-modules-right = wireless battery volume date
+modules-right = wireless battery battery_usage volume date
 
 monitor = ${env:MONITOR:eDP1}
 width = ${bar/xenon.width}
@@ -242,7 +242,7 @@ interval = 1
 
 [module/cpufreq]
 type = custom/script
-exec = echo $(awk "BEGIN { a="`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`" / 1000000; b=GHz; c=a b; print c }" | cut -c1-4) GHz
+exec = echo $(sysnformat `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`) GHz
 format-underline = #f94444
 interval = 0.5
 
@@ -266,15 +266,15 @@ label = RAM %gb_used%
 [module/wireless]
 type = internal/network
 interface = wlp2s0
-interval = 0.5
-label-connected = DOWN %downspeed% UP %upspeed%
+interval = 1
+label-connected = NET %downspeed% / %upspeed%
 format-connected-underline = #f94444
 
 [module/wired]
 type = internal/network
 interface = enp33s0
-interval = 0.5
-label-connected = DOWN %downspeed% UP %upspeed%
+interval = 1
+label-connected = NET %downspeed% / %upspeed%
 format-connected-underline = #f94444
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
@@ -335,6 +335,12 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
+
+[module/battery_usage]
+type = custom/script
+exec = echo $(sysnformat `cat /sys/class/power_supply/BAT0/power_now`) W
+format-underline = #f94444
+interval = 1
 
 [module/temperature]
 type = internal/temperature
