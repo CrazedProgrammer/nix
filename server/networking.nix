@@ -7,7 +7,7 @@ with import ./vars.nix;
 
   networking = {
     hostName = "argon"; # Define your hostname.
-    firewall.allowedTCPPorts = [ 80 443 1194 7777 18903 25565 25566 ];
+    firewall.allowedTCPPorts = [ 80 443 995 7777 18903 25565 25566 ccfusePort ];
 
     nat = {
       enable = true;
@@ -18,17 +18,14 @@ with import ./vars.nix;
 
   services.openvpn.servers.server = {
     config = ''
-      port 443
+      port 995
       proto tcp
-
-      port-share 127.0.0.1 ${toString caddyPort}
 
       dev tun
 
       ca /home/casper/.openvpn/ca.crt
       cert /home/casper/.openvpn/server.crt
       key /home/casper/.openvpn/server.key
-
       dh /home/casper/.openvpn/dh.pem
 
       server 10.8.0.0 255.255.255.0

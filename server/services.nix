@@ -79,5 +79,52 @@ with import ./vars.nix;
         WorkingDirectory = c3iHome;
       };
     };
+    kristminer = {
+      description = "Krist miner service";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      path = with pkgs; [ bash ];
+      script = ''
+        ./mine.sh
+      '';
+
+      serviceConfig = {
+        User = "unp";
+        Type = "simple";
+        WorkingDirectory = "/home/unp";
+      };
+    };
+#   ccfuse-relay = {
+#     description = "CCFuse Relay service";
+#     after = [ "network.target" ];
+#     wantedBy = [ "multi-user.target" ];
+#     path = with pkgs; [ jre ];
+#     script = ''
+#       java -jar ccfuse/host/build/libs/ccfuse-host-0.1-all.jar --relay ${toString ccfusePort}
+#     '';
+
+#     serviceConfig = {
+#       User = "ccfuse";
+#       Type = "simple";
+#       WorkingDirectory = ccfuseHome;
+#     };
+#   };
+#   ccfuse = {
+#     description = "CCFuse service";
+#     after = [ "network.target" "ccfuse-relay.service" ];
+#     wantedBy = [ "multi-user.target" ];
+#     path = with pkgs; [ jre eject ];
+#     script = ''
+#       echo $LD_LIBRARY_PATH
+#       java -jar ccfuse/host/build/libs/ccfuse-host-0.1-all.jar --mountpoint cc --channel 0 --host ws://127.0.0.1:${toString ccfusePort}
+#     '';
+#     environment = { LD_LIBRARY_PATH = "${pkgs.fuse}/lib"; };
+
+#     serviceConfig = {
+#       User = "ccfuse";
+#       Type = "simple";
+#       WorkingDirectory = ccfuseHome;
+#     };
+#   };
   };
 }
