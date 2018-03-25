@@ -35,7 +35,7 @@
     termite neovim
 
     # Browsers
-    latest.firefox-nightly-bin w3m qutebrowser luakit
+    latest.firefox-nightly-bin w3m qutebrowser #luakit
 
     # Web chat
     teamspeak_client #mumble
@@ -50,7 +50,7 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg
+    audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg projectm cava
 
     # Networking
     openvpn openssh update-resolv-conf sshfs
