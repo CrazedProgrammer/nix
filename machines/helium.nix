@@ -78,7 +78,11 @@
   hardware.enableRedistributableFirmware = true;
 
   services.logind.lidSwitch = "ignore";
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement = {
+    cpuFreqGovernor = "powersave";
+    powertop.enable = true;
+  };
+  boot.kernelParams = [ "i915.i915_enable_rc6=1" ];
 
   environment.systemPackages = with pkgs; [
     arduino xorg.xbacklight astah-community subversion fritzing
