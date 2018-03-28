@@ -108,9 +108,9 @@ bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 # gaps
-gaps inner 10
-bindsym $mod+equal gaps inner all plus 10
-bindsym $mod+minus gaps inner all minus 10
+gaps inner 6
+bindsym $mod+equal gaps inner all plus 3
+bindsym $mod+minus gaps inner all minus 3
 
 # switch to workspace
 bindsym $mod+1 workspace 1
