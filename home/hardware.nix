@@ -5,14 +5,18 @@
     # Boot select timeout of 1 second.
     loader.timeout = 1;
 
-    # /tmp on tmpfs.
-    tmpOnTmpfs = true;
-
     # Kernel package.
     kernelPackages = import ./kernel pkgs;
 
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" "libahci.ignore_sss=1" ];
+  };
+
+  # /tmp on tmpfs.
+  fileSystems."/tmp" = {
+    fsType = "tmpfs";
+    device = "tmpfs";
+    options = [ "mode=1777" "strictatime" "nosuid" "nodev" "size=8g" ];
   };
 
   networking = {
