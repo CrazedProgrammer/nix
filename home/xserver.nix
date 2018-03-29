@@ -70,7 +70,7 @@
       noto-fonts-cjk
     ];
     fontconfig = {
-      hinting.enable = false;
+      #hinting.enable = false;
       subpixel.rgba = "none";
       subpixel.lcdfilter = "none";
     };
