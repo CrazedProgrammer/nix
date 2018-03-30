@@ -1,37 +1,29 @@
-{ stdenv, fetchFromGitHub, openjdk8, gradle }:
+{ stdenv, fetchurl, jre, makeWrapper }:
+
+let
+  jar-name = "CCEmuX-20180329-f67a98e7d.jar";
+  jar = fetchurl {
+    name = jar-name;
+    url = "https://ccemux.crzd.me/dist/${jar-name}";
+    sha256 = "1hl6yb94arfkvrjy1y33wky0rglmjipacmyn38gpx278sh229ddz";
+  };
+in
 
 stdenv.mkDerivation rec {
   name = "ccemux";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
-    owner = "Lignum";
-    repo = "CCEmuX";
-    rev = "57c0c909c390b1e01e2ef1df49844a8be8d1e0a7";
-    sha256 =  "04wa2zvjkrmahqnp252hr09g1xjjff2ss1smlsm5w8xdd811vmnz";
-  };
+  nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [ openjdk8 gradle ];
-
-  configurePhase = ''
-    echo $prefix >> prefix;
-  '';
-
-  buildPhase = ''
-    gradle -g `cat prefix` build
-  '';
+  phases = [ "installPhase" ];
 
   installPhase = ''
-    ls
-    tar xvf build/distributions/CCEmuX-1.0-SNAPSHOT.tar
-    install -Dm755 CCEmuX-1.0-SNAPSHOT/bin/CCEmuX `cat prefix`/bin/ccemux
-    cp -r CCEmuX-1.0-SNAPSHOT/lib `cat prefix`
-    patch `cat prefix`/bin/ccemux - <<EOF
-    24c24
-    < APP_HOME="\`pwd -P\`"
-    ---
-    > APP_HOME="`cat prefix`"
-    EOF
+    mkdir -p $out/bin
+    mkdir -p $out/share/ccemux
+    install -D ${jar} $out/share/ccemux/ccemux.jar
+
+    makeWrapper ${jre}/bin/java $out/bin/ccemux \
+      --add-flags "-jar $out/share/ccemux/ccemux.jar"
   '';
 
   meta = with stdenv; {
@@ -39,8 +31,4 @@ stdenv.mkDerivation rec {
     home = https://github.com/lignum/ccemux;
     license = lib.licenses.mit;
   };
-
-  # Cannot be built in a sandbox because gradle requires networking.
-  __noChroot = true;
 }
-
