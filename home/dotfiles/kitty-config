@@ -7,6 +7,8 @@ bold_italic_font DejaVu Sans Mono:Bold Oblique
 font_size 8
 font_size_delta 1.0
 
+adjust_line_height 110%
+
 
 scrollback_lines 10000
 
