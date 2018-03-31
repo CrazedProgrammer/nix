@@ -30,8 +30,8 @@ in
     src = fetchFromGitLab {
       owner = "urn";
       repo = "urn";
-      rev = "1e0b0de5bc4919d2c18ee7f1826b2656783926bd";
-      sha256 = "0wcnndc4qsj2aqc30h1r8dbbppyfrvljb8jilq1vqpdq0k1bdma2";
+      rev = "1ede440e943c44812e281aca24505effdbf1defa";
+      sha256 = "17c217rankkg0bn3sas6gsm49h29nc3agkz208hq8qczjnn6csl3";
     };
 
     buildInputs = [ runtime nixpkgs.pkgs.makeWrapper ];
