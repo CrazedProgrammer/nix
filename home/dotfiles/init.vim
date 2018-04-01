@@ -10,7 +10,7 @@ let $NEOVIM = 'true'
 
 " Autocomplete
 
-call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
 
 
 " GUI and colors
@@ -28,7 +28,6 @@ highlight Pmenu ctermbg=darkgrey
 
 nmap <C-w> :w<CR>
 nmap <C-q> :q<CR>
-nmap <C-e> :NERDTreeToggle<CR>
 imap <C-w> <ESC>:w<CR>i
 imap <C-q> <ESC>:q<CR>
 imap <C-b> <ESC>diwi
@@ -43,7 +42,6 @@ endfor
 
 " Close file tree on exit
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 " EasyMotion
