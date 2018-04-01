@@ -8,21 +8,7 @@ if $NEOVIM == 'true'
 endif
 let $NEOVIM = 'true'
 
-" Plugins (thank god for vim-plug and Tim Pope)
-
-" call plug#begin('~/.config/nvim/bundle')
-
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'luochen1990/rainbow'
-" Plug 'scrooloose/nerdtree'
-" Plug 'tpope/vim-surround'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'ntpeters/vim-better-whitespace'
-" Plug 'itchyny/lightline.vim'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
-
-" call plug#end()
+" Autocomplete
 
 call deoplete#enable()
 
@@ -42,20 +28,23 @@ highlight Pmenu ctermbg=darkgrey
 
 nmap <C-w> :w<CR>
 nmap <C-q> :q<CR>
-nnoremap <A-t> :Term<CR>
+nmap <C-t> :NERDTreeToggle<CR>
 imap <C-w> <ESC>:w<CR>i
 imap <C-q> <ESC>:q<CR>
 imap <C-b> <ESC>diwi
-inoremap <A-t> <ESC>:Term<CR>
 inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<CR>" : "\<CR>"
 tnoremap <Esc> <C-\><C-n>
-tnoremap <A-t> <C-\><C-n>:Term<CR>
 
 for dirkey in ['h', 'j', 'k', 'l']
 	execute 'nnoremap <A-' . dirkey . '> <C-w>' . dirkey
 	execute 'inoremap <A-' . dirkey . '> <ESC><C-w>' . dirkey . 'i'
 	execute 'tnoremap <A-' . dirkey . '> <C-\><C-n><C-w>' . dirkey . 'i'
 endfor
+
+" Close file tree on exit
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " EasyMotion
 
