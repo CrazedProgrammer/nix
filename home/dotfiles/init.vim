@@ -50,7 +50,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap w <Plug>(easymotion-w)
-nmap b <Plug>(easymotion-b)
+nmap W <Plug>(easymotion-b)
 
 
 " Searching
@@ -63,7 +63,7 @@ autocmd FileType lisp :setlocal et ts=2 sw=2
 autocmd FileType php :setlocal et ts=4 sw=4
 autocmd FileType lua :setlocal ts=4 sw=4
 autocmd FileType cpp :setlocal ts=4 sw=4
-autocmd FileType markdown.pandoc,text,plaintex :setlocal foldcolumn=4 colorcolumn=73
+autocmd FileType markdown.pandoc,text,plaintex :setlocal foldcolumn=4 colorcolumn=73 et ts=2 sw=2
 autocmd BufNewFile,BufFilePre,BufRead *.ino set filetype=cpp
 
 augroup pandoc_syntax
