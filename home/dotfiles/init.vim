@@ -28,7 +28,7 @@ highlight Pmenu ctermbg=darkgrey
 
 nmap <C-w> :w<CR>
 nmap <C-q> :q<CR>
-nmap <C-t> :NERDTreeToggle<CR>
+nmap <C-e> :NERDTreeToggle<CR>
 imap <C-w> <ESC>:w<CR>i
 imap <C-q> <ESC>:q<CR>
 imap <C-b> <ESC>diwi
