@@ -15,6 +15,7 @@ neovim.override {
         "polyglot"
         "lightline-vim"
         "vim-pandoc-syntax"
+        "easymotion"
       ];
     }];
     vam.knownPlugins = vimPlugins // (with vimUtils; {

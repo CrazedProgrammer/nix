@@ -57,6 +57,16 @@ for dirkey in ['h', 'j', 'k', 'l']
 	execute 'tnoremap <A-' . dirkey . '> <C-\><C-n><C-w>' . dirkey . 'i'
 endfor
 
+" EasyMotion
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap w <Plug>(easymotion-w)
+nmap b <Plug>(easymotion-b)
+
+
+" Searching
+
+set ignorecase smartcase
 
 " File type presets
 
