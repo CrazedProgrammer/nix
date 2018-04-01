@@ -48,7 +48,7 @@ endfor
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap w <Plug>(easymotion-w)
-nmap W <Plug>(easymotion-b)
+nmap b <Plug>(easymotion-b)
 
 
 " Searching
