@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function launch {
+		killall java
+		MultiMC &
+		sleep 1
+		xdotool mousemove 485 136 click 1
+		sleep 0.05
+		xdotool click 1
+		sleep 5
+		xdotool search --name "MultiMC" windowkill
+		sleep 120
+		xdotool mousemove 897 435 click 1
+		sleep 1
+		xdotool mousemove 710 104 click 1
+}
+
+launch
+while true; do
+	if (( $(echo "`uptime | awk '{print $8+0}'` < 0.2" | bc -l) )); then
+		launch
+	fi
+
+	sleep 60
+done
