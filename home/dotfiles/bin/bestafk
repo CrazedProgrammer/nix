@@ -1,25 +1,36 @@
 #!/usr/bin/env bash
 
 function launch {
-		killall java
-		MultiMC &
-		sleep 1
-		xdotool mousemove 485 136 click 1
-		sleep 0.05
-		xdotool click 1
-		sleep 5
-		xdotool search --name "MultiMC" windowkill
-		sleep 120
-		xdotool mousemove 897 435 click 1
-		sleep 1
-		xdotool mousemove 710 104 click 1
+	killall java
+	MultiMC 2>&1 & >/dev/null
+	sleep 1
+	xdotool mousemove 149 139 click 1
+	sleep 0.05
+	xdotool click 1
+	sleep 5
+	xdotool search --name "MultiMC" windowkill
+	xdotool mousemove 897 615
+	sleep 60
+	xdotool click 1
+	sleep 1.5
+	xdotool mousemove 458 236
+	sleep 0.5
+	xdotool click 1
+}
+
+function reconnect {
+	xdotool mousemove 1003 625
+	sleep 0.5
+	xdotool click 1
+	sleep 1.5
+	xdotool mousemove 458 236
+	sleep 0.5
+	xdotool click 1
 }
 
 launch
 while true; do
-	if (( $(echo "`uptime | awk '{print $8+0}'` < 0.2" | bc -l) )); then
-		launch
-	fi
+	reconnect
 
-	sleep 60
+	sleep 600
 done
