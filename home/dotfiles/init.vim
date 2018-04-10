@@ -28,6 +28,7 @@ highlight Pmenu ctermbg=darkgrey
 
 nmap <C-w> :w<CR>
 nmap <C-q> :q<CR>
+nmap <C-j> :CF<CR>
 imap <C-w> <ESC>:w<CR>i
 imap <C-q> <ESC>:q<CR>
 imap <C-b> <ESC>diwi
@@ -147,6 +148,7 @@ endfunction
 command Term :belowright new | :terminal
 command Upload :call UploadBuffer()
 command Pan :call Pandoc()
+command CF :ClangFormat
 
 function UploadBuffer()
 	let sourcepath = TempPath()
