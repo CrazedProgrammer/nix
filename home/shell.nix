@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  environment.systemPackages = [ pkgs.bobthefish ];
+  # Never use nano.
+  environment.variables = { EDITOR = lib.mkOverride 900 "vim"; };
+
+  # Use the fish shell.
   programs.fish = {
     enable = true;
 
@@ -21,7 +24,7 @@
       clip = "xclip -selection clipboard";
       qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
-      vis = "vis -c \"${./dotfiles/vis-config}\"";
+      vis = "vis -c (dotfiles)/vis-config}";
       iotop = "sudo iotop";
       bmon = "sudo bmon";
       fslist = "zfs list -o name,compressratio,used,available";

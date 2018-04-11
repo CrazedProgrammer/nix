@@ -27,7 +27,7 @@ in
 neovim.override {
   vimAlias = true;
   configure = {
-    customRC = builtins.readFile ../../home/dotfiles/init.vim;
+    customRC = builtins.readFile ../../dotfiles/init.vim;
 
     packages.plugins = with vimPlugins; {
       start = [
