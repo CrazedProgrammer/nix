@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 function reconnect {
-	xdotool mousemove 1003 625
+	xdotool mousemove 1271 625
+	sleep 0.5
+	xdotool click 1
+	sleep 1.5
+	xdotool mousemove 784 449
 	sleep 0.5
 	xdotool click 1
 	sleep 1.5
@@ -21,7 +25,7 @@ function launch {
 	xdotool click 1
 	sleep 5
 	xdotool search --name "MultiMC" windowkill
-	xdotool mousemove 897 615
+	xdotool mousemove 784 449
 	sleep 60
 	reconnect
 }
