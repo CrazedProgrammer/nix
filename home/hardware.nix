@@ -29,6 +29,11 @@
     '';
   };
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
+
   # Improve boot time by not waiting for the network to come up
   systemd.services."network-manager" = {
     wantedBy = lib.mkForce [ ];

@@ -61,6 +61,9 @@
     # Scripts
     dotfiles-bin
 
+    # School
+    plantuml arduino astah-community subversion fritzing plantuml
+
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g psmisc iotop bmon linuxPackages.perf
   ];

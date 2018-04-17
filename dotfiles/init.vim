@@ -149,6 +149,7 @@ command Term :belowright new | :terminal
 command Upload :call UploadBuffer()
 command Pan :call Pandoc()
 command CF :ClangFormat
+command CH :HeaderguardAdd
 
 function UploadBuffer()
 	let sourcepath = TempPath()

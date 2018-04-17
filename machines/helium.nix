@@ -85,13 +85,8 @@
   boot.kernelParams = [ "i915.i915_enable_rc6=1" ];
 
   environment.systemPackages = with pkgs; [
-    arduino xorg.xbacklight astah-community subversion fritzing
+    xorg.xbacklight
   ];
-
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
-  };
 
   services.xserver = {
     synaptics = {

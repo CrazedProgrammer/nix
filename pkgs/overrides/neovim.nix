@@ -22,6 +22,17 @@ let
       sha256 = "1g9vs6cg7irmwqa1lz6i7xbq50svykhvax12vx7cpf2bxs8jfp3n";
     };
   };
+
+  vim-headerguard = vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-headerguard-${version}";
+    version = "2015-04-28";
+    src = fetchFromGitHub {
+      owner = "drmikehenry";
+      repo = "vim-headerguard";
+      rev = "e53b37fa0772ffe2f30209f6109f5f2ae0fbf48f";
+      sha256 = "0aq6405p6m4wlgak0zzb7rz6fs5f4gbd2fq4fzy683wspg1k5lq0";
+    };
+  };
 in
 
 neovim.override {
@@ -43,6 +54,7 @@ neovim.override {
         easymotion
         better-whitespace
         vim-clang-format
+        vim-headerguard
       ];
     };
   };
