@@ -22,8 +22,8 @@ visualizer.rotation.secs=10
 
 ##Configures the samples rate and the cutoff frequencies.
 audio.sampling.frequency=48000
-audio.low.cutoff.frequency=8000
-audio.high.cutoff.frequency=50
+audio.low.cutoff.frequency=50
+audio.high.cutoff.frequency=5000
 
 ##Applies scaling factor to both lorenz and ellipse visualizers. This is useful when the system audio is set
 #to a low volume.
