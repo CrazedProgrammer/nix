@@ -41,9 +41,6 @@ for dirkey in ['h', 'j', 'k', 'l']
 	execute 'tnoremap <A-' . dirkey . '> <C-\><C-n><C-w>' . dirkey . 'i'
 endfor
 
-" Close file tree on exit
-
-
 
 " EasyMotion
 
@@ -70,7 +67,7 @@ augroup pandoc_syntax
 augroup END
 
 
-" Plugin configs
+" Rainbow parentheses
 
 let g:rainbow_conf = {
 \	'separately': {
@@ -83,6 +80,9 @@ let g:rainbow_conf = {
 \	}
 \}
 let g:rainbow_active = 1
+
+
+" Status bar
 
 let g:lightline = {
 \	'active': {
@@ -141,6 +141,13 @@ function BufName()
 	endif
 	return g:bufname_cache[name]
 endfunction
+
+" Clang-Format
+
+let g:clang_format#style_options = {
+\	'IndentWidth': 2,
+\	'SortIncludes': 'false',
+\}
 
 
 " Commands
