@@ -4,9 +4,9 @@ killall polybar
 killall dunst
 
 feh --bg-tile $HOME/Pictures/Background.png &
-polybar --config="$(dotfiles)/polybar-config" $(hostname) &
+polybar $(hostname) &
 
-dunst -config "$(dotfiles)/dunst-config" &
+dunst &
 
 if [ $(hostname) == "xenon" ]; then
 	sleep 5 && sudo hdparm -y /dev/sdb

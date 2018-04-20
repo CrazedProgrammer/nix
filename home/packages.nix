@@ -32,7 +32,7 @@
     dolphinEmuMaster dosbox stella snes9x-gtk
 
     # Terminal and editor
-    kitty neovim
+    kitty-wrapped neovim
 
     # Browsers
     latest.firefox-nightly-bin w3m qutebrowser #luakit
@@ -50,13 +50,13 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer deadbeef ffmpeg projectm cava
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava
 
     # Networking
     openvpn openssh update-resolv-conf sshfs
 
     # i3 utilities
-    (polybar.override { i3Support = true; }) rofi feh dunst libnotify
+    (polybar.override { i3Support = true; }) rofi-wrapped feh dunst-wrapped libnotify
 
     # Scripts
     dotfiles-bin
