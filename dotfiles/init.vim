@@ -15,7 +15,7 @@ let g:deoplete#enable_at_startup = 1
 
 " GUI and colors
 
-set mouse=a guicursor= nu rnu noshowmode
+set mouse=a guicursor= nu rnu noshowmode background=dark
 highlight Statement ctermfg=yellow
 highlight LineNr ctermfg=darkgrey
 highlight CursorLineNr ctermfg=grey
@@ -45,8 +45,8 @@ endfor
 " EasyMotion
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap w <Plug>(easymotion-w)
-nmap b <Plug>(easymotion-b)
+nmap W <Plug>(easymotion-w)
+nmap B <Plug>(easymotion-b)
 
 
 " Searching
