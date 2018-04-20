@@ -8,10 +8,17 @@ if $NEOVIM == 'true'
 endif
 let $NEOVIM = 'true'
 
+
+" Lazy plugins
+
+autocmd FileType lisp :packadd rainbow
+autocmd FileType c,cpp :packadd vim-clang-format | :packadd vim-headerguard
+autocmd FileType markdown :packadd vim-pandoc-syntax
+
+
 " Autocomplete
 
 let g:deoplete#enable_at_startup = 1
-
 
 " GUI and colors
 
@@ -59,12 +66,8 @@ autocmd FileType lisp :setlocal et ts=2 sw=2
 autocmd FileType php :setlocal et ts=4 sw=4
 autocmd FileType lua :setlocal ts=4 sw=4
 autocmd FileType cpp :setlocal ts=4 sw=4
-autocmd FileType markdown.pandoc,text,plaintex :setlocal foldcolumn=4 colorcolumn=73 et ts=2 sw=2
-autocmd BufNewFile,BufFilePre,BufRead *.ino set filetype=cpp
-
-augroup pandoc_syntax
-	au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup END
+autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=73 et ts=2 sw=2
+autocmd BufNewFile,BufReadPost *.ino :set filetype=cpp
 
 
 " Rainbow parentheses

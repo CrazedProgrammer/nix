@@ -43,16 +43,18 @@ neovim.override {
     packages.plugins = with vimPlugins; with customPlugins; {
       start = [
         deoplete-nvim
-        rainbow
         vinegar
         surround
         ctrlp
         better-whitespace
         polyglot
         lightline-vim
-        vim-pandoc-syntax
         easymotion
         better-whitespace
+      ];
+      opt = [
+        rainbow
+        vim-pandoc-syntax
         vim-clang-format
         vim-headerguard
       ];
