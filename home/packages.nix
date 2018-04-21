@@ -56,7 +56,7 @@
     openvpn openssh update-resolv-conf sshfs
 
     # i3 utilities
-    (polybar.override { i3Support = true; }) rofi-wrapped feh dunst-wrapped libnotify
+    polybar-wrapped rofi-wrapped feh dunst-wrapped libnotify
 
     # Scripts
     dotfiles-bin

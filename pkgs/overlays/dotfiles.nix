@@ -1,5 +1,18 @@
 self: super:
 
+let
+  makeWrapped = { name, cmd ? name, pkg ? super.lib.getAttr name super, arg}:
+    super.stdenv.mkDerivation {
+      name = name + "-wrapped-" + (pkg.version or "");
+      buildInputs = [ super.makeWrapper ];
+      buildCommand = ''
+        mkdir -p $out/bin
+        ln -s ${pkg}/bin/${cmd} $out/bin/${cmd}
+        wrapProgram $out/bin/${cmd} --add-flags "${arg}"
+      '';
+    };
+in
+
 {
   dotfiles-bin = super.stdenv.mkDerivation {
     name = "dotfiles-bin";
@@ -17,49 +30,26 @@ self: super:
     '';
   };
 
-  rofi-wrapped = with super; stdenv.mkDerivation {
-    name = "rofi-wrapped";
-    buildInputs = [ makeWrapper ];
-    buildCommand = ''
-      mkdir -p $out/bin
-      ln -s ${rofi}/bin/rofi $out/bin/rofi
-      wrapProgram $out/bin/rofi --add-flags "-config \$(dotfiles)/rofi-config"
-    '';
+  rofi-wrapped = makeWrapped {
+    name = "rofi";
+    arg = "-config \\$(dotfiles)/rofi-config";
   };
-  cli-visualizer-wrapped = with super; stdenv.mkDerivation {
-    name = "vis-wrapped-${cli-visualizer.version}";
-    buildInputs = [ makeWrapper ];
-    buildCommand = ''
-      mkdir -p $out/bin
-      ln -s ${cli-visualizer}/bin/vis $out/bin/vis
-      wrapProgram $out/bin/vis --add-flags "-c \$(dotfiles)/vis-config"
-    '';
+  cli-visualizer-wrapped = makeWrapped {
+    name = "cli-visualizer";
+    cmd = "vis";
+    arg = "-c \\$(dotfiles)/vis-config";
   };
-  polybar-wrapped = with super; stdenv.mkDerivation {
-    name = "polybar-wrapped-${polybar.version}";
-    buildInputs = [ makeWrapper ];
-    buildCommand = ''
-      mkdir -p $out/bin
-      ln -s ${polybar.override { i3Support = true; }}/bin/polybar $out/bin/polybar
-      wrapProgram $out/bin/polybar --add-flags "--config=\$(dotfiles)/polybar-config"
-    '';
+  polybar-wrapped = makeWrapped {
+    name = "polybar";
+    pkg = super.polybar.override { i3Support = true; };
+    arg = "--config=\\$(dotfiles)/polybar-config";
   };
-  dunst-wrapped = with super; stdenv.mkDerivation {
-    name = "dunst-wrapped-${dunst.version}";
-    buildInputs = [ makeWrapper ];
-    buildCommand = ''
-      mkdir -p $out/bin
-      ln -s ${dunst}/bin/dunst $out/bin/dunst
-      wrapProgram $out/bin/dunst --add-flags "-config= \$(dotfiles)/dunst-config"
-    '';
+  dunst-wrapped = makeWrapped {
+    name = "dunst";
+    arg = "-config \\$(dotfiles)/dunst-config";
   };
-  kitty-wrapped = with super; stdenv.mkDerivation {
-    name = "kitty-wrapped-${kitty.version}";
-    buildInputs = [ makeWrapper ];
-    buildCommand = ''
-      mkdir -p $out/bin
-      ln -s ${kitty}/bin/kitty $out/bin/kitty
-      wrapProgram $out/bin/kitty --add-flags "--config=\$(dotfiles)/kitty-config"
-    '';
+  kitty-wrapped = makeWrapped {
+    name = "kitty";
+    arg = "--config=\\$(dotfiles)/kitty-config";
   };
 }
