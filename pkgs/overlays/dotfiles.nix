@@ -7,7 +7,9 @@ let
       buildInputs = [ super.makeWrapper ];
       buildCommand = ''
         mkdir -p $out/bin
-        ln -s ${pkg}/bin/${cmd} $out/bin/${cmd}
+        for BINARY in $(ls ${pkg}/bin); do
+          ln -s ${pkg}/bin/$BINARY $out/bin/$BINARY
+        done
         wrapProgram $out/bin/${cmd} --add-flags "${arg}"
       '';
     };
@@ -32,6 +34,7 @@ in
 
   rofi-wrapped = makeWrapped {
     name = "rofi";
+    pkg = super.rofi-unwrapped;
     arg = "-config \\$(dotfiles)/rofi-config";
   };
   cli-visualizer-wrapped = makeWrapped {

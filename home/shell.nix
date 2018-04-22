@@ -2,7 +2,10 @@
 
 {
   # Never use nano.
-  environment.variables = { EDITOR = lib.mkOverride 900 "vim"; };
+  environment.variables = {
+    EDITOR = lib.mkOverride 900 "vim";
+    TERMINAL = "kitty";
+  };
 
   # Use the fish shell.
   programs.fish = {
