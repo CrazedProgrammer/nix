@@ -32,7 +32,7 @@
     dolphinEmuMaster dosbox stella snes9x-gtk
 
     # Terminal and editor
-    kitty-wrapped neovim
+    kitty-wrapped neovim emacs
 
     # Browsers
     latest.firefox-nightly-bin w3m qutebrowser #luakit
