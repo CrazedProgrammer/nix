@@ -32,6 +32,10 @@ in
     '';
   };
 
+  emacs-wrapped = makeWrapped {
+    name = "emacs";
+    arg = "-q -l \\$(dotfiles)/init.el";
+  };
   rofi-wrapped = makeWrapped {
     name = "rofi";
     pkg = super.rofi-unwrapped;
