@@ -149,6 +149,8 @@ bindsym $mod+Shift+i exec "i3-nagbar -t warning -m 'You pressed the reboot short
 # lock screen and suspend
 bindsym $mod+Shift+Delete exec "i3lock -c 000000"
 bindsym $mod+Ctrl+Delete exec "systemctl suspend; i3lock -c 000000"
+# apply system config
+bindsym $mod+Shift+a exec "sudo nixos-rebuild switch --no-build-nix"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

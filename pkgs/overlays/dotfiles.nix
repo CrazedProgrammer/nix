@@ -34,7 +34,7 @@ in
 
   emacs-wrapped = makeWrapped {
     name = "emacs";
-    arg = "-q -l \\$(dotfiles)/init.el";
+    arg = "-Q -l \\$(dotfiles)/init.el";
   };
   rofi-wrapped = makeWrapped {
     name = "rofi";
