@@ -7,12 +7,17 @@
             (require path))
        paths))
 
+(defun add-hooks (hooks function)
+  (mapcar (lambda (hook)
+            (add-hook hook function))
+    hooks))
+
+
 ; Packages that need to be required
 (require-all
  '(evil
    linum-relative
    fiplr))
-
 
 ; GUI
 (setq custom-safe-themes t)
@@ -20,11 +25,15 @@
 (set-cursor-color "#c0c0c0")
 (set-face-foreground 'font-lock-comment-face "#808080")
 (set-face-background 'trailing-whitespace "#A01010")
+(set-face-attribute 'default nil :height 100)
 (tool-bar-mode -1)
 
 ; Evil mode and relative line numbers
 (evil-mode t)
-(linum-relative-global-mode t)
+(setq linum-disabled-major-modes '(doc-view-mode))
+(add-hooks '(find-file-hook lisp-interaction-mode-hook)
+  (lambda () (unless (member major-mode linum-disabled-major-modes)
+               (linum-relative-on))))
 
 ; Colourise and match parens
 (setq show-paren-delay 0)
@@ -32,7 +41,7 @@
 (add-hook 'find-file-hook 'rainbow-delimiters-mode)
 
 ; No trailing whitespace
-(setq show-trailing-whitespace t)
+(add-hook 'find-file-hook (lambda () (setq show-trailing-whitespace t)))
 
 ; Recent files
 (setq recentf-max-menu-items 25)
@@ -46,6 +55,7 @@
 ; Key bindings
 (global-set-key "\M-n" 'recentf-open-files)
 (global-set-key "\M-p" 'fiplr-find-file)
+(global-set-key (kbd "C-S-v") 'clipboard-yank)
 
 ; Auto-complete
 (ac-config-default)

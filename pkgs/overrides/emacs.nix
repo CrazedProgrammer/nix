@@ -5,13 +5,18 @@ emacsWithPackages
     magit
     evil
     linum-relative
+    auto-complete
     fiplr
     rainbow-delimiters
     free-keys
     base16-theme
+
     nix-mode
     rust-mode
-    auto-complete
+    markdown-mode
+    haskell-mode
+    lua-mode
+    pdf-tools
 
 
 #   zerodark-theme
