@@ -78,7 +78,7 @@
     (shell-command (concat "pandoc -s --number-sections --table-of-contents -V geometry:margin=2cm -f markdown " input-path " -o " output-path))
     (delete-file input-path)
     (when (not (get-buffer (file-name-nondirectory output-path)))
-      (split-window-down)
+      (split-window-below)
       (windmove-down)
       (find-file output-path))))
 
