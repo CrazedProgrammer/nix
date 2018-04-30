@@ -2,8 +2,8 @@
 
 let
   customPluginData = [
-    ["ntpeters/better-whitespace" "2017-07-19"
-     "688837f23daa953a921a56c1780464d182577e6c" "18dbk5i945q5vmybccxa7qx2hdp751pgskxkrjwpxc5c32xr1crs"]
+    ["ntpeters/vim-better-whitespace" "2018-03-05"
+     "ca9d5bdfa83d6df5d54be437db5cc9f5d3702b7c" "07m39lnmcwdhvs8im2acizfxss20vlyxvk31lxkzcnkqa5s2cr21"]
     ["rhysd/vim-clang-format" "2018-02-01"
      "8ff1660a1e9f856479fffe693743521f4f3068cb" "1g9vs6cg7irmwqa1lz6i7xbq50svykhvax12vx7cpf2bxs8jfp3n"]
     ["drmikehenry/vim-headerguard" "2015-04-28"
@@ -46,11 +46,10 @@ neovim.override {
         vinegar
         surround
         ctrlp
-        better-whitespace
         polyglot
         lightline-vim
         easymotion
-        better-whitespace
+        vim-better-whitespace
       ];
       opt = [
         rainbow
