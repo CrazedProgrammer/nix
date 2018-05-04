@@ -21,22 +21,18 @@
 with stdenv.lib;
 
 ''
-  # Compress kernel modules for a sizable disk space savings.
-  ${optionalString (versionAtLeast version "3.18") ''
-    #MODULE_COMPRESS y
-    #MODULE_COMPRESS_LZ4 y
-  ''}
+  # Do not compress kernel modules for performance.
+  MODULE_COMPRESS n
 
-  # enable preemption
-  PREEMPT y
-
-  # compress kernel with lz4
+  # Compress kernel with LZ4.
   KERNEL_LZ4 y
+
+  # Enable preemption.
+  PREEMPT y
 
   # Debugging.
   DEBUG_KERNEL y
   DYNAMIC_DEBUG y
-  BACKTRACE_SELF_TEST n
   DEBUG_DEVRES n
   DEBUG_STACK_USAGE n
   DEBUG_STACKOVERFLOW n
@@ -87,7 +83,7 @@ with stdenv.lib;
   IKCONFIG y
   IKCONFIG_PROC y
 
-  # Optimize with -O2, not -Os.
+  # Optimize with -O2 and -mnative, not -Os.
   CC_OPTIMIZE_FOR_SIZE n
   MNATIVE y
 
@@ -121,7 +117,6 @@ with stdenv.lib;
   # Enable various subsystems.
   ACCESSIBILITY y # Accessibility support
   AUXDISPLAY y # Auxiliary Display support
-  #DONGLE y # Serial dongle support
   HIPPI y
   MTD_COMPLEX_MAPPINGS y # needed for many devices
   SCSI_LOWLEVEL y # enable lots of SCSI devices
@@ -130,6 +125,9 @@ with stdenv.lib;
   SPI y # needed for many devices
   SPI_MASTER y
   WAN y
+  ${optionalString (versionOlder version "4.17") ''
+    DONGLE y # Serial dongle support
+  ''}
 
   # Networking options.
   NET y
@@ -140,6 +138,7 @@ with stdenv.lib;
   NETFILTER y
   NETFILTER_ADVANCED y
   CGROUP_BPF? y # Required by systemd per-cgroup firewalling
+  CGROUP_NET_PRIO y # Required by systemd
   IP_ROUTE_VERBOSE y
   IP_MROUTE_MULTIPLE_TABLES y
   IP_VS_PROTO_TCP y
@@ -191,8 +190,8 @@ with stdenv.lib;
   # Enable various FB devices.
   FB y
   FB_EFI y
-  # Disable NVIDIA framebuffer and drm driver
-  FB_NVIDIA n
+  # Don't compile Nvidia drivers.
+  FB_NVIDIA_I2C n
   DRM_NOUVEAU n
   FB_RIVA_I2C y
   FB_ATY_CT y # Mach64 CT/VT/GT/LT (incl. 3D RAGE) support
@@ -280,18 +279,21 @@ with stdenv.lib;
   EXT4_FS_POSIX_ACL y
   EXT4_ENCRYPTION? ${if versionOlder version "4.8" then "m" else "y"}
   EXT4_FS_SECURITY y
-  # disable unused filesystems
-  REISERFS_FS n
-  JFS_FS n
-  XFS_FS n
-  OCFS2_FS n
-  BTRFS_FS n
-  UBIFS_FS n
-  F2FS_FS n
-  # filesystems as modules
+  REISERFS_FS_XATTR? y
+  REISERFS_FS_POSIX_ACL? y
+  REISERFS_FS_SECURITY? y
+  JFS_POSIX_ACL? y
+  JFS_SECURITY? y
+  XFS_QUOTA? y
+  XFS_POSIX_ACL? y
+  XFS_RT? y # XFS Realtime subvolume support
+  OCFS2_DEBUG_MASKLOG? n
+  BTRFS_FS_POSIX_ACL y
+  UBIFS_FS_ADVANCED_COMPR? y
+  F2FS_FS m
+  F2FS_FS_SECURITY? y
+  F2FS_FS_ENCRYPTION? y
   UDF_FS m
-
-
   ${optionalString (versionAtLeast version "4.0" && versionOlder version "4.6") ''
     NFSD_PNFS y
   ''}
@@ -354,13 +356,10 @@ with stdenv.lib;
   # Security related features.
   RANDOMIZE_BASE? y
   STRICT_DEVMEM? y # Filter access to /dev/mem
-  # Disable page table isolation
-  PAGE_TABLE_ISOLATION n
-  SECURITY_SELINUX n
-  #SECURITY_SELINUX_BOOTPARAM_VALUE 0 # Disable SELinux by default
+  SECURITY_SELINUX_BOOTPARAM_VALUE 0 # Disable SELinux by default
   SECURITY_YAMA? y # Prevent processes from ptracing non-children processes
   DEVKMEM n # Disable /dev/kmem
-  ${optionalString (! stdenv.hostPlatform.isArm)
+  ${optionalString (! stdenv.hostPlatform.isAarch32)
     (if versionOlder version "3.14" then ''
         CC_STACKPROTECTOR? y # Detect buffer overflows on the stack
       '' else ''
@@ -427,7 +426,9 @@ with stdenv.lib;
   ${optionalString (versionAtLeast version "4.3") ''
     IDLE_PAGE_TRACKING y
   ''}
-  #IRDA_ULTRA y # Ultra (connectionless) protocol
+  ${optionalString (versionOlder version "4.17") ''
+    IRDA_ULTRA y # Ultra (connectionless) protocol
+  ''}
   JOYSTICK_IFORCE_232? y # I-Force Serial joysticks and wheels
   JOYSTICK_IFORCE_USB? y # I-Force USB joysticks and wheels
   JOYSTICK_XPAD_FF? y # X-Box gamepad rumble support
@@ -498,9 +499,9 @@ with stdenv.lib;
     CGROUP_PIDS y
   ''}
 
-  # Disable staging drivers.  These are somewhat experimental, but
+  # Enable staging drivers.  These are somewhat experimental, but
   # they generally don't hurt.
-  STAGING n
+  STAGING y
 
   # PROC_EVENTS requires that the netlink connector is not built
   # as a module.  This is required by libcgroup's cgrulesengd.
@@ -620,14 +621,14 @@ with stdenv.lib;
   TRANSPARENT_HUGEPAGE_MADVISE? y
 
   # zram support (e.g for in-memory compressed swap).
-  #ZRAM n
-  ZSWAP? n
-  ZBUD? n
+  ZRAM m
+  ZSWAP? y
+  ZBUD? y
   ${optionalString (versionOlder version "3.18") ''
-    ZSMALLOC n
+    ZSMALLOC y
   ''}
   ${optionalString (versionAtLeast version "3.18") ''
-    ZSMALLOC n
+    ZSMALLOC m
   ''}
 
   # Enable PCIe and USB for the brcmfmac driver
@@ -647,43 +648,46 @@ with stdenv.lib;
   # This menu disables all/most of them on >= 4.16
   RUNTIME_TESTING_MENU? n
   # For older kernels, painstakingly disable each symbol.
-  ARM_KPROBES_TEST? n
-  ASYNC_RAID6_TEST? n
-  ATOMIC64_SELFTEST? n
-  BACKTRACE_SELF_TEST? n
+  ${optionalString (versionOlder version "4.16") ''
+    ARM_KPROBES_TEST? n
+    ASYNC_RAID6_TEST? n
+    ATOMIC64_SELFTEST? n
+    BACKTRACE_SELF_TEST? n
+    INTERVAL_TREE_TEST? n
+    PERCPU_TEST? n
+    RBTREE_TEST? n
+    TEST_BITMAP? n
+    TEST_BPF? n
+    TEST_FIRMWARE? n
+    TEST_HASH? n
+    TEST_HEXDUMP? n
+    TEST_KMOD? n
+    TEST_KSTRTOX? n
+    TEST_LIST_SORT? n
+    TEST_LKM? n
+    TEST_PARMAN? n
+    TEST_PRINTF? n
+    TEST_RHASHTABLE? n
+    TEST_SORT? n
+    TEST_STATIC_KEYS? n
+    TEST_STRING_HELPERS? n
+    TEST_UDELAY? n
+    TEST_USER_COPY? n
+    TEST_UUID? n
+  ''}
+
   CRC32_SELFTEST? n
   CRYPTO_TEST? n
   DRM_DEBUG_MM_SELFTEST? n
   EFI_TEST? n
   GLOB_SELFTEST? n
-  INTERVAL_TREE_TEST? n
   LNET_SELFTEST? n
   LOCK_TORTURE_TEST? n
   MTD_TESTS? n
   NOTIFIER_ERROR_INJECTION? n
-  PERCPU_TEST? n
-  RBTREE_TEST? n
   RCU_PERF_TEST? n
   RCU_TORTURE_TEST? n
   TEST_ASYNC_DRIVER_PROBE? n
-  TEST_BITMAP? n
-  TEST_BPF? n
-  TEST_FIRMWARE? n
-  TEST_HASH? n
-  TEST_HEXDUMP? n
-  TEST_KMOD? n
-  TEST_KSTRTOX? n
-  TEST_LIST_SORT? n
-  TEST_LKM? n
-  TEST_PARMAN? n
-  TEST_PRINTF? n
-  TEST_RHASHTABLE? n
-  TEST_SORT? n
-  TEST_STATIC_KEYS? n
-  TEST_STRING_HELPERS? n
-  TEST_UDELAY? n
-  TEST_USER_COPY? n
-  TEST_UUID? n
   WW_MUTEX_SELFTEST? n
   XZ_DEC_TEST? n
 
