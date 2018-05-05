@@ -6,9 +6,8 @@
   ];
 
   boot = {
-    # Use unstable ZFS.
-    supportedFilesystems = [ "zfs" ];
-    zfs.enableUnstable = true;
+    # Use BTRFS.
+    supportedFilesystems = [ "btrfs" ];
 
     loader.grub = {
       # Use GRUB for booting.
@@ -45,31 +44,19 @@
   boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
 
   fileSystems."/" =
-    { device = "hpool/root";
-      fsType = "zfs";
+    { device = "/dev/disk/by-uuid/7d1df80c-e3d9-4709-834e-efdad64c05c1";
+      fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/sda3";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/ECFD-EC11";
+      fsType = "vfat";
     };
 
-  fileSystems."/home" =
-    { device = "hpool/home";
-      fsType = "zfs";
-    };
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/6f01e112-8c69-4792-9945-6806c32ad451"; }
+    ];
 
-  fileSystems."/mnt/games" =
-    { device = "hpool/games";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/vms" =
-    { device = "hpool/vms";
-      fsType = "zfs";
-    };
-
-  swapDevices = [ {device = "/dev/sda5";} ];
 
   nix.maxJobs = 4;
   nix.buildCores = 4;
