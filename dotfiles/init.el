@@ -60,3 +60,26 @@
 ; Auto-complete
 (ac-config-default)
 (add-hook 'find-file-hook 'auto-complete-mode)
+
+; Pandoc
+
+(defun temp-path (extension)
+  (concat "/tmp/emacs-" (number-to-string (random 99999)) "." extension))
+
+(defun temp-write ()
+  (let ((path (temp-path (file-name-extension buffer-file-name))))
+    (append-to-file (buffer-string) nil path)
+    path))
+
+(defun display-output-pdf ()
+  (interactive)
+  (let ((input-path (temp-write))
+        (output-path "/tmp/emacs-pdf-preview.pdf"))
+    (shell-command (concat "pandoc -s --number-sections --table-of-contents -V geometry:margin=2cm -f markdown " input-path " -o " output-path))
+    (delete-file input-path)
+    (when (not (get-buffer (file-name-nondirectory output-path)))
+      (split-window-down)
+      (windmove-down)
+      (find-file output-path))))
+
+(global-auto-revert-mode 1)

@@ -1,8 +1,8 @@
-{ stdenv, buildPackages, hostPlatform, fetchurl, perl, callPackage, linux_4_15, ... } @ args:
+{ stdenv, buildPackages, hostPlatform, fetchurl, perl, callPackage, linux_4_16, ... } @ args:
 
 let
   buildLinux = attrs: callPackage ./generic.nix attrs;
-  linux = linux_4_15;
+  linux = linux_4_16;
 in
 
 with stdenv.lib;
