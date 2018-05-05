@@ -14,15 +14,16 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "btrfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/423c4347-554a-43af-b449-707ae45c5d76";
-      fsType = "ext4";
-      options = [ "discard" "noatime" ];
+    { device = "/dev/disk/by-uuid/3096957e-0b8f-4ac0-bab2-221cfa4b1851";
+      options = [ "compress=zstd" ];
+      fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D05D-6ABB";
+    { device = "/dev/disk/by-uuid/EA56-F183";
       fsType = "vfat";
     };
 
@@ -32,7 +33,9 @@
       options = [ "noatime" ];
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/328c22da-dc9f-4751-b536-9018465e677e"; }
+    ];
 
   nix.maxJobs = 12;
   nix.buildCores = 12;
