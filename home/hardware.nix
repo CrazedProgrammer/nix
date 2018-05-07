@@ -5,9 +5,6 @@
     # Boot select timeout of 1 second.
     loader.timeout = 1;
 
-    # Kernel package.
-    kernelPackages = import ./kernel pkgs;
-
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" "libahci.ignore_sss=1" ];
   };

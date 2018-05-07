@@ -76,6 +76,9 @@ with stdenv.lib;
   ''}
   PM_WAKELOCKS y
 
+  # Disk access triggers LEDs.
+  LEDS_TRIGGER_DISK y
+
   # Support drivers that need external firmware.
   STANDALONE n
 
@@ -288,6 +291,7 @@ with stdenv.lib;
   XFS_POSIX_ACL? y
   XFS_RT? y # XFS Realtime subvolume support
   OCFS2_DEBUG_MASKLOG? n
+  BTRFS_FS y
   BTRFS_FS_POSIX_ACL y
   UBIFS_FS_ADVANCED_COMPR? y
   F2FS_FS m

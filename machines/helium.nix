@@ -34,6 +34,15 @@
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+
+    kernelParams = [ "i915.enable_psr=1" "i915.i915_enable_fbc=1" ];
+
+    kernelPackages = import ../home/kernel (pkgs // {
+      extraConfig = ''
+        # Sound power saving.
+        SND_HDA_POWER_SAVE_DEFAULT 1
+      '';
+    });
   };
 
   networking = {
@@ -69,7 +78,6 @@
     cpuFreqGovernor = "powersave";
     powertop.enable = true;
   };
-  boot.kernelParams = [ "i915.i915_enable_rc6=1" ];
 
   environment.systemPackages = with pkgs; [
     xorg.xbacklight

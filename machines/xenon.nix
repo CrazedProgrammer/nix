@@ -15,6 +15,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "btrfs" ];
+  boot.kernelPackages = import ../home/kernel pkgs;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/3096957e-0b8f-4ac0-bab2-221cfa4b1851";
