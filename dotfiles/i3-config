@@ -141,11 +141,11 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-msg exit"
 # shutdown
-bindsym $mod+Shift+u exec "i3-nagbar -t warning -m 'You pressed the shutdown shortcut. Do you really want to shutdown? This will end your X session.' -b 'Yes, shutdown' 'shutdown -h now'"
+bindsym $mod+Shift+u exec "poweroff"
 # reboot
-bindsym $mod+Shift+i exec "i3-nagbar -t warning -m 'You pressed the reboot shortcut. Do you really want to reboot? This will end your X session.' -b 'Yes, reboot' 'reboot'"
+bindsym $mod+Shift+i exec "reboot"
 # lock screen and suspend
 bindsym $mod+Shift+Delete exec "i3lock -c 000000"
 bindsym $mod+Ctrl+Delete exec "systemctl suspend; i3lock -c 000000"
@@ -183,7 +183,7 @@ bindsym Print exec "shot m"
 bindsym Ctrl+Print exec "shot s"
 bindsym Shift+Print exec "shot u"
 bindsym $mod+Print exec "record"
-bindsym $mod+Ctrl+Print exec "killall ffmpeg"
+bindsym $mod+Ctrl+Print exec "pkill -f ffmpeg"
 
 # volume keys
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +3%"
@@ -201,7 +201,8 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 #}
 
 # startup file
-exec_always --no-startup-id "startup"
+exec --no-startup-id "startup boot"
+exec_always --no-startup-id "startup reload"
 
 # default programs on workspaces
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 9; exec "kitty"; workspace 1'

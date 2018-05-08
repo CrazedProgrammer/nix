@@ -1,13 +1,28 @@
 #!/usr/bin/env bash
 
-killall polybar
-killall dunst
+function boot {
+	sudo sh -c "echo ide-disk > /sys/class/leds/input0::capslock/trigger"
+	if [ $(hostname) == "xenon" ]; then
+		sleep 5 && sudo hdparm -y /dev/sdb
+	elif [ $(hostname) == "helium" ]; then
+		sudo sh -c "echo 10 > /sys/module/snd_hda_intel/parameters/power_save"
+	fi
+}
 
-feh --bg-tile $HOME/Pictures/Background.png &
-polybar $(hostname) &
+function reload {
+	pkill -f polybar
+	pkill -f dunst
 
-dunst &
+	feh --bg-tile $HOME/Pictures/Background.png &
+	polybar $(hostname) &
+	dunst &
+}
 
-if [ $(hostname) == "xenon" ]; then
-	sleep 5 && sudo hdparm -y /dev/sdb
+if [[ $1 == "boot" ]]; then
+	boot
+	reload
+elif [[ $1 == "reload" ]]; then
+	reload
+else
+	echo "Expected boot/reload"
 fi
