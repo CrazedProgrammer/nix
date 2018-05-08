@@ -48,6 +48,13 @@
 (setq recentf-save-file (file-truename "~/.emacs-recentf"))
 (recentf-mode 1)
 
+; Backup files
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+
 ; Tabs
 (setq-default indent-tabs-mode nil)
 (setq lisp-indent-offset 2)
