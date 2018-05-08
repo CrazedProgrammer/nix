@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+function kill {
+	pkill -f polybar
+	pkill -f dunst
+}
+
 function boot {
 	sudo sh -c "echo ide-disk > /sys/class/leds/input0::capslock/trigger"
 	if [ $(hostname) == "xenon" ]; then
@@ -10,19 +15,19 @@ function boot {
 }
 
 function reload {
-	pkill -f polybar
-	pkill -f dunst
-
 	feh --bg-tile $HOME/Pictures/Background.png &
 	polybar $(hostname) &
 	dunst &
 }
 
 if [[ $1 == "boot" ]]; then
+	kill
 	boot
-	reload
 elif [[ $1 == "reload" ]]; then
+	kill
 	reload
+elif [[ $1 == "kill" ]]; then
+	kill
 else
-	echo "Expected boot/reload"
+	echo "Expected boot/reload/kill"
 fi
