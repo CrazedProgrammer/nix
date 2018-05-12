@@ -1,8 +1,8 @@
 { stdenv, fetchFromGitHub, btrfs-progs }:
 
-stdenv.mkDerivation {
-
-  name = "compsize";
+stdenv.mkDerivation rec {
+  name = "compsize-${version}";
+  version = "2018-04-07";
 
   src = fetchFromGitHub {
     owner = "kilobyte";
@@ -14,13 +14,17 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ btrfs-progs ];
 
   installPhase = ''
-    ls
     mkdir -p $out/bin
-    install -Dm755 compsize $out/bin/compsize
+    mkdir -p $out/share/man/man8
+    install -m 0755 compsize $out/bin
+    install -m 0444 compsize.8 $out/share/man/man8
   '';
 
   meta = with stdenv.lib; {
-    description = "btrfs: find compression type/ratio on a file or set of files ";
+    description = "btrfs: Find compression type/ratio on a file or set of files";
+    homepage    = https://github.com/kilobyte/compsize;
     license     = licenses.gpl2;
+    maintainers = with maintainers; [ CrazedProgrammer ];
+    platforms   = platforms.linux;
   };
 }
