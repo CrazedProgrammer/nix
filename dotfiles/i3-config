@@ -47,6 +47,9 @@ bindsym $mod+p exec "rofi -show run"
 # start the browser
 bindsym $mod+b exec firefox
 
+# toggle mouse cursor
+bindsym $mod+Shift+g exec "sh -c 'if ! pkill hhpc; then hhpc -i 0; fi &'"
+
 # kill focused window
 bindsym $mod+q kill
 

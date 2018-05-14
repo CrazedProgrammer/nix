@@ -16,15 +16,5 @@ emacsWithPackages
     markdown-mode
     haskell-mode
     lua-mode
-    pdf-tools
-
-
-#   zerodark-theme
-#   atom-one-dark-theme
-#   darktooth-theme
-#   flatui-dark-theme
-#   gruber-darker-theme
-#   doom-themes
   ]) ++ (with epkgs.elpaPackages; [
   ]))
-
