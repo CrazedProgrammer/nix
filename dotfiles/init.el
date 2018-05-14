@@ -54,6 +54,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+; File extensions
+(setq auto-mode-alist (cons '("\\.ino$" . c++-mode) auto-mode-alist))
+
 
 ; Tabs
 (setq-default indent-tabs-mode nil)
