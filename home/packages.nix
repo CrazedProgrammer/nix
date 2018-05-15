@@ -65,6 +65,6 @@
     plantuml arduino astah-community subversion fritzing plantuml
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf compsize
+    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf compsize picocom
   ];
 }
