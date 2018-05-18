@@ -59,4 +59,8 @@ in
     name = "kitty";
     arg = "--config=\\$(dotfiles)/kitty-config";
   };
+  cava-wrapped = makeWrapped {
+    name = "cava";
+    arg = "-p ~/Projects/nix/dotfiles/cava-config"; # FIX THIS
+  };
 }

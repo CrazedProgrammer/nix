@@ -50,7 +50,7 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped
 
     # Networking
     openvpn openssh update-resolv-conf sshfs

@@ -1,0 +1,8 @@
+[color]
+gradient = 1
+gradient_color_1 = '#E05606'
+gradient_color_2 = '#B21E0A'
+
+[smoothing]
+integral = 40
+gravity = 1000
