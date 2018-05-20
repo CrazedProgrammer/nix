@@ -1,3 +1,6 @@
+[output]
+channels = mono
+
 [color]
 gradient = 1
 gradient_color_1 = '#E05606'
