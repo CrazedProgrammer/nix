@@ -2,7 +2,10 @@
 
 {
   # Allow unfree packages.
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    pkgs.lib.elem (builtins.parseDrvName pkg.name).name
+    [ "steam" "steam-original" "steam-runtime" "corefonts" "technic-launcher" "astah-community"
+      "teamspeak-client" "dwarf-fortress-original" "firefox-bin" "firefox-release-bin-unwrapped" ];
 
   environment.systemPackages = with pkgs; [
     # Basic tools

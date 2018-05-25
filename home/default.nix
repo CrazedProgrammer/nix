@@ -15,6 +15,11 @@
     daemonIONiceLevel = 7;
     daemonNiceLevel = 19;
     useSandbox = "relaxed";
+    nixPath = [
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos/nixpkgs"
+      "nixos-config=/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
   };
 
   # Internationalisation properties.
@@ -27,5 +32,5 @@
   time.timeZone = "Europe/Amsterdam";
 
   # The NixOS release version.
-  system.stateVersion = "18.03";
+  system.nixos.stateVersion = "18.03";
 }
