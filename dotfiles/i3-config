@@ -150,6 +150,7 @@ bindsym $mod+Shift+u exec "poweroff"
 # reboot
 bindsym $mod+Shift+i exec "reboot"
 # lock screen and suspend
+bindsym $mod+Shift+o exec "bash -c 'sleep 0.1; xtrlock-pam -b none' &"
 bindsym $mod+Shift+Delete exec "i3lock -c 000000"
 bindsym $mod+Ctrl+Delete exec "systemctl suspend; i3lock -c 000000"
 # apply system config

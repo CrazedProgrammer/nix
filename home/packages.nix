@@ -53,13 +53,13 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped #glava
 
     # Networking
     openvpn openssh update-resolv-conf sshfs
 
-    # i3 utilities
-    polybar-wrapped rofi-wrapped feh dunst-wrapped libnotify
+    # WM utilities
+    polybar-wrapped rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam
 
     # Scripts
     dotfiles-bin
