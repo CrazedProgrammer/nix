@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec "kitty"
 
 # start the application launcher
-bindsym $mod+p exec "rofi -show run"
+bindsym $mod+p exec "rofi -show combi"
 
 # start the browser
 bindsym $mod+b exec firefox
