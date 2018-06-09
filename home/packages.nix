@@ -9,7 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     # Basic tools
-    wget curl htop jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
+    wget curl jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium
 
     # Version control
     git mercurial #darcs
@@ -53,7 +53,7 @@
     gimp tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped #glava
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped zathura #glava
 
     # Networking
     openvpn openssh update-resolv-conf sshfs
@@ -68,6 +68,6 @@
     plantuml arduino astah-community subversion fritzing plantuml
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf compsize picocom
+    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf compsize picocom gotop htop
   ];
 }
