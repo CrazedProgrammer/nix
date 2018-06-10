@@ -14,6 +14,9 @@
       device = "/dev/sda";
       efiSupport = false;
       gfxmodeBios = "1920x1080";
+      splashImage = if builtins.pathExists ../../../Pictures/Boot.png
+        then ../../../Pictures/Boot.png
+        else "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/artwork/gnome/nix-wallpaper-simple-dark-gray.png";
       # Dual boot.
       extraEntries = ''
         menuentry "Windows 10" {
