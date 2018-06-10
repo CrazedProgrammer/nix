@@ -31,12 +31,12 @@ audio.high.cutoff.frequency=5000
 
 ##Configures the visualizers and the order they are in. Available visualizers are spectrum,lorenz,ellipse.
 ##Defaults to spectrum,ellipse,lorenz
-visualizers=spectrum,ellipse
+visualizers=ellipse,lorenz
 
 
 ##Configures what character the spectrum visualizer will use. Specifying a space (e.g " ") means the
 ##background will be colored instead of the character. Defaults to " ".
-visualizer.spectrum.character=#
+#visualizer.spectrum.character=#
 
 ##Spectrum bar width. Defaults to 2.
 visualizer.spectrum.bar.width=2
@@ -73,7 +73,7 @@ visualizer.spectrum.falloff.weight=0.93
 
 ##Configures what character the ellipse visualizer will use. Specifying a space (e.g " ") means the
 ##background will be colored instead of the character. Defaults to "█".
-visualizer.ellipse.character=#
+#visualizer.ellipse.character=#
 
 ##The radius of each color ring in the ellipse visualizer. Defaults to 2.
 #visualizer.ellipse.radius=2
@@ -81,7 +81,7 @@ visualizer.ellipse.character=#
 
 ##Configures what character the lorenz visualizer will use. Specifying a space (e.g " ") means the
 ##background will be colored instead of the character. Defaults to "█".
-visualizer.lorenz.character=#
+#visualizer.lorenz.character=#
 
 ##Specifies the color scheme. The color scheme must be in ~/.config/vis/colors/ directory. The default scheme is "colors".
 #colors.scheme=rainbow
