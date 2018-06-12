@@ -1,3 +1,6 @@
+[general]
+framerate = 60
+
 [output]
 channels = mono
 
@@ -8,4 +11,6 @@ gradient_color_2 = '#B21E0A'
 
 [smoothing]
 integral = 40
-gravity = 1000
+gravity = 600
+monstercat = 0
+waves = 1
