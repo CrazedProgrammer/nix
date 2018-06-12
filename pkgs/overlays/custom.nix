@@ -9,4 +9,5 @@ self: super:
   urn = super.callPackage ../custom/urn.nix { useLuaJit = true; };
   technic-launcher = super.callPackage ../custom/technic-launcher.nix {};
   thelounge = super.callPackage ../custom/thelounge.nix {};
+  ls_extended = super.callPackage ../custom/ls_extended.nix {};
 }

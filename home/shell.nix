@@ -12,6 +12,7 @@
     enable = true;
 
     shellAliases = {
+      ls = "ls_extended";
       l = "ls -lah";
       vim = "vim -p";
       lgit = "git add -A; and git commit; and git push";
