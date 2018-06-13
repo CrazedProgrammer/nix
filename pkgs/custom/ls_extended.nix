@@ -11,6 +11,8 @@ stdenv.mkDerivation rec {
     sha256 = "14596mpbpd6rzk72xccpfk3qlha8msqf0y1znap5rlkzviqc14pp";
   };
 
+  patches = [ ./ls_extended.patch ];
+
   buildPhase = "bash ./build.sh";
   installPhase = ''
     mkdir -p $out/bin
