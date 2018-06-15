@@ -19,7 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/xenon]
-modules-left = memory cpuload cpugraph
+modules-left = memory cpuload cpugraph temperature_desktop
 modules-center = i3
 modules-right = wired volume date
 
@@ -247,10 +247,20 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+[module/temperature_desktop]
+type = internal/temperature
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+thermal-zone = 0
+warn-temperature = 80
+
+format = <label>
+format-underline = #f94444
+format-warn = <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
 
 [settings]
 screenchange-reload = true

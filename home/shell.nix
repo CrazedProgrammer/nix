@@ -19,7 +19,7 @@
       cdcc = "cd ~/.local/share/ccemux/computer/0";
       sysa = "sudo nixos-rebuild switch";
       sysu = "sysa --upgrade";
-      sysuf = "while not sysu; end";
+      sysuf = "cd $HOME/Projects/nixpkgs; git pull upstream master; cd -; sysa -I nixpkgs=$HOME/Projects/nixpkgs";
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
       ovpn = "sudo openvpn --config ~/.ovpn-client";
       argonsshr = "ssh -p 18903 casper@argon";
