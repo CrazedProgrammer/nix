@@ -13,7 +13,7 @@
   fileSystems."/tmp" = {
     fsType = "tmpfs";
     device = "tmpfs";
-    options = [ "mode=1777" "strictatime" "nosuid" "nodev" "size=8g" ];
+    options = [ "mode=1777" "strictatime" "nosuid" "nodev" "size=12g" ];
   };
 
   networking = {
