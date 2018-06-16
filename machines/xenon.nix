@@ -42,8 +42,12 @@
   nix.buildCores = 12;
 
   environment.systemPackages = with pkgs; [
-    hdparm
+    hdparm docker_compose
   ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # AMD polaris firmware
   hardware.enableRedistributableFirmware = true;
