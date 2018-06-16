@@ -1,5 +1,5 @@
 [global]
-font = monospace 10
+font = monospace 9
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -22,7 +22,7 @@ plain_text = no
 #   %I  iconname (without its path)
 #   %p  progress value if set ([  0%] to [100%]) or nothing
 # Markup is allowed
-format = "<b>%s</b>\n%b"
+format = "<b><u>%a</u></b>\n<i>%s</i>\n%b %p"
 
 # Sort messages by urgency.
 sort = no
@@ -70,7 +70,7 @@ hide_duplicates_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-geometry = "300x50-15+49"
+geometry = "200x50-15+49"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
@@ -120,7 +120,7 @@ line_height = 3
 # Draw a line of "separatpr_height" pixel height between two
 # notifications.
 # Set to 0 to disable.
-separator_height = 2
+separator_height = 4
 
 # Padding between text and separator.
 padding = 6
@@ -145,7 +145,7 @@ startup_notification = false
 browser = firefox -new-tab
 
 # Align icons left/right/off
-icon_position = off
+icon_position = left
 max_icon_size = 80
 
 # Paths to default icons.
@@ -153,7 +153,7 @@ icon_folders = /run/current-system/sw/share/icons/Paper/16x16/mimetypes/:/run/cu
 
 
 [frame]
-width = 3
+width = 2
 color = "#8EC07C"
 
 [shortcuts]
@@ -187,8 +187,8 @@ background = "#191311"
 timeout = 4
 
 [urgency_normal]
-frame_color = "#5B8234"
-foreground = "#5B8234"
+frame_color = "#6B6B6B"
+foreground = "#7CB247"
 background = "#191311"
 #background = "#2B313C"
 timeout = 6
