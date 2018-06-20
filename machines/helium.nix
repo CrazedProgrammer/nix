@@ -6,9 +6,6 @@
   ];
 
   boot = {
-    # Use BTRFS.
-    supportedFilesystems = [ "btrfs" ];
-
     loader.grub = {
       # Use GRUB for booting.
       device = "/dev/sda";
@@ -34,7 +31,7 @@
       '';
     };
 
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
+    initrd.availableKernelModules = [ "bcache" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
 
@@ -56,13 +53,12 @@
   boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7d1df80c-e3d9-4709-834e-efdad64c05c1";
-      fsType = "btrfs";
-      options = [ "compress-force=zstd" "noatime" ];
+    { device = "/dev/bcache0";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/ECFD-EC11";
+    { device = "/dev/disk/by-uuid/2061-9157";
       fsType = "vfat";
     };
 
