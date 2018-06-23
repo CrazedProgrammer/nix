@@ -38,7 +38,7 @@
     kitty-wrapped neovim emacs-wrapped
 
     # Browsers
-    latest.firefox-nightly-bin w3m qutebrowser #luakit
+    firefox w3m qutebrowser #luakit
 
     # Web chat
     teamspeak_client #mumble
