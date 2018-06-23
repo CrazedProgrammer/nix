@@ -28,7 +28,7 @@
     sbcl urn haskellPackages.idris
 
     # Games
-    (import <nixos-stable> {}).multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
+    multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
     love steam steam.run ccemux the-powder-toy #riko4
 
     # Emulators
