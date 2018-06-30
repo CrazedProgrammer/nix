@@ -62,12 +62,9 @@ set ignorecase smartcase
 
 " File type presets
 
-autocmd FileType lisp :setlocal et ts=2 sw=2
-autocmd FileType php :setlocal et ts=4 sw=4
-autocmd FileType lua :setlocal ts=4 sw=4
-autocmd FileType cpp :setlocal ts=4 sw=4
-autocmd FileType cs :setlocal ts=4 sw=4 et
-autocmd FileType arduino :setlocal ts=2 sw=2 et
+autocmd FileType lisp,arduino,haskell,cabal :setlocal et ts=2 sw=2
+autocmd FileType lua,cpp :setlocal ts=4 sw=4
+autocmd FileType cs,php :setlocal ts=4 sw=4 et
 autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=73 et ts=2 sw=2
 
 
