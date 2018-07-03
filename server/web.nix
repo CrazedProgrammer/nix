@@ -32,7 +32,7 @@ with import ./vars.nix;
           browse /dist
           redir 302 {
             if {path} is /
-            / /dist
+            / https://emux.cc
           }
         }
 
