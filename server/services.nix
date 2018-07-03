@@ -75,7 +75,7 @@ with import ./vars.nix;
       startAt = "*-*-* *:00:00";
       serviceConfig = {
         User = "c3i";
-        WorkingDirectory = c3iHome;
+        WorkingDirectory = c3iHome + "/c3i";
       };
     };
     kristminer = {
