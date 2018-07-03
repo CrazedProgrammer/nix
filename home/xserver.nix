@@ -5,7 +5,7 @@
     # Enable the X11 windowing system.
     enable = true;
     layout = "us";
-    xkbOptions = "caps:escape";
+    xkbOptions = "caps:escape,compose:ralt";
 
     # Enable the SDDM login manager.
     displayManager.sddm.enable = true;
