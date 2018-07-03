@@ -51,7 +51,7 @@
     arc-theme paper-icon-theme
 
     # Office suite
-    gnome3.gnome-calculator (import <nixos-stable> {}).libreoffice-fresh
+    gnome3.gnome-calculator libreoffice-fresh
 
     # Visual editors
     gimp tiled
