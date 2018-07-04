@@ -50,6 +50,7 @@ neovim.override {
         lightline-vim
         easymotion
         vim-better-whitespace
+        commentary
       ];
       opt = [
         rainbow

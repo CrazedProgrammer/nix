@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Program for general startup/lock commands.
+# This is done to avoid duplicates in i3 config.
+
 function kill {
 	pkill -f polybar
 	pkill -f dunst
@@ -20,14 +23,19 @@ function reload {
 	dunst &
 }
 
-if [[ $1 == "boot" ]]; then
-	kill
-	boot
-elif [[ $1 == "reload" ]]; then
-	kill
-	reload
-elif [[ $1 == "kill" ]]; then
-	kill
-else
-	echo "Expected boot/reload/kill"
-fi
+function lock {
+	i3lock -c 000000
+}
+
+function tlock {
+	bash -c 'sleep 0.1; xtrlock-pam -b none' &
+}
+
+function suspend {
+	systemctl suspend
+}
+
+for var in "$@"
+do
+	"$var"
+done
