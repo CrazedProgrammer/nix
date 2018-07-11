@@ -10,4 +10,5 @@ self: super:
   technic-launcher = super.callPackage ../custom/technic-launcher.nix {};
   thelounge = super.callPackage ../custom/thelounge.nix {};
   ls_extended = super.callPackage ../custom/ls_extended.nix {};
+  kristvanity = super.callPackage ../custom/kristvanity.nix {};
 }

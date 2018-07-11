@@ -15,7 +15,7 @@
     git mercurial #darcs
 
     # Utilities
-    xsel xclip gnome3.gnome-screenshot qemu calcurse binutils-unwrapped slop xdotool clang-tools hhpc
+    xsel xclip gnome3.gnome-screenshot qemu calcurse binutils-unwrapped slop xdotool clang-tools hhpc kristvanity
 
     # Nix utilities
     nix-prefetch-git
