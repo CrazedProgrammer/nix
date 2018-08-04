@@ -5,7 +5,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     pkgs.lib.elem (builtins.parseDrvName pkg.name).name
     [ "steam" "steam-original" "steam-runtime" "corefonts" "technic-launcher" "astah-community"
-      "teamspeak-client" "dwarf-fortress-original" "firefox-bin" "firefox-release-bin-unwrapped" ];
+      "teamspeak-client" "dwarf-fortress" "firefox-bin" "firefox-release-bin-unwrapped" ];
 
   environment.systemPackages = with pkgs; [
     # Basic tools
@@ -32,7 +32,7 @@
     sbcl urn haskellPackages.idris
 
     # Games
-    multimc technic-launcher minetest dwarf-fortress gnome3.gnome-mines
+    multimc technic-launcher minetest gnome3.gnome-mines #dwarf-fortress
     love steam steam.run ccemux the-powder-toy #riko4
 
     # Emulators
