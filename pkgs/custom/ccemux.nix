@@ -1,11 +1,10 @@
 { stdenv, fetchurl, jre, makeWrapper }:
 
 let
-  jar-name = "CCEmuX-20180329-f67a98e7d.jar";
+  commit = "a1223914";
   jar = fetchurl {
-    name = jar-name;
-    url = "https://ccemux.crzd.me/dist/${jar-name}";
-    sha256 = "1hl6yb94arfkvrjy1y33wky0rglmjipacmyn38gpx278sh229ddz";
+    url = "https://emux.cc/versions/${commit}/CCEmuX-cct.jar";
+    sha256 = "1i767v3wnb8jsh7ciqqvw548pka1b8vl18k1rdv5dn21la6n0r1d";
   };
 in
 
