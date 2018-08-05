@@ -28,12 +28,12 @@
     (import <nixos-stable> {}).SDL2 SDL2_image
 
     # Languages
-    ghc lua5_3 rustChannels.nightly.rust gcc luajit openjdk python36 ruby nodejs-8_x
+    ghc lua5_3 cargo gcc luajit openjdk python36 ruby nodejs-8_x
     sbcl urn haskellPackages.idris
 
     # Games
     multimc technic-launcher minetest gnome3.gnome-mines #dwarf-fortress
-    love steam steam.run ccemux the-powder-toy chip8 #riko4
+    love steam steam.run ccemux the-powder-toy chip8 riko4
 
     # Emulators
     dosbox stella snes9x-gtk #dolphinEmuMaster
