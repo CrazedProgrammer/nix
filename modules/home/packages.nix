@@ -25,7 +25,7 @@
     pkgs.gnumake cmake gradle
 
     # Libraries
-    SDL2 SDL2_image
+    (import <nixos-stable> {}).SDL2 SDL2_image
 
     # Languages
     ghc lua5_3 rustChannels.nightly.rust gcc luajit openjdk python36 ruby nodejs-8_x
