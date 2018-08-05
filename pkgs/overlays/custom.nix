@@ -11,4 +11,6 @@ self: super:
   thelounge = super.callPackage ../custom/thelounge.nix {};
   ls_extended = super.callPackage ../custom/ls_extended.nix {};
   kristvanity = super.callPackage ../custom/kristvanity.nix {};
+  libexplain = super.callPackage ../custom/libexplain.nix {};
+  chip8 = super.callPackage ../custom/chip8.nix { libexplain = self.libexplain; };
 }

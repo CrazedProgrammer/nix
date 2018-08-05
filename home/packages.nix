@@ -33,7 +33,7 @@
 
     # Games
     multimc technic-launcher minetest gnome3.gnome-mines #dwarf-fortress
-    love steam steam.run ccemux the-powder-toy #riko4
+    love steam steam.run ccemux the-powder-toy chip8 #riko4
 
     # Emulators
     dosbox stella snes9x-gtk #dolphinEmuMaster
