@@ -9,7 +9,7 @@
     ./xserver.nix
   ];
 
-  nixpkgs.overlays = import ../pkgs/overlays;
+  nixpkgs.overlays = import ../../pkgs/overlays;
 
   nix = {
     daemonIONiceLevel = 7;
