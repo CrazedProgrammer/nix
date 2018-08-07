@@ -15,7 +15,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs-8_x htop neovim zsh jre
+    wget git curl nodejs-8_x htop neovim zsh jre ls_extended
   ];
 
   programs.tmux = {

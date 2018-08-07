@@ -10,7 +10,7 @@
       <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
       ../server
     ];
-  nixpkgs.overlays = import ../pkgs/overlays;
+  nixpkgs.overlays = import ../../pkgs/overlays;
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" ];
   boot.kernelModules = [ ];
@@ -64,6 +64,7 @@
       enable = true;
     };
   };
+  programs.mosh.enable = true;
 
   i18n = {
     consoleKeyMap = "us";

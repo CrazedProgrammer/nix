@@ -17,14 +17,14 @@ with import ./vars.nix;
       isNormalUser = true;
       uid = 1000;
       extraGroups = [ "wheel" "media" ];
-      hashedPassword = builtins.readFile ../../.casper-passwd;
+      hashedPassword = builtins.readFile ../../../.casper-passwd;
       home = "/home/casper";
       shell = pkgs.fish;
     };
     lur = {
       isNormalUser = true;
       uid = 1001;
-      hashedPassword = builtins.readFile ../../.lur-passwd;
+      hashedPassword = builtins.readFile ../../../.lur-passwd;
       home = "/home/lur";
       shell = pkgs.zsh;
     };
