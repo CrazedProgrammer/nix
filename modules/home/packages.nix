@@ -60,7 +60,7 @@
     audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped zathura #glava
 
     # Networking
-    openvpn openssh update-resolv-conf sshfs
+    openvpn openssh update-resolv-conf sshfs mosh
 
     # WM utilities
     polybar-wrapped rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam
