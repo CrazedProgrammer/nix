@@ -23,7 +23,7 @@
       sysuf = "cd $HOME/Projects/nixpkgs; git pull upstream master; cd -; sysa -I nixpkgs=$HOME/Projects/nixpkgs";
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
       ovpn = "sudo openvpn --config ~/.ovpn-client";
-      argonsshr = "mosh --ssh='ssh -p 18903' casper@argon";
+      argonsshr = "mosh --ssh=\"ssh -p 18903\" casper@argon";
       argonssh = "argonsshr tmux";
       clip = "xclip -selection clipboard";
       qemu = "qemu-system-x86_64 -m 4096 --enable-kvm -smp (nproc --all)";
