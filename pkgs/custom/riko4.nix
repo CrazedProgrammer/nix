@@ -33,10 +33,11 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "incinirate";
     repo = "Riko4";
-    rev = "b958c19d0337b3db2fac232a3cace21b67d2ecfb";
-    sha256 = "11bp76hwwr8nbf51zyp7gdxv7y7dp49cgck83rhyw77ypib8ghsh";
+    rev = "2beee8d2b6c482b0e848c65276a51566f30a401e";
+    sha256 = "15f4h2924hb1069688rs82vsvqjv588x6dyhhm55ik1ngzqvr7i9";
   };
 
+  patches = [ ./riko4.patch ];
   buildInputs = [ SDL2 luajit cmake curl sdl_gpu libcurlpp ];
   hardeningDisable = [ "fortify" ];
 

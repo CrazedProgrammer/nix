@@ -1,0 +1,13 @@
+diff --git a/src/core/shader.cpp b/src/core/shader.cpp
+index 07fe8ce..3341e8d 100644
+--- a/src/core/shader.cpp
++++ b/src/core/shader.cpp
+@@ -42,7 +42,7 @@ namespace riko::shader {
+             std::cout << "Using GLSL " << renderer->max_shader_version << std::endl;
+ 
+             if (renderer->max_shader_version >= 120)
+-                header = "#version " + std::to_string(renderer->max_shader_version) + "\n";
++                header = "#version 120\n";
+             else
+                 header = "#version 110\n";  // Maybe this is good enough?
+         } else if (renderer->shader_language == GPU_LANGUAGE_GLSLES)
