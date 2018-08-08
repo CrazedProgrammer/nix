@@ -1,6 +1,18 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.packageOverrides = super: with pkgs; rec {
+    mesa_drivers = (super.mesa_drivers.overrideAttrs (attrs: rec {
+      version = "18.0.5";
+      name = "mesa-noglu-${version}";
+      passthru = attrs.passthru // { inherit version; };
+      src =  fetchurl {
+        url = "https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz";
+        sha256 = "5187bba8d72aea78f2062d134ec6079a508e8216062dce9ec9048b5eb2c4fc6b";
+      };
+    })).drivers;
+  };
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
