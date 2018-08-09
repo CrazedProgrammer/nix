@@ -38,10 +38,10 @@
     kernelParams = [ "i915.enable_psr=1" "i915.i915_enable_fbc=1" ];
 
     kernelPackages = import ../home/kernel (pkgs // {
-      extraConfig = ''
-        # Sound power saving.
-        SND_HDA_POWER_SAVE_DEFAULT 1
-      '';
+      structuredExtraConfig = {
+        MSKYLAKE = "y";
+        SND_HDA_POWER_SAVE_DEFAULT = "1";
+      };
     });
   };
 

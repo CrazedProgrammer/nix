@@ -1,4 +1,4 @@
-{ stdenv, recurseIntoAttrs, linuxPackagesFor, linux_latest, ... } @ pkgs:
+{ stdenv, recurseIntoAttrs, linuxPackagesFor, linux_latest, structuredExtraConfig, ... } @ pkgs:
 
 let
   linux = linux_latest;
@@ -11,7 +11,6 @@ recurseIntoAttrs (linuxPackagesFor (linux.override {
       KERNEL_XZ = no;
       MODULE_COMPRESS = no;
       MODULE_COMPRESS_XZ = null;
-      MNATIVE = yes;
 
       LEDS_TRIGGER_DISK = yes;
 
@@ -21,5 +20,5 @@ recurseIntoAttrs (linuxPackagesFor (linux.override {
       # Not using Nvidia cards, so don't compile the (expensive) modules.
       FB_NVIDIA_I2C = no;
       DRM_NOUVEAU = no;
-    };
+    } // structuredExtraConfig;
 }))
