@@ -32,7 +32,12 @@ function tlock {
 }
 
 function suspend {
-	systemctl suspend
+	if [[ $(hostname) -eq "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
+		systemctl hibernate
+		boot
+	else
+		systemctl suspend
+	fi
 }
 
 for var in "$@"
