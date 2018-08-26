@@ -14,6 +14,7 @@ function boot {
 		sleep 5 && sudo hdparm -y /dev/sdb
 	elif [ $(hostname) == "helium" ]; then
 		sudo sh -c "echo 10 > /sys/module/snd_hda_intel/parameters/power_save"
+		sudo sh -c "echo 3600 > /sys/block/bcache0/bcache/writeback_delay"
 	fi
 }
 
