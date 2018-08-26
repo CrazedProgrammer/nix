@@ -36,7 +36,7 @@
     love steam steam.run ccemux the-powder-toy chip8 riko4
 
     # Emulators
-    dosbox stella snes9x-gtk #dolphinEmuMaster
+    dosbox stella snes9x-gtk vice dolphinEmuMaster
 
     # Terminal and editor
     kitty-wrapped neovim emacs-wrapped
