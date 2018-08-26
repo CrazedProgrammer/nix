@@ -14,6 +14,7 @@ function boot {
 		sleep 5 && sudo hdparm -y /dev/sdb
 	elif [ $(hostname) == "helium" ]; then
 		sudo sh -c "echo 10 > /sys/module/snd_hda_intel/parameters/power_save"
+		sudo sh -c "echo 3600 > /sys/block/bcache0/bcache/writeback_delay"
 	fi
 }
 
@@ -32,7 +33,7 @@ function tlock {
 }
 
 function suspend {
-	if [[ $(hostname) -eq "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
+	if [[ $(hostname) == "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
 		systemctl hibernate
 		boot
 	else
