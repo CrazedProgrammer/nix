@@ -32,6 +32,7 @@
       bmon = "sudo bmon";
       fslist = "zfs list -o name,compressratio,used,available";
       aubuild = "nix-shell -p automake autoconf libtool --run \"sh autogen.sh\"; and nix-build .";
+      esp-shell = "nix-shell (dotfiles)/esp-idf-shell.nix";
     };
 
     shellInit = ''

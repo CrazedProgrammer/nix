@@ -12,4 +12,5 @@ self: super:
   ls_extended = super.callPackage ../custom/ls_extended.nix {};
   kristvanity = super.callPackage ../custom/kristvanity.nix {};
   chip8 = super.callPackage ../custom/chip8.nix {};
+  esp32-toolchain = super.callPackage ../custom/esp32-toolchain.nix {};
 }
