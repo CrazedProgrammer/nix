@@ -30,7 +30,6 @@
     # Languages
     ghc lua5_3 cargo gcc luajit openjdk ruby nodejs-8_x
     sbcl urn haskellPackages.idris
-    esp32-toolchain
 
     # Games
     multimc technic-launcher minetest gnome3.gnome-mines #dwarf-fortress
