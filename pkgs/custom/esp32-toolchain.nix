@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, makeWrapper, glibc, patchelf, steam-run }:
+{ stdenv, fetchurl, makeWrapper, steam-run }:
 
 stdenv.mkDerivation rec {
   name = "esp32-toolchain";
@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     sha256 = "0mji8jq1dg198z8bl50i0hs3drdqa446kvf6xpjx9ha63lanrs9z";
   };
 
-  buildInputs = [ patchelf makeWrapper ];
+  buildInputs = [ makeWrapper ];
 
   phases = [ "unpackPhase" "installPhase" ];
 
@@ -18,10 +18,8 @@ stdenv.mkDerivation rec {
     for FILE in $(ls $out/bin); do
       FILE_PATH="$out/bin/$FILE"
       if [[ -x $FILE_PATH ]]; then
-        echo $FILE_PATH
-        #objdump -x ./bin/$FILE
-        mv $FILE_PATH $FILE_PATH-raw
-        makeWrapper ${steam-run}/bin/steam-run $FILE_PATH --add-flags "$FILE_PATH-raw"
+        mv $FILE_PATH $FILE_PATH-unwrapped
+        makeWrapper ${steam-run}/bin/steam-run $FILE_PATH --add-flags "$FILE_PATH-unwrapped"
       fi
     done
   '';
