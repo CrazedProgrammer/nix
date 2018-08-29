@@ -1,4 +1,12 @@
-{ stdenv, fetchurl, makeWrapper, steam-run }:
+{ stdenv, fetchurl, makeWrapper, buildFHSUserEnv }:
+
+let
+  fhsEnv = buildFHSUserEnv {
+    name = "esp32-toolchain-env";
+    targetPkgs = pkgs: with pkgs; [ zlib ];
+    runScript = "";
+  };
+in
 
 stdenv.mkDerivation rec {
   name = "esp32-toolchain";
@@ -19,7 +27,7 @@ stdenv.mkDerivation rec {
       FILE_PATH="$out/bin/$FILE"
       if [[ -x $FILE_PATH ]]; then
         mv $FILE_PATH $FILE_PATH-unwrapped
-        makeWrapper ${steam-run}/bin/steam-run $FILE_PATH --add-flags "$FILE_PATH-unwrapped"
+        makeWrapper ${fhsEnv}/bin/esp32-toolchain-env $FILE_PATH --add-flags "$FILE_PATH-unwrapped"
       fi
     done
   '';
