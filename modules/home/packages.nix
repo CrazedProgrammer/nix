@@ -25,18 +25,18 @@
     pkgs.gnumake cmake gradle
 
     # Libraries
-    (import <nixos-stable> {}).SDL2 SDL2_image
+    SDL2 SDL2_image
 
     # Languages
-    ghc lua5_3 cargo gcc luajit openjdk python36 ruby nodejs-8_x
-    sbcl urn haskellPackages.idris
+    ghc lua5_3 cargo gcc luajit openjdk ruby nodejs-8_x
+    sbcl ((import <nixos-unstable> {}).urn.override { useLuaJit = true; }) haskellPackages.idris
 
     # Games
     multimc technic-launcher minetest gnome3.gnome-mines #dwarf-fortress
-    love steam steam.run ccemux the-powder-toy chip8 riko4
+    love steam steam.run (import <nixos-unstable> {}).ccemux the-powder-toy chip8 riko4
 
     # Emulators
-    dosbox stella snes9x-gtk #dolphinEmuMaster
+    dosbox stella snes9x-gtk vice dolphinEmuMaster
 
     # Terminal and editor
     kitty-wrapped neovim emacs-wrapped
@@ -60,7 +60,7 @@
     audacity mpv gnome3.file-roller cli-visualizer-wrapped deadbeef ffmpeg projectm cava-wrapped zathura #glava
 
     # Networking
-    openvpn openssh update-resolv-conf sshfs
+    openvpn openssh update-resolv-conf sshfs mosh
 
     # WM utilities
     polybar-wrapped rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam
@@ -72,6 +72,6 @@
     plantuml arduino astah-community subversion fritzing plantuml
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf compsize picocom gotop htop
+    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom (import <nixos-unstable> {}).gotop htop
   ];
 }

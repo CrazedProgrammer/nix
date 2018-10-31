@@ -9,11 +9,12 @@ function kill {
 }
 
 function boot {
-	sudo sh -c "echo ide-disk > /sys/class/leds/input0::capslock/trigger"
+	echo ide-disk | sudo tee /sys/class/leds/input0::capslock/trigger
 	if [ $(hostname) == "xenon" ]; then
 		sleep 5 && sudo hdparm -y /dev/sdb
 	elif [ $(hostname) == "helium" ]; then
-		sudo sh -c "echo 10 > /sys/module/snd_hda_intel/parameters/power_save"
+		echo 10 | sudo tee /sys/module/snd_hda_intel/parameters/power_save
+		echo 3600 | sudo tee /sys/block/bcache0/bcache/writeback_delay
 	fi
 }
 
@@ -32,7 +33,12 @@ function tlock {
 }
 
 function suspend {
-	systemctl suspend
+	if [[ $(hostname) == "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
+		systemctl hibernate
+		boot
+	else
+		systemctl suspend
+	fi
 }
 
 for var in "$@"

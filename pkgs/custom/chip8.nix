@@ -1,19 +1,24 @@
-{ stdenv, fetchurl, libX11, libexplain, groff }:
+{ stdenv, fetchFromGitHub, SDL2 }:
 
-stdenv.mkDerivation {
-  name = "chip8-1.1";
+stdenv.mkDerivation rec {
+  name = "chip8";
+  version = "2018-06-23";
 
-  src = fetchurl {
-    url = https://ayera.dl.sourceforge.net/project/chip8/1.1/chip8-1.1.tar.gz;
-    sha256 = "1qfjk32y31ma0qcl22slpp6fm5mjwgr3ix64g7lkhykkibwlvyw8";
+  src = fetchFromGitHub {
+    owner = "wernsey";
+    repo = "chip8";
+    rev = "4af7ee733bc57415e4bbe302d2b83da2b2b35e67";
+    sha256 = "0jkwvj4dfhvjd53hd5ywm2cdv1dzmd0m3cbfa0099dfbccf0pi7y";
   };
 
-  postInstall = ''
-    mkdir -p $out/lib/chip8
-    cp ./datadir/* $out/lib/chip8/
-    rm $out/bin/test_prelude
+  installPhase = ''
+    mkdir -p $out/bin
+    install -m 755 c8asm $out/bin
+    install -m 755 c8dasm $out/bin
+    # Do not install the chip8 interpreter. It is broken on Astrododge.
+    #install -m 755 chip8 $out/bin
   '';
 
-  buildInputs = [ libX11 libexplain groff ];
+  buildInputs = [ SDL2 ];
   enableParallelBuilding = true;
 }

@@ -33,8 +33,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "incinirate";
     repo = "Riko4";
-    rev = "b958c19d0337b3db2fac232a3cace21b67d2ecfb";
-    sha256 = "11bp76hwwr8nbf51zyp7gdxv7y7dp49cgck83rhyw77ypib8ghsh";
+    rev = "c93f018b8342120b24a6d94e7ea9dfc97f7c7356";
+    sha256 = "09nfdvgrvdbr1139hi6s0ra4ffa5xgikrzrh7hlm2nilncws4xia";
   };
 
   buildInputs = [ SDL2 luajit cmake curl sdl_gpu libcurlpp ];

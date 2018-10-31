@@ -32,5 +32,5 @@
   time.timeZone = "Europe/Amsterdam";
 
   # The NixOS release version.
-  system.nixos.stateVersion = "18.03";
+  system.stateVersion = "18.03";
 }

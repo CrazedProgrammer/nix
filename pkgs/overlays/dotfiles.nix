@@ -38,7 +38,7 @@ in
   };
   rofi-wrapped = makeWrapped {
     name = "rofi";
-    pkg = super.rofi-unwrapped;
+    pkg = super.rofi;
     arg = "-config \\$(dotfiles)/rofi-config";
   };
   cli-visualizer-wrapped = makeWrapped {

@@ -14,17 +14,19 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = [ "btrfs" ];
-  boot.kernelPackages = import ../home/kernel pkgs;
+  boot.kernelPackages = import ../home/kernel (pkgs // {
+    structuredExtraConfig = {
+      MZEN = "y";
+    };
+  });
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3096957e-0b8f-4ac0-bab2-221cfa4b1851";
-      options = [ "compress-force=zstd" ];
-      fsType = "btrfs";
+ fileSystems."/" =
+    { device = "/dev/disk/by-uuid/8ee00b41-b4a1-4290-a01e-8b8788841c76";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EA56-F183";
+    { device = "/dev/disk/by-uuid/A024-0A4C";
       fsType = "vfat";
     };
 
@@ -35,7 +37,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/328c22da-dc9f-4751-b536-9018465e677e"; }
+    [ { device = "/dev/disk/by-uuid/4133fbc7-683f-4267-a6fb-126c7e80e29b"; }
     ];
 
   nix.maxJobs = 12;
@@ -61,6 +63,11 @@
       Identifier "DVI-D-1"
       Option "LeftOf" "DP-1"
     EndSection
+    Section "Device"
+      Identifier "AMD"
+      Driver "amdgpu"
+      Option "TearFree" "true"
+    EndSection
     Section "InputClass"
       Identifier "Logitech G403 Prodigy Gaming Mouse"
       MatchIsPointer "yes"
@@ -68,11 +75,6 @@
       Option "AccelerationScheme" "none"
       Option "AccelSpeed" "-1"
       Option "Resolution" "3500"
-    EndSection
-    Section "Device"
-      Identifier "AMD"
-      Driver "amdgpu"
-      Option "TearFree" "true"
     EndSection
   '';
 }
