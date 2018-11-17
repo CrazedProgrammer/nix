@@ -41,6 +41,7 @@ imap <C-q> <ESC>:q<CR>
 imap <C-b> <ESC>diwi
 inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<CR>" : "\<CR>"
 tnoremap <Esc> <C-\><C-n>
+vnoremap p "_dP
 
 for dirkey in ['h', 'j', 'k', 'l']
 	execute 'nnoremap <A-' . dirkey . '> <C-w>' . dirkey
