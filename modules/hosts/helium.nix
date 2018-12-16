@@ -33,13 +33,9 @@
 
     initrd.availableKernelModules = [ "bcache" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
 
     # Boot selection menu timeout of 1 second.
     loader.timeout = 1;
-
-    # Enable caps lock LED as disk activity light.
-    postBootCommands = "echo ide-disk | sudo tee /sys/class/leds/input0::capslock/trigger";
 
     kernelParams = [ "i915.enable_psr=1" "i915.i915_enable_fbc=1" ];
 

@@ -17,7 +17,6 @@
 
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
     kernelPackages = import ../home/kernel (pkgs // {
       structuredExtraConfig = {
         MZEN = "y";
