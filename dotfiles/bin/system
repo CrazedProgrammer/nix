@@ -6,6 +6,7 @@
 function kill {
 	pkill -f polybar
 	pkill -f dunst
+	pkill -f compton
 }
 
 function boot {
@@ -24,6 +25,7 @@ function reload {
 	feh --bg-tile $HOME/Pictures/Background.png &
 	polybar $(hostname) &
 	dunst &
+	compton
 }
 
 function lock {
