@@ -68,11 +68,11 @@
         Option "LeftOf" "DisplayPort-0"
       EndSection
       # TODO: fix screen tearing
-      #Section "Device"
-      #  Identifier "AMD"
-      #  Driver "amdgpu"
-      #  Option "TearFree" "true"
-      #EndSection
+      Section "Device"
+        Identifier "AMD"
+        Driver "amdgpu"
+        Option "TearFree" "true"
+      EndSection
       Section "InputClass"
         Identifier "Logitech G403 Prodigy Gaming Mouse"
         MatchIsPointer "yes"
