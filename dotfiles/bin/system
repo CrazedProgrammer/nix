@@ -26,7 +26,7 @@ function reload {
 	sh -c "polybar \$(hostname) || polybar generic" &
 	dunst &
 	if [ $(hostname) == "neon" ]; then
-		compton --backend=glx
+		compton --backend=glx --vsync drm
 	else
 		compton
 	fi
