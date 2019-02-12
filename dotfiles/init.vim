@@ -161,8 +161,8 @@ command Upload :call UploadBuffer()
 command Pan :call Pandoc()
 command CF :ClangFormat
 command CH :HeaderguardAdd
-command C :execute 'silent :!compiler' bufname('%') '&'
-command CO :execute 'silent :!compiler' bufname('%') '--open' '&'
+command C :w | :execute 'silent :!compiler' bufname('%') '&'
+command CO :w | :execute 'silent :!compiler' bufname('%') '--open' '&'
 
 function UploadBuffer()
 	let sourcepath = TempPath()
