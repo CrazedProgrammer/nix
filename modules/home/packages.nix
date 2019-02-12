@@ -8,7 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     # Basic tools
-    wget curl jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium ls_extended
+    wget curl jq bc loc p7zip fdupes pandoc texlive.combined.scheme-medium ls_extended file
 
     # Version control
     git #mercurial darcs
