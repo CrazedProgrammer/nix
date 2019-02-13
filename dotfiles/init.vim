@@ -67,6 +67,7 @@ set ignorecase smartcase
 autocmd FileType lisp,arduino,haskell,cabal,cpp,lua,typescript :setlocal et ts=2 sw=2
 autocmd FileType cs,php :setlocal ts=4 sw=4 et
 autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=73 et ts=2 sw=2
+autocmd FileType nix,plantuml :setlocal indentexpr=
 
 
 " Rainbow parentheses
