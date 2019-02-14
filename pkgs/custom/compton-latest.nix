@@ -3,7 +3,8 @@
 , docbook_xsl, libxslt, libxml2, makeWrapper, meson, ninja
 , xorg, libxcb ,xcbutilrenderutil, xcbutilimage, pixman, libev
 , dbus, libconfig, libdrm, libGL, pcre, libX11, libXcomposite, libXdamage
-, libXinerama, libXrandr, libXrender, libXext, xwininfo, libxdg_basedir }:
+, libXinerama, libXrandr, libXrender, libXext, xwininfo, libxdg_basedir
+, xorgproto ? xorg.xproto }:
 
 let
   common = source: stdenv.mkDerivation (source // rec {
@@ -56,7 +57,7 @@ let
 
     buildInputs = [
       dbus libX11 libXext
-      xorg.xproto
+      xorgproto
       libXinerama libdrm pcre libxml2 libxslt libconfig libGL
       # Removed:
       # libXcomposite libXdamage libXrender libXrandr
