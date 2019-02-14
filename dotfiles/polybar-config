@@ -18,7 +18,7 @@ alert = #bd2c40
 
 [bar/xenon]
 modules-left = memory cpuload cpugraph temperature_desktop
-modules-center = i3
+modules-center = i3 bspwm
 modules-right = wired volume date
 
 monitor = ${env:MONITOR:DisplayPort-0}
@@ -46,7 +46,7 @@ font-0 = monospace:size=9;1
 
 [bar/neon]
 modules-left = memory cpuload cpufreq cpugraph temperature
-modules-center = i3
+modules-center = i3 bspwm
 modules-right = wireless battery battery_usage volume date #wireless
 
 monitor = ${env:MONITOR:LVDS1}
@@ -75,7 +75,7 @@ font-0 = ${bar/xenon.font-0}
 
 [bar/generic]
 modules-left = memory cpuload cpugraph
-modules-center = i3
+modules-center = i3 bspwm
 modules-right = volume date
 
 monitor = ${env:MONITOR:Virtual-1}
@@ -137,6 +137,9 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
+
+[module/bspwm]
+type = internal/bspwm
 
 [module/cpugraph]
 type = internal/cpu
