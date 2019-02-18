@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 xrdb $(dotfiles)/Xresources
+system launch &
 system reload &
 
 bspc monitor -d I II III IV V VI VII VIII IX
