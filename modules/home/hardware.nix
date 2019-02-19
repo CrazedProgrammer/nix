@@ -45,7 +45,7 @@
     wantedBy = lib.mkForce [ ];
   };
   # Yes, this is a hack.
-  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start network-manager systemd-timesyncd";
+  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start network-manager systemd-timesyncd || true";
 
   hardware = {
     # Enable PulseAudio.
