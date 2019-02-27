@@ -66,6 +66,7 @@
     tlp = {
       wantedBy = lib.mkForce [ ];
     };
+    systemd-udev-settle.serviceConfig.ExecStart = ["" "${pkgs.coreutils}/bin/true"];
 
     battery-watchdog = {
       description = "Battery watchdog";
