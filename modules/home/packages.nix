@@ -1,11 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let
-  pkgsUnstable = import <nixos-unstable> {
-    config = config.nixpkgs.config;
-  };
-in
-
 {
   # Allow only these unfree packages.
   nixpkgs.config.allowUnfreePredicate = pkg:
