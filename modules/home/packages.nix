@@ -14,13 +14,13 @@
     git #mercurial darcs
 
     # Utilities
-    qemu pandoc texlive.combined.scheme-medium clang-tools stress #kristvanity
+    qemu pandoc graphviz texlive.combined.scheme-medium clang-tools stress #kristvanity
 
     # X utilities
     xsel xclip maim slop xdotool hhpc xorg.xhost
 
     # Nix utilities
-    nix-prefetch-git
+    nix-du
 
     # Build systems
     gnumake cmake gradle
