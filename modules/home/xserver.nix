@@ -48,6 +48,13 @@
     };
   };
 
+  # Enable sway beta window manager.
+  programs.sway-beta = {
+    enable = true;
+    package = pkgs.pkgsUnstable.sway-beta;
+  };
+  services.xserver.displayManager.extraSessionFilePackages = [ pkgs.sway-session ];
+
   environment.extraInit = ''
     export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
     export RUST_BACKTRACE=1
