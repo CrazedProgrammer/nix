@@ -1,11 +1,11 @@
-{ stdenv, writeText }:
+{ stdenv, writeText, configFile ? null }:
 
 let
   sessionStr = ''
     [Desktop Entry]
     Name=sway
     Comment=Sway Wayland session
-    Exec=sway
+    Exec=sway ${stdenv.lib.optionalString (configFile != null) "--config ${configFile}"}
     X-LightDM-Session-Type=wayland
   '';
   sessionFile = writeText "sway.desktop" sessionStr;

@@ -23,12 +23,6 @@
     # i3 window manager.
     windowManager = {
       default = "bspwm";
-      i3 = {
-        enable = true;
-        configFile = ../../dotfiles/i3-config;
-        package = pkgs.i3-gaps;
-        extraSessionCommands = "xrdb $(dotfiles)/Xresources";
-      };
       bspwm = {
         enable = true;
         configFile = ../../dotfiles/bspwmrc;
@@ -53,12 +47,9 @@
     enable = true;
     package = pkgs.pkgsUnstable.sway-beta;
   };
-  services.xserver.displayManager.extraSessionFilePackages = [ pkgs.sway-session ];
-
-  environment.extraInit = ''
-    export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
-    export RUST_BACKTRACE=1
-  '';
+  services.xserver.displayManager.extraSessionFilePackages = [
+    (pkgs.sway-session.override { configFile = ../../dotfiles/sway-config; })
+  ];
 
   environment.etc = {
     "xdg/gtk-2.0/gtkrc" = {
@@ -81,6 +72,11 @@
       text = builtins.readFile ../../dotfiles/mimeapps.list;
     };
   };
+
+  environment.extraInit = ''
+    export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+    export RUST_BACKTRACE=1
+  '';
 
   fonts = {
     fonts = with pkgs; [
