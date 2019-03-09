@@ -32,7 +32,7 @@ function reload {
 		true
 	else
 		feh --bg-tile $HOME/Pictures/Background.png &
-		sh -c "polybar \$(hostname) || polybar generic" &
+		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
 		if [ $(hostname) == "neon" ]; then
 			compton --backend=glx --vsync drm
