@@ -42,15 +42,6 @@
     };
   };
 
-  # Enable sway beta window manager.
-  programs.sway-beta = {
-    enable = true;
-    package = pkgs.pkgsUnstable.sway-beta;
-  };
-  services.xserver.displayManager.extraSessionFilePackages = [
-    (pkgs.sway-session.override { configFile = ../../dotfiles/sway-config; })
-  ];
-
   environment.etc = {
     "xdg/gtk-2.0/gtkrc" = {
       mode = "444";
