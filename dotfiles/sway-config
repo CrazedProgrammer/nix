@@ -110,7 +110,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # exit sway (logs you out of your session)
-bindsym $mod+Shift+y exit
+bindsym $mod+Shift+y exec "swaymsg exit"
 # kill all windows
 bindsym $mod+Shift+t [class=".+"] kill
 # shutdown

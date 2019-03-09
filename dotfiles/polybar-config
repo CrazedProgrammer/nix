@@ -23,7 +23,7 @@ modules-left = memory cpuload cpugraph temperature_desktop
 modules-center = i3 bspwm
 modules-right = wired volume date
 
-monitor = ${env:MONITOR:DisplayPort-0}
+; monitor = ${env:MONITOR:DP-1}
 width = 100%
 height = 18
 radius = 2.0

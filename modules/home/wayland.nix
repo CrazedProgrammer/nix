@@ -9,6 +9,8 @@ let
     input * xkb_options "${config.services.xserver.xkbOptions}"
     input * repeat_delay "${builtins.toString config.services.xserver.autoRepeatDelay}"
     input * repeat_rate "${builtins.toString (1000 / config.services.xserver.autoRepeatInterval)}"
+
+    output * background /home/casper/Pictures/Background.png tile
   '';
   swayConfigFile = pkgs.writeText "sway-config"
     ''

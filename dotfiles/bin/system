@@ -3,8 +3,6 @@
 # Program for general startup/lock commands.
 # This is done to avoid duplicates in i3 config.
 
-using_wayland="[ $XDG_SESSION_TYPE = wayland ]"
-
 function kill {
 	pkill -f polybar
 	pkill -f dunst
@@ -12,7 +10,7 @@ function kill {
 }
 
 function launch {
-	if $using_wayland; then
+	if is-wayland; then
 		if [ $(hostname) == "xenon" ]; then
 			swaymsg output DP-1 mode 1920x1080@144.001007Hz scale 1
 		fi
@@ -30,7 +28,7 @@ function launch {
 }
 
 function reload {
-	if $using_wayland; then
+	if is-wayland; then
 		true
 	else
 		feh --bg-tile $HOME/Pictures/Background.png &
