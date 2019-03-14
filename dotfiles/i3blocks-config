@@ -75,7 +75,13 @@ interval=1
 label=CPU
 interval=1
 min_width=CPU 100.00%
-#separator=false
+separator=false
+
+[cpu_max_usage]
+label=/
+min_width=/ 100.00%
+command=max-cpu-usage
+interval=1
 
 [load_average]
 label=LOAD
