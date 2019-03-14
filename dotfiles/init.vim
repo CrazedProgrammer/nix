@@ -8,6 +8,9 @@ if $NEOVIM == 'true'
 endif
 let $NEOVIM = 'true'
 
+" Filetype extension registery
+
+au BufNewFile,BufRead *.inc setlocal ft=cpp
 
 " Lazy plugins
 
