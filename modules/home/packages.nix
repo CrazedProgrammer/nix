@@ -17,7 +17,7 @@
     qemu pandoc graphviz texlive.combined.scheme-medium clang-tools stress #kristvanity
 
     # X utilities
-    xsel xclip maim slop grim slurp xdotool hhpc xorg.xhost
+    xsel xclip maim slop grim slurp wf-recorder xdotool hhpc xorg.xhost
 
     # Nix utilities
     nix-du
@@ -64,7 +64,7 @@
     openssh #openvpn update-resolv-conf sshfs
 
     # WM utilities
-    polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3status-rust
+    polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks
 
     # Scripts
     dotfiles-bin
