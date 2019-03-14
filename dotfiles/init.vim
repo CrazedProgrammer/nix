@@ -21,7 +21,7 @@ autocmd FileType markdown :packadd vim-pandoc-syntax
 
 " Autocomplete
 
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 " GUI and colors
 
