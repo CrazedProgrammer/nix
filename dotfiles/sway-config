@@ -167,9 +167,12 @@ exec_always --no-startup-id "system kill reload"
 bar {
     position top
 
+    output DP-1
+    output LVDS-1
+
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command i3status-rs $(dotfiles)/i3status-rs.toml
+    status_command i3blocks -c $(dotfiles)/i3blocks-config
 
     colors {
         statusline #ffffff
