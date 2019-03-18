@@ -6,6 +6,9 @@
     pkgs.lib.elem (builtins.parseDrvName pkg.name).name
     [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "teamspeak-client" ];
 
+  # Fix glava not finding config files.
+  environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
+
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel
@@ -58,7 +61,7 @@
     gimp #tiled
 
     # Multimedia
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped zathura #projectm glava
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura #projectm glava
 
     # Networking
     openssh #openvpn update-resolv-conf sshfs
