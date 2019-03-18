@@ -29,6 +29,9 @@ bindsym $mod+p exec "rofi -show combi"
 # start the browser
 bindsym $mod+b exec firefox
 
+# install gentoo
+bindsym XF86Launch1 exec "mpv https://i.crzd.me/install-gentoo.mp4 --fullscreen"
+
 # toggle mouse cursor
 bindsym $mod+Shift+g exec "sh -c 'if ! pkill hhpc; then hhpc -i 0; fi &'"
 

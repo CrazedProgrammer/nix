@@ -1,4 +1,0 @@
-#!/bin/sh
-
-max_usage=$(mpstat -P ALL 1 1 | awk '/Average:/ && $2 ~ /[0-9]/ {print 100 - $12}' | sort -n | tail -n 1)
-printf "%.2f%%" "$max_usage"

@@ -73,16 +73,16 @@ interval=1
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=CPU
-interval=1
-min_width=CPU 100.00%
-separator=false
+# [cpu_usage]
+# label=CPU
+# interval=1
+# min_width=CPU 100.00%
+# separator=false
 
-[cpu_max_usage]
-label=/
-min_width=/ 100.00%
-command=max-cpu-usage
+[custom_cpu_max_usage]
+label=CPU
+min_width=100.00% / 100.00%
+command=cpu-usage
 interval=1
 
 [load_average]
