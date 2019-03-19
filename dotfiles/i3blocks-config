@@ -85,9 +85,9 @@ min_width=100.00% / 100.00%
 command=cpu-usage
 interval=1
 
-[load_average]
-label=LOAD
-interval=10
+# [load_average]
+# label=LOAD
+# interval=10
 
 # Battery indicator
 #
