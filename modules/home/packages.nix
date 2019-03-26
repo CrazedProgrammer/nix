@@ -17,7 +17,7 @@
     git #mercurial darcs
 
     # Utilities
-    qemu pandoc graphviz texlive.combined.scheme-medium clang-tools stress #kristvanity
+    qemu pandoc graphviz flameGraph texlive.combined.scheme-medium clang-tools stress #kristvanity
 
     # X utilities
     xsel xclip maim slop grim slurp pkgsUnstable.wf-recorder xdotool hhpc xorg.xhost
@@ -37,7 +37,7 @@
 
     # Games
     multimc gnome3.gnome-mines #technic-launcher
-    steam steam.run ccemux the-powder-toy chip8 riko4
+    steam steam.run pkgsUnstable.ccemux the-powder-toy chip8 riko4
 
     # Emulators
     #dosbox stella snes9x-gtk vice dolphinEmuMaster
