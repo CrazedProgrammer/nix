@@ -6,9 +6,9 @@ linuxPackages.extend (lib.const (ksuper: {
       kernelPatches = ksuper.kernel.kernelPatches ++ [ (import ./kernel-gcc-patch.nix pkgs) ];
       structuredExtraConfig = {
         PREEMPT = yes;
-        KERNEL_XZ = no;
-        MODULE_COMPRESS = no;
-        MODULE_COMPRESS_XZ.freeform = null;
+        # KERNEL_XZ = no;
+        # MODULE_COMPRESS = no;
+        # MODULE_COMPRESS_XZ.freeform = null;
 
         # Unnecessary modules
         BTRFS_FS = no;
