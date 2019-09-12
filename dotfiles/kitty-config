@@ -53,3 +53,6 @@ color14   #56B6C2
 # white
 color7    #ABB2BF
 color15   #FFFEFE
+
+# disable update checking
+update_check_interval 0
