@@ -3,7 +3,7 @@
 {
   # Allow only these unfree packages.
   nixpkgs.config.allowUnfreePredicate = pkg:
-    pkgs.lib.elem (builtins.parseDrvName pkg.name).name
+    pkgs.lib.elem (if (builtins.hasAttr "name" pkg) then (builtins.parseDrvName pkg.name).name else pkg.pname)
     [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "teamspeak-client" ];
 
   # Fix glava not finding config files.
