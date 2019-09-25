@@ -49,7 +49,7 @@
     firefox w3m #luakit
 
     # Web chat
-    teamspeak_client #mumble
+    # teamspeak_client #mumble
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme glib gsettings-desktop-schemas
@@ -59,6 +59,7 @@
 
     # Visual editors
     gimp #tiled
+    cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
 
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) xfce.mousepad xfce.ristretto
