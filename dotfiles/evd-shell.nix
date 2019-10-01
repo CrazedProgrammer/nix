@@ -15,6 +15,9 @@ pkgs.mkShell {
       clang-tools
       (opencv4.override {
         enableGtk2 = true;
+        enablePython = true;
+        pythonPackages = python3Packages;
       })
+      python3
     ];
 }
