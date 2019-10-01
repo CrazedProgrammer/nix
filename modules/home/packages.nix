@@ -66,7 +66,7 @@
     audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura #projectm glava
 
     # Networking
-    openssh networkmanagerapplet #openvpn update-resolv-conf sshfs
+    openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
 
     # WM utilities
     polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
@@ -75,7 +75,7 @@
     dotfiles-bin
 
     # School
-    plantuml arduino subversion plantuml #fritzing astah-community
+    plantuml arduino subversion #fritzing astah-community
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu
