@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sysbench cpu --cpu-max-prime=20000 --threads=12 run | grep "events per second"
+sysbench memory --threads=12 run | grep "transferred"
