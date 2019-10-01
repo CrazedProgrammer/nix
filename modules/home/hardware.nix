@@ -22,7 +22,7 @@
       pkgs.kernel-gcc-patch
     ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_5_2;
 
     postBootCommands = "echo bfq > /sys/block/sda/queue/scheduler";
   };
