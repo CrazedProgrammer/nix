@@ -55,14 +55,14 @@
   };
 
   # Improve boot time by not waiting for the network and time sync to come up.
-  systemd.services."network-manager" = {
+  systemd.services."NetworkManager-wait-online" = {
     wantedBy = lib.mkForce [ ];
   };
   systemd.services."systemd-timesyncd" = {
     wantedBy = lib.mkForce [ ];
   };
   # Yes, this is a hack.
-  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start network-manager systemd-timesyncd tlp || true";
+  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start systemd-timesyncd tlp || true";
 
   hardware = {
     # Enable PulseAudio.
