@@ -2,6 +2,8 @@
 
 { pkgs ? import <nixpkgs> {} }:
 
+let mPythonPackages = pkgs.python3Packages; in
+
 pkgs.mkShell {
   buildInputs = with pkgs;
     [
@@ -16,8 +18,9 @@ pkgs.mkShell {
       (opencv4.override {
         enableGtk2 = true;
         enablePython = true;
-        pythonPackages = python3Packages;
+        pythonPackages = mPythonPackages;
       })
-      python3
+      mPythonPackages.python
+      mPythonPackages.autopep8
     ];
 }
