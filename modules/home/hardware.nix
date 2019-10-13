@@ -14,7 +14,8 @@
         patch = null;
         extraConfig = ''
           KERNEL_XZ n
-          PREEMPT y
+          # TODO: Find out why the kernel won't compile with this flag turned on.
+          #PREEMPT y
           MODULE_COMPRESS n
           BTRFS_FS n
         '';
@@ -22,7 +23,7 @@
       pkgs.kernel-gcc-patch
     ];
 
-    kernelPackages = pkgs.linuxPackages_5_2;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     postBootCommands = "echo bfq > /sys/block/sda/queue/scheduler";
   };
