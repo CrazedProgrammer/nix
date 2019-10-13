@@ -62,7 +62,7 @@
     cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
 
     # Multimedia
-    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) xfce.mousepad xfce.ristretto
+    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) xfce.mousepad mirage
     audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura #projectm glava
 
     # Networking
