@@ -17,10 +17,12 @@
     git #mercurial darcs
 
     # Utilities
-    qemu pandoc graphviz flameGraph texlive.combined.scheme-medium clang-tools stress sysbench #kristvanity
-
+    qemu pandoc graphviz flameGraph clang-tools stress sysbench #kristvanity
+    (texlive.combine {
+      inherit (texlive) scheme-small enumitem sectsty;
+    })
     # X utilities
-    xclip maim slop grim slurp pkgsUnstable.wf-recorder pkgsUnstable.wl-clipboard xdotool hhpc xorg.xhost
+    xclip maim slop grim slurp wf-recorder wl-clipboard xdotool hhpc xorg.xhost
 
     # Nix utilities
     nix-du
@@ -37,7 +39,7 @@
 
     # Games
     multimc gnome3.gnome-mines #technic-launcher
-    steam steam.run pkgsUnstable.ccemux the-powder-toy chip8 riko4
+    steam steam.run ccemux the-powder-toy chip8 riko4
 
     # Emulators
     #dosbox stella snes9x-gtk vice dolphinEmuMaster
@@ -80,6 +82,6 @@
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
-    then lib.singleton (pkgsUnstable.factorio.override (import /home/casper/.factorio.nix))
+    then lib.singleton (factorio.override (import /home/casper/.factorio.nix))
     else [ ]);
 }
