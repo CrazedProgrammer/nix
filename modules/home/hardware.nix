@@ -38,6 +38,7 @@
   networking = {
     # Use NetworkManager for networking.
     networkmanager.enable = true;
+    dhcpcd.enable = false;
 
     # Extra hosts.
     extraHosts = ''
