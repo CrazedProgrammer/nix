@@ -9,18 +9,17 @@
     kernelModules = [ "bfq" ];
 
     kernelPatches = [
+      pkgs.kernel-gcc-patch
       {
         name = "config-global";
         patch = null;
         extraConfig = ''
           KERNEL_XZ n
-          # TODO: Find out why the kernel won't compile with this flag turned on.
-          #PREEMPT y
+          PREEMPT y
           MODULE_COMPRESS n
           BTRFS_FS n
         '';
       }
-      pkgs.kernel-gcc-patch
     ];
 
     kernelPackages = pkgs.linuxPackages_latest;
