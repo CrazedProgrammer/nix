@@ -15,9 +15,9 @@
         patch = null;
         extraConfig = ''
           KERNEL_XZ n
-          PREEMPT y
           MODULE_COMPRESS n
           BTRFS_FS n
+          PREEMPT y
         '';
       }
     ];
@@ -75,7 +75,7 @@
   };
 
   # Systemd stop job timeout.
-  # Increase max file descriptors to 1M,
+  # Increase max file descriptors to 1M.
   systemd.extraConfig = ''
     DefaultLimitNOFILE=1048576
     DefaultTimeoutStartSec=10s

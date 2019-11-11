@@ -8,6 +8,8 @@
 
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
+  # Build EVD shell enviroment.
+  environment.variables.EVD_SHELL_PATH = "${import ../../dotfiles/evd-shell.nix { pkgs = pkgs; mkShell = false; }}";
 
   environment.systemPackages = with pkgs; [
     # Basic tools
@@ -57,7 +59,7 @@
     arc-theme paper-icon-theme glib gsettings-desktop-schemas
 
     # Office suite
-    gnome3.gnome-calculator libreoffice-fresh
+    gnome3.gnome-calculator libreoffice-fresh gnucash
 
     # Visual editors
     gimp #tiled
