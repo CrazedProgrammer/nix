@@ -33,6 +33,7 @@
       aubuild = "nix-shell -p automake autoconf libtool --run \"sh autogen.sh\"; and nix-build .";
       esp-shell = "nix-shell (dotfiles)/esp-idf-shell.nix";
       evd-shell = "nix-shell (dotfiles)/evd-shell.nix";
+      evd-vm = "qemu $HOME/VMs/debian.qcow2 -fsdev local,security_model=none,id=fsdev0,path=$HOME/Documents/EVD-1/evdk_share -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare";
       vm-build = "sudo nixos-rebuild build-vm -p test -I nixos-config=./modules/hosts/nixos-qemu.nix";
       # TODO: try to find a way to persist the disk image without chown errors during VM boot.
       vm-run = "./result/bin/run-nixos-qemu-vm -m 4096 --enable-kvm --smp (nproc --all); and rm ./nixos-qemu.qcow2";
