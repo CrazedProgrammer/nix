@@ -6,14 +6,16 @@ let
   mPythonPackages = pkgs.python3Packages;
   buildInputs = with pkgs;
     [
-      qt5.full
       gcc
-      qt5.qtquickcontrols2
-      qt5.qtquickcontrols
-      qtcreator
-      qt5.qtdoc
+      cmake
+      pkg-config
+      gtkmm3
+      pcre
       clang-analyzer
       clang-tools
+      gdb
+      ddd
+
       (opencv4.override {
         enableGtk2 = true;
         enablePython = true;
@@ -21,6 +23,12 @@ let
       })
       mPythonPackages.python
       mPythonPackages.autopep8
+
+      qtcreator
+      qt5.full
+      qt5.qtquickcontrols2
+      qt5.qtquickcontrols
+      qt5.qtdoc
     ];
 in
 
