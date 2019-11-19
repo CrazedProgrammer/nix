@@ -36,7 +36,7 @@
     SDL2 SDL2_image
 
     # Languages
-    lua5_3 cargo gcc luajit openjdk #ghc nodejs-8_x
+    lua5_3 cargo gcc luajit openjdk julia #ghc nodejs-8_x
     (urn.override { useLuaJit = true; })
 
     # Games
@@ -51,9 +51,6 @@
 
     # Browsers
     firefox w3m #luakit
-
-    # Web chat
-    # teamspeak_client #mumble
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme glib gsettings-desktop-schemas
@@ -79,7 +76,7 @@
     dotfiles-bin
 
     # School
-    plantuml arduino subversion #fritzing astah-community
+    plantuml arduino subversion #fritzing
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu
