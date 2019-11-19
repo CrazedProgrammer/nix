@@ -82,7 +82,7 @@
     plantuml arduino subversion #fritzing astah-community
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu
+    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
     then lib.singleton (factorio.override (import /home/casper/.factorio.nix))
     else [ ]);
