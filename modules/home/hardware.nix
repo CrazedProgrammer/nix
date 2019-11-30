@@ -9,17 +9,16 @@
     kernelModules = [ "bfq" ];
 
     kernelPatches = [
-      pkgs.kernel-gcc-patch
       {
         name = "config-global";
         patch = null;
         extraConfig = ''
+          BTRFS_FS n
           KERNEL_XZ n
           MODULE_COMPRESS n
-          BTRFS_FS n
-          PREEMPT y
         '';
       }
+      pkgs.kernel-gcc-patch
     ];
 
     kernelPackages = pkgs.linuxPackages_latest;

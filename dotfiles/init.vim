@@ -108,8 +108,8 @@ set ignorecase smartcase
 
 " File type presets
 
-autocmd FileType lisp,arduino,haskell,cabal,cpp,lua,typescript :setlocal et ts=2 sw=2
-autocmd FileType cs,php,python,julia,Dockerfile :setlocal ts=4 sw=4 et
+autocmd FileType lisp,arduino,haskell,cabal,lua,typescript :setlocal et ts=2 sw=2
+autocmd FileType c,cpp,cs,php,python,julia,Dockerfile :setlocal et ts=4 sw=4
 autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=79 textwidth=79 et ts=2 sw=2
 autocmd FileType nix,plantuml :setlocal indentexpr=
 
