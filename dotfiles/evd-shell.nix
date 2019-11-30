@@ -6,13 +6,15 @@ let
   mPythonPackages = pkgs.python3Packages;
   buildInputs = with pkgs;
     [
-      gcc
+      clang
       cmake
       pkg-config
       gtkmm3
       pcre
+      llvm
       clang-analyzer
       clang-tools
+      valgrind
       gdb
       ddd
 
@@ -30,11 +32,16 @@ let
       qt5.qtquickcontrols
       qt5.qtdoc
     ];
+    buildScript = ''
+      export CC=clang
+      export CXX=clang++
+    '';
 in
 
 if mkShell then
   pkgs.mkShell {
     buildInputs = buildInputs;
+    shellHook = buildScript;
   }
 else
   pkgs.stdenv.mkDerivation {
