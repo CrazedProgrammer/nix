@@ -116,7 +116,7 @@
     videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
     libinput = {
       enable = true;
-      naturalScrolling = true;
+      naturalScrolling = false;
     };
   };
 }
