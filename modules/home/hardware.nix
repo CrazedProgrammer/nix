@@ -44,15 +44,24 @@
     '';
   };
 
+  hardware = {
+    # Enable PulseAudio.
+    pulseaudio.enable = true;
+
+    # 32 bit compatibility for Steam.
+    opengl.driSupport32Bit = true;
+    pulseaudio.support32Bit = true;
+  };
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
   };
-
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
   };
+  services.earlyoom.enable = true;
 
   # Improve boot time by not waiting for the network and time sync to come up.
   systemd.services."NetworkManager-wait-online" = {
@@ -62,16 +71,7 @@
     wantedBy = lib.mkForce [ ];
   };
   # Yes, this is a hack.
-  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start systemd-timesyncd tlp || true";
-
-  hardware = {
-    # Enable PulseAudio.
-    pulseaudio.enable = true;
-
-    # 32 bit compatibility for Steam.
-    opengl.driSupport32Bit = true;
-    pulseaudio.support32Bit = true;
-  };
+  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start systemd-timesyncd || true";
 
   # Systemd stop job timeout.
   # Increase max file descriptors to 1M.
