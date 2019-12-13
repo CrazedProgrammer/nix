@@ -4,7 +4,7 @@
   # Allow only these unfree packages.
   nixpkgs.config.allowUnfreePredicate = pkg:
     pkgs.lib.elem (if (builtins.hasAttr "name" pkg) then (builtins.parseDrvName pkg.name).name else pkg.pname)
-    [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "teamspeak-client" ];
+    [ "steam" "steam-original" "steam-runtime" "factorio-alpha" ];
 
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
@@ -16,10 +16,10 @@
     wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel
 
     # Version control
-    git #mercurial darcs
+    git subversion #mercurial darcs
 
     # Utilities
-    qemu pandoc graphviz flameGraph clang-tools stress sysbench #kristvanity
+    qemu pandoc graphviz flameGraph clang-tools stress sysbench
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
@@ -30,27 +30,25 @@
     nix-du
 
     # Build systems
-    gnumake cmake gradle
+    gnumake cmake #gradle
 
     # Libraries
     SDL2 SDL2_image
 
     # Languages
-    lua5_3 cargo gcc luajit openjdk julia #ghc nodejs-8_x
+    lua5_3 luajit gcc julia
+    cargo #openjdk
     (urn.override { useLuaJit = true; })
 
     # Games
-    multimc gnome3.gnome-mines #technic-launcher
+    multimc gnome3.gnome-mines
     steam steam.run ccemux the-powder-toy chip8 riko4
-
-    # Emulators
-    #dosbox stella snes9x-gtk vice dolphinEmuMaster
 
     # Terminal and editor
     kitty-wrapped neovim alacritty-wrapped
 
     # Browsers
-    firefox w3m #luakit
+    firefox w3m
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme glib gsettings-desktop-schemas
@@ -64,7 +62,7 @@
 
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) xfce.mousepad mirage
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura #projectm glava
+    audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura
 
     # Networking
     openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
@@ -76,7 +74,7 @@
     dotfiles-bin
 
     # School
-    plantuml arduino subversion #fritzing
+    plantuml arduino #fritzing
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils
