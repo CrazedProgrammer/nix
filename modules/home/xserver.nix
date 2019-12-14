@@ -27,20 +27,25 @@
     };
   };
 
+  environment.variables = {
+    GTK_THEME = "Nordic";
+    GTK_ICON_THEME = "Paper";
+  };
+
   environment.etc = {
     "xdg/gtk-2.0/gtkrc" = {
       mode = "444";
       text = ''
-        gtk-theme-name = "Nordic"
-        gtk-icon-theme-name = "Paper"
+        gtk-theme-name = "${config.environment.variables.GTK_THEME}"
+        gtk-icon-theme-name = "${config.environment.variables.GTK_ICON_THEME}"
       '';
     };
     "xdg/gtk-3.0/settings.ini" = {
       mode = "444";
       text = ''
         [Settings]
-        gtk-theme-name = Nordic
-        gtk-icon-theme-name = Paper
+        gtk-theme-name = ${config.environment.variables.GTK_THEME}
+        gtk-icon-theme-name = ${config.environment.variables.GTK_ICON_THEME}
       '';
     };
     "xdg/mimeapps.list" = {
