@@ -23,7 +23,11 @@ function reload {
 	if is-wayland; then
 		dunst &
 	else
-		feh --bg-tile $HOME/Pictures/Background.png &
+		if [ $(hostname) = "xenon" ]; then
+			feh --bg-tile $(dotfiles-background-wide) &
+		else
+			feh --bg-tile $(dotfiles-background) &
+		fi
 		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
 		if [ $(hostname) == "neon" ]; then

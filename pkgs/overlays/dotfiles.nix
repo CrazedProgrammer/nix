@@ -17,6 +17,7 @@ in
 
 {
   dotfiles-bin = super.callPackage ../custom/dotfiles-bin.nix { };
+  dotfiles-background = super.callPackage ../custom/dotfiles-background.nix { };
 
   emacs-wrapped = makeWrapped {
     name = "emacs";

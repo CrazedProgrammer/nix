@@ -51,7 +51,8 @@
     firefox w3m
 
     # GTK+ and icon theme (settings)
-    arc-theme paper-icon-theme glib gsettings-desktop-schemas
+    arc-theme paper-icon-theme nordic shades-of-gray-theme
+    glib gsettings-desktop-schemas
 
     # Office suite
     gnome3.gnome-calculator libreoffice-fresh gnucash
@@ -71,7 +72,7 @@
     polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
 
     # Scripts
-    dotfiles-bin
+    dotfiles-bin dotfiles-background
 
     # School
     plantuml arduino #fritzing

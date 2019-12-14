@@ -19,13 +19,13 @@ alert = #ccbd2c40
 border = #dd111111
 
 [bar/xenon]
-modules-left = cpuload cpugraph temperature_desktop
-modules-center = i3 bspwm
-modules-right = wired volume date
+modules-left = i3 bspwm
+modules-center = title
+modules-right = cpuload temperature_desktop wired volume date
 
 monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
-height = 18
+height = 20
 radius = 2.0
 fixed-center = true
 
@@ -38,8 +38,8 @@ overline-color = #F00
 border-size = 1
 border-color = ${colors.border}
 
-padding-left = 1
-padding-right = 1
+padding-left = 0
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
@@ -47,9 +47,9 @@ module-margin-right = 1
 font-0 = FiraCode:size=9;3
 
 [bar/neon]
-modules-left = cpuload cpufreq cpugraph temperature
-modules-center = i3 bspwm
-modules-right = wireless battery battery_usage volume backlight date
+modules-left = i3 bspwm
+modules-center = 
+modules-right = cpuload cpufreq cpugraph temperature wireless battery battery_usage volume backlight date
 
 monitor = ${env:MONITOR:LVDS1}
 width = ${bar/xenon.width}
@@ -177,7 +177,7 @@ ramp-coreload-7 = █
 
 [module/cpuload]
 type = custom/script
-exec = cat /proc/loadavg | cut -d " " -f1
+exec = cpu-usage
 format-prefix = "CPU "
 format-overline = ${colors.secondary}
 interval = 1
@@ -215,7 +215,6 @@ type = internal/date
 interval = 10
 
 date = "%A, %B %d"
-
 time = %H:%M
 
 format-prefix =

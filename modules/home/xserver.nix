@@ -35,7 +35,7 @@
     "xdg/gtk-2.0/gtkrc" = {
       mode = "444";
       text = ''
-        gtk-theme-name = "Arc-Dark"
+        gtk-theme-name = "Nordic"
         gtk-icon-theme-name = "Paper"
       '';
     };
@@ -43,7 +43,7 @@
       mode = "444";
       text = ''
         [Settings]
-        gtk-theme-name = Arc-Dark
+        gtk-theme-name = Nordic
         gtk-icon-theme-name = Paper
       '';
     };
