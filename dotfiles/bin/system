@@ -10,7 +10,7 @@ function kill {
 }
 
 function launch {
-	if [ $(hostname) = "xenon" ]; then
+	if [ "$(hostname)" = "xenon" ]; then
 		sudo mount -o noatime /dev/disk/by-uuid/243205de-6503-42f7-baa6-12aaf3c2a68e /mnt/hdd
 		sleep 5 && sudo hdparm -y /dev/sdb
 	fi
@@ -23,14 +23,14 @@ function reload {
 	if is-wayland; then
 		dunst &
 	else
-		if [ $(hostname) = "xenon" ]; then
-			feh --bg-tile $(dotfiles-background-wide) &
+		if [ "$(hostname)" = "xenon" ]; then
+			feh --bg-tile "$(dotfiles-background-wide)" &
 		else
-			feh --bg-tile $(dotfiles-background) &
+			feh --bg-tile "$(dotfiles-background)" &
 		fi
 		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
-		if [ $(hostname) == "neon" ]; then
+		if [ "$(hostname)" == "neon" ]; then
 			compton --backend=glx --vsync drm
 		else
 			compton
@@ -51,7 +51,7 @@ function tlock {
 }
 
 function suspend {
-	if [[ $(hostname) == "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
+	if [[ "$(hostname)" == "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
 		systemctl hibernate
 		boot
 	else

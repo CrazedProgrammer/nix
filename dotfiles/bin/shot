@@ -4,9 +4,9 @@ path=$HOME/Pictures/Screenshots/$(date +"%Y%m%d-%H%M%S").png
 
 if is-wayland; then
 	case $1 in
-		"s") grim -g "$(slurp)" $path ;;
+		"s") grim -g "$(slurp)" "$path" ;;
 		"u") echo "Window selection unsupported."; exit 1 ;;
-		"m") grim $path ;;
+		"m") grim "$path" ;;
 		*) exit 1 ;;
 	esac
 else
@@ -17,7 +17,7 @@ else
 		*) exit 1 ;;
 	esac
 
-	maim $args $path
+	maim $args "$path"
 fi
 
-upload $path
+upload "$path"

@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ "$1" != "-r" ]; then
-	xrdb $(dotfiles)/Xresources
+	xrdb "$(dotfiles)/Xresources"
 	system launch &
 	system reload &
 fi
 
-if [ "$(hostname)" == "xenon" ]; then
+if [ "$(hostname)" = "xenon" ]; then
 	bspc monitor DVI-D-0 -d SI SII
 	bspc monitor DisplayPort-0 -d I II III IV V VI VII VIII
 else
