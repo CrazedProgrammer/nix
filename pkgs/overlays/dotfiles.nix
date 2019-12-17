@@ -42,6 +42,8 @@ in
     name = "alacritty";
     arg = "--config-file=\\$(dotfiles)/alacritty-config.yml";
   };
+  # NOTE: Kitty adds itself to the PATH for unknown reasons,
+  #       so it is not possible to spawn Kitty with the correct config recursively.
   kitty-wrapped = makeWrapped {
     name = "kitty";
     arg = "--config=\\$(dotfiles)/kitty-config";
