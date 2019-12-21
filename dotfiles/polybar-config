@@ -21,7 +21,7 @@ border = #dd111111
 [bar/xenon]
 modules-left = bspwm volume
 modules-center = title
-modules-right = cpuload temperature_desktop wired volume date
+modules-right = cpuload temperature_desktop wired date
 
 monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
@@ -78,7 +78,7 @@ font-0 = ${bar/xenon.font-0}
 [bar/generic]
 modules-left = bspwm volume
 modules-center = title
-modules-right = memory cpuload date
+modules-right = cpuload date
 
 monitor = ${env:MONITOR:Virtual-1}
 monitor-fallback = ${env:MONITOR:eDP1}
