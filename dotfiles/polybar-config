@@ -19,7 +19,7 @@ alert = #ccbd2c40
 border = #dd111111
 
 [bar/xenon]
-modules-left = bspwm
+modules-left = bspwm volume
 modules-center = title
 modules-right = cpuload temperature_desktop wired volume date
 
@@ -47,9 +47,9 @@ module-margin-right = 1
 font-0 = FiraCode:size=9;3
 
 [bar/neon]
-modules-left = bspwm
+modules-left = bspwm volume backlight
 modules-center = title
-modules-right = cpuload temperature wireless battery battery_usage volume backlight date
+modules-right = cpuload temperature wireless battery battery_usage date
 
 monitor = ${env:MONITOR:LVDS1}
 width = ${bar/xenon.width}
@@ -76,9 +76,9 @@ module-margin-right = ${bar/xenon.module-margin-right}
 font-0 = ${bar/xenon.font-0}
 
 [bar/generic]
-modules-left = bspwm
+modules-left = bspwm volume
 modules-center = title
-modules-right = memory cpuload volume date
+modules-right = memory cpuload date
 
 monitor = ${env:MONITOR:Virtual-1}
 monitor-fallback = ${env:MONITOR:eDP1}
@@ -193,7 +193,7 @@ label = %date% - %time%
 type = internal/alsa
 
 format-volume = <label-volume>
-format-volume-underline = ${colors.secondary}
+format-volume-underline = ${colors.primary}
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
@@ -208,7 +208,7 @@ card = intel_backlight
 format = <label>
 label = BAC %percentage%%
 
-format-underline = ${colors.secondary}
+format-underline = ${colors.primary}
 label-foreground = ${root.foreground}
 
 [module/battery]
@@ -266,6 +266,7 @@ label-warn-foreground = ${colors.secondary}
 
 [module/title]
 type = internal/xwindow
+label-maxlen = 50
 
 [settings]
 screenchange-reload = true

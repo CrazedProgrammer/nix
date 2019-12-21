@@ -2,3 +2,5 @@
 application/pdf=org.pwmt.zathura.desktop
 image/svg+xml=firefox.desktop
 image/png=mirage.desktop
+image/jpeg=mirage.desktop
+image/gif=mirage.desktop
