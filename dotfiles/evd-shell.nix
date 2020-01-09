@@ -9,15 +9,16 @@ let
       clang
       cmake
       pkg-config
-      gtkmm3
-      pcre
       llvm
       clang-analyzer
       clang-tools
       valgrind
       gdb
       ddd
+      doxygen
+      graphviz
 
+      gtkmm3
       (opencv4.override {
         enableGtk2 = true;
         enablePython = true;

@@ -36,7 +36,7 @@
     SDL2 SDL2_image
 
     # Languages
-    lua5_3 luajit gcc julia
+    lua5_3 luajit gcc julia elixir
     cargo #openjdk
     (urn.override { useLuaJit = true; })
 
