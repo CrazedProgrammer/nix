@@ -15,10 +15,13 @@ let
       valgrind
       gdb
       ddd
+
       doxygen
       graphviz
+      gtest
 
       gtkmm3
+      pcre
       (opencv4.override {
         enableGtk2 = true;
         enablePython = true;
