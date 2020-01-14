@@ -71,7 +71,7 @@
     wantedBy = lib.mkForce [ ];
   };
   # Yes, this is a hack.
-  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start systemd-timesyncd || true";
+  services.xserver.displayManager.setupCommands = "${pkgs.systemd}/bin/systemctl start systemd-timesyncd tlp || true";
 
   # Systemd stop job timeout.
   # Increase max file descriptors to 1M.
