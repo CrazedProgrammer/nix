@@ -53,6 +53,8 @@
     hdparm
   ];
 
+  services.mongodb.enable = true;
+
   # AMD polaris firmware
   hardware.enableRedistributableFirmware = true;
 

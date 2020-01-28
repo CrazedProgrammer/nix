@@ -4,19 +4,15 @@
   imports = [
     ../home/shell.nix
     ./users.nix
-    ./services.nix
-    ./web.nix
     ./networking.nix
-    ./backup.nix
   ];
 
   services.xserver.enable = false;
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = import ../pkgs/overlays;
 
   environment.systemPackages = with pkgs; [
-    wget git curl nodejs-8_x htop neovim zsh jre ls_extended
+    wget git curl nodejs-8_x htop neovim fish ls_extended
   ];
 
   programs.tmux = {

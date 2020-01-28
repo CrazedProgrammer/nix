@@ -22,7 +22,6 @@
   nix = {
     maxJobs = 4;
     buildCores = 4;
-    useSandbox = "relaxed";
   };
 
   ## Everything below is generated from nixos-in-place; modify with caution!
@@ -64,7 +63,6 @@
       enable = true;
     };
   };
-  programs.mosh.enable = true;
 
   i18n = {
     consoleKeyMap = "us";
@@ -75,5 +73,5 @@
   environment.sessionVariables = { TERM = "xterm-256color"; };
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "18.03";
+  system.stateVersion = "19.09";
 }
