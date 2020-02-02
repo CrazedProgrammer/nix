@@ -40,7 +40,7 @@
 
     # Extra hosts.
     extraHosts = ''
-      91.205.173.25 argon
+      167.86.113.178 radon
     '';
   };
 

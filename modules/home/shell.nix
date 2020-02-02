@@ -23,8 +23,8 @@
       sysuf = "cd $HOME/Projects/nixpkgs; git pull upstream master; cd -; sysa -I nixpkgs=$HOME/Projects/nixpkgs";
       sysclean = "sudo nix-collect-garbage -d; and sudo nix-store --optimise";
       ovpn = "sudo openvpn --config ~/.ovpn-client";
-      argonsshr = "mosh --ssh=\"ssh -p 18903\" casper@argon";
-      argonssh = "argonsshr tmux";
+      radonsshr = "ssh -p 18903 casper@radon";
+      radonssh = "radonsshr -t tmux";
       qemu = "qemu-system-x86_64 -m 8192 --enable-kvm -smp (nproc --all) -vga virtio";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       iotop = "sudo iotop";
