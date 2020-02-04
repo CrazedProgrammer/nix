@@ -9,6 +9,9 @@ fi
 if [ "$(hostname)" = "xenon" ]; then
 	bspc monitor DVI-D-0 -d SI SII
 	bspc monitor DisplayPort-0 -d I II III IV V VI VII VIII
+elif [ "$(hostname)" = "neon" ] && xrandr -q | grep "DP-1 connected"; then
+	bspc monitor LVDS-1 -d SI SII
+	bspc monitor DP-1 -d I II III IV V VI VII VIII
 else
 	bspc monitor -d I II III IV V VI VII VIII IX X
 fi
