@@ -26,7 +26,7 @@ function reload {
 		if [ "$(hostname)" = "xenon" ]; then
 			feh --bg-tile "$(dotfiles-background-wide)" &
 		else
-			feh --bg-tile "$(dotfiles-background)" &
+			feh --bg-scale "$(dotfiles-background)" &
 		fi
 		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
