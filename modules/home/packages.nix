@@ -69,7 +69,7 @@
     openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
 
     # WM utilities
-    polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
+    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
 
     # Scripts
     dotfiles-bin dotfiles-background

@@ -191,7 +191,7 @@ format-underline = ${colors.ternary}
 label = %date% - %time%
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-underline = ${colors.primary}
