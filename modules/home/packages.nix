@@ -23,8 +23,11 @@
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
+
     # X utilities
-    xclip maim slop grim slurp wf-recorder wl-clipboard xdotool hhpc xorg.xhost
+    xclip maim slop lxrandr xdotool hhpc xorg.xhost
+    # Wayland utilities
+    grim slurp wf-recorder wl-clipboard
 
     # Nix utilities
     nix-du
@@ -69,7 +72,7 @@
     openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
 
     # WM utilities
-    polybar rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
+    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
 
     # Scripts
     dotfiles-bin dotfiles-background

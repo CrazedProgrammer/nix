@@ -51,7 +51,8 @@ modules-left = bspwm volume backlight
 modules-center = title
 modules-right = cpuload temperature wireless battery battery_usage date
 
-monitor = ${env:MONITOR:LVDS1}
+monitor = DP-1
+monitor-fallback = LVDS-1
 width = ${bar/xenon.width}
 height = ${bar/xenon.height}
 
@@ -190,7 +191,7 @@ format-underline = ${colors.ternary}
 label = %date% - %time%
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 
 format-volume = <label-volume>
 format-volume-underline = ${colors.primary}

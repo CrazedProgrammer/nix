@@ -29,7 +29,7 @@ super + shift + o
 	system tlock
 
 {super + shift + Delete,XF86ScreenSaver}
-	system kill lock reload
+	system lock
 
 super + ctrl + Delete
 	system suspend lock
