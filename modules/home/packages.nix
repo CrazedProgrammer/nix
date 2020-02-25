@@ -25,7 +25,7 @@
     })
 
     # X utilities
-    xclip maim slop lxrandr xdotool hhpc xorg.xhost
+    xclip maim slop lxrandr xdotool hhpc xorg.xhost glxinfo
     # Wayland utilities
     grim slurp wf-recorder wl-clipboard
 

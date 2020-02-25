@@ -34,7 +34,11 @@ function reload {
 		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
 		if [ "$(hostname)" == "neon" ]; then
-			compton --backend=glx --vsync drm
+			if glxinfo | grep "OpenGL vendor string: nouveau"; then
+				compton --vsync=opengl
+			else
+				compton --backend=glx --vsync=drm
+			fi
 		else
 			compton
 		fi

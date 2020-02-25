@@ -69,7 +69,6 @@
         Identifier "DVI-D-0"
         Option "LeftOf" "DisplayPort-0"
       EndSection
-      # TODO: fix screen tearing
       Section "Device"
         Identifier "AMD"
         Driver "amdgpu"

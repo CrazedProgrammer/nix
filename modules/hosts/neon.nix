@@ -118,6 +118,13 @@
       enable = true;
       naturalScrolling = false;
     };
+    config = ''
+      Section "Device"
+        Identifier "nvidia card"
+        Driver "nouveau"
+        Option "GLXVBlank" "on"
+      EndSection
+    '';
   };
 
   # Enable support for wireless headphones.
