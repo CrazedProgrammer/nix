@@ -35,7 +35,11 @@
 
   networking = {
     # Use NetworkManager for networking.
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
+      dns = "none";
+    };
     dhcpcd.enable = false;
 
     # Extra hosts.
@@ -43,6 +47,8 @@
       167.86.113.178 radon
     '';
   };
+  # TODO: Figure out how to use nscd without it querying previous domains without asking.
+  services.nscd.enable = false;
 
   hardware = {
     # Enable PulseAudio.
