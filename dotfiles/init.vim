@@ -51,18 +51,20 @@ let g:deoplete#max_list = 7
 " Disable clipboard support until wl-clipboard doesn't create new
 " windows with wlroots compositors.
 
-let g:clipboard = {
-          \   'name': 'myClipboard',
-          \   'copy': {
-          \      '+': ':',
-          \      '*': ':',
-          \    },
-          \   'paste': {
-          \      '+': ':',
-          \      '*': ':',
-          \   },
-          \   'cache_enabled': 1,
-          \ }
+if !empty($WAYLAND_DISPLAY)
+	let g:clipboard = {
+		  \   'name': 'myClipboard',
+		  \   'copy': {
+		  \      '+': ':',
+		  \      '*': ':',
+		  \    },
+		  \   'paste': {
+		  \      '+': ':',
+		  \      '*': ':',
+		  \   },
+		  \   'cache_enabled': 1,
+		  \ }
+endif
 
 
 " GUI and colors
