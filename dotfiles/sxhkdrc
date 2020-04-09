@@ -51,6 +51,10 @@ XF86Launch1
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+# toggle between audio outputs
+super + a
+	toggle-audio-output
+
 # brightness keys
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
 	system brightness-{inc,dec} 10
@@ -92,8 +96,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f, shift + f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen,~fullscreen}
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,~fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
