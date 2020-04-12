@@ -19,7 +19,7 @@
     git subversion #mercurial darcs
 
     # Utilities
-    qemu pandoc graphviz flameGraph clang-tools stress sysbench
+    qemu pandoc graphviz flameGraph clang-tools rustfmt stress sysbench
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
