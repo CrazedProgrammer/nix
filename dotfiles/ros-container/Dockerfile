@@ -20,9 +20,10 @@ RUN [ "$(getent group users | cut -d: -f3)" = "100" ] \
          ros-melodic-desktop-full ros-melodic-tf2-tools ros-melodic-webots-ros python-rospkg python-rospkg-modules
 
 ARG INSTALL_WEBOTS=true
+ARG WEBOTS_TAG=R2020a-rev1
 RUN if [ "$INSTALL_WEBOTS" = true ]; then \
     cd /opt \
-    && git clone --recurse-submodules https://github.com/cyberbotics/webots.git \
+    && git clone --single-branch --branch "$WEBOTS_TAG" --recurse-submodules https://github.com/cyberbotics/webots.git \
     && cd /opt/webots \
     && rm -rf ./.git \
     && env HOME=/opt bash -c "source src/install_scripts/bashrc.linux && make release -j$(nproc)" \
@@ -30,12 +31,11 @@ RUN if [ "$INSTALL_WEBOTS" = true ]; then \
 ENV WEBOTS_HOME=/opt/webots
 
 ARG INSTALL_FREENECT2=false
-ARG FREENECT2_TAG=false
+ARG FREENECT2_TAG=master
 RUN if [ "$INSTALL_FREENECT2" = true ]; then \
     cd /opt \
-    && git clone https://github.com/OpenKinect/libfreenect2.git \
+    && git clone --single-branch --branch "$FREENECT2_TAG" https://github.com/OpenKinect/libfreenect2.git \
     && cd libfreenect2 \
-    && /bin/bash -c "if ! [[ $FREENECT2_TAG == false ]]; then git checkout tags/$FREENECT2_TAG; fi" \
     && rm -rf ./.git \
     && mkdir build && cd build \
     && cmake .. -DBUILD_OPENNI2_DRIVER=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/opt/freenect2 \
@@ -65,6 +65,9 @@ RUN if [ "$INSTALL_LCOV" = true ]; then \
     && cd lcov \
     && make install \
     ; else true; fi
+
+# Install additional ROS SLAM packages
+RUN sudo apt-get update && sudo apt-get install -y ros-melodic-hector-slam ros-melodic-gmapping
 
 # Remove temporary files
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
