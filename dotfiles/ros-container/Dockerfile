@@ -67,7 +67,7 @@ RUN if [ "$INSTALL_LCOV" = true ]; then \
     ; else true; fi
 
 # Install additional ROS SLAM packages
-RUN sudo apt-get update && sudo apt-get install -y ros-melodic-hector-slam ros-melodic-gmapping
+RUN sudo apt-get update && sudo apt-get install -y ros-melodic-hector-slam ros-melodic-gmapping ros-melodic-cartographer ros-melodic-slam-toolbox ros-melodic-slam-karto ros-melodic-amcl ros-melodic-mrpt-rbpf-slam ros-melodic-mrpt-ekf-slam-2d ros-melodic-mrpt-icp-slam-2d
 
 # Remove temporary files
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
