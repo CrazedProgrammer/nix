@@ -9,14 +9,16 @@ customname="$(basename "$path" | sed "s/.*\///" | sed "s/\.[^\.]*$//")"
 
 if [[ -f $path ]]; then
 	if curl -sf "$upload_url" -m 1 >/dev/null; then
-	# if true; then
 		if [ -z "$2" ]; then
 			curl -s -F "password=$password" -F "file=@$path" "$upload_url" | jq -r '.url' | tr -d '\040\011\012\015' | clip
 		else
 			curl -s -F "password=$password" -F "file=@$path" -F "name=$2" "$upload_url" | jq -r '.url' | tr -d '\040\011\012\015' | clip
 		fi
 	else
-		clip -t image/png < "$path"
+		if identify "$path"; then
+			clip -t image/png < "$path"
+		fi
 		notify-send "Error" "Failed to upload $customname"
+		exit 1
 	fi
 fi
