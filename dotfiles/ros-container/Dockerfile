@@ -77,8 +77,8 @@ RUN useradd -m -u 1000 -g users -G dialout,sudo,tape -s /bin/bash casper; echo c
 RUN echo "source /opt/bashrc.sh" >> /etc/bash.bashrc
 
 # Install rust
-RUN su casper -c "mkdir /home/casper/.cargo"
-VOLUME /home/casper/.cargo
+RUN su casper -c "mkdir -p /home/casper/.cargo/registry"
+VOLUME /home/casper/.cargo/registry
 RUN su casper -c "export HOME=/home/casper; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
 
 # Copy configuration files
