@@ -18,6 +18,7 @@
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
     kernelParams = [ "amdgpu.dc=1" ];
     kernelModules = [ "kvm-amd" ];
+    blacklistedKernelModules = [ "snd_hda_codec_hdmi" ]; # Disable HDMI audio
     kernelPatches = [ {
       name = "config-xenon";
       patch = null;
@@ -30,7 +31,7 @@
     } ];
   };
 
-  networking.hostName = "xenon"; # Define your hostname.
+  networking.hostName = "xenon";
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/bf89abae-adae-487e-b625-d0306cc96865";
