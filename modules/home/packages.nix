@@ -63,10 +63,14 @@
     # Visual editors
     gimp #tiled
     cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
+    audacity xfce.mousepad
+
+    # CLI A/V editors
+    ffmpeg imagemagick
 
     # Multimedia
-    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) xfce.mousepad mirage
-    audacity mpv gnome3.file-roller cli-visualizer-wrapped ffmpeg cava-wrapped glava zathura
+    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) mirage
+    mpv gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
     openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
