@@ -30,42 +30,23 @@ if !empty(glob('~/.vim/autoload/plug.vim')) || !empty(glob('~/.local/share/nvim/
 	call plug#end()
 endif
 
-" Filetype extension registery
-
-au BufNewFile,BufRead *.inc setlocal ft=cpp
-
 " Lazy plugins
 
 autocmd FileType lisp :packadd rainbow | :RainbowToggleOn
 autocmd FileType c,cpp :packadd vim-clang-format | :packadd vim-headerguard
 autocmd FileType markdown :packadd vim-pandoc-syntax
 
+" File type extension registry
 
-" Autocomplete
+au BufNewFile,BufRead *.inc setlocal ft=cpp
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#on_insert_enter = 0
-let g:deoplete#max_list = 7
+" File type presets
 
-
-" Disable clipboard support until wl-clipboard doesn't create new
-" windows with wlroots compositors.
-
-if !empty($WAYLAND_DISPLAY)
-	let g:clipboard = {
-		  \   'name': 'myClipboard',
-		  \   'copy': {
-		  \      '+': ':',
-		  \      '*': ':',
-		  \    },
-		  \   'paste': {
-		  \      '+': ':',
-		  \      '*': ':',
-		  \   },
-		  \   'cache_enabled': 1,
-		  \ }
-endif
-
+autocmd FileType css :setlocal ts=4 sw=4
+autocmd FileType c,cpp,cs,php,python,julia,Dockerfile :setlocal et ts=4 sw=4
+autocmd FileType lisp,arduino,haskell,cabal,lua,typescript,html,xml,cmake :setlocal et ts=2 sw=2
+autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=79 textwidth=79 et ts=2 sw=2
+autocmd FileType nix,plantuml :setlocal indentexpr=
 
 " GUI and colors
 
@@ -77,7 +58,6 @@ highlight ColorColumn ctermbg=black
 highlight FoldColumn ctermbg=none
 highlight Pmenu ctermbg=darkgrey
 highlight MatchParen cterm=bold ctermbg=darkgrey ctermfg=none
-
 
 " Keyboard mappings
 
@@ -96,6 +76,13 @@ for dirkey in ['h', 'j', 'k', 'l']
 	execute 'tnoremap <A-' . dirkey . '> <C-\><C-n><C-w>' . dirkey . 'i'
 endfor
 
+" Searching
+
+set ignorecase smartcase
+
+" CtrlP
+
+let g:ctrlp_regexp = 1
 
 " EasyMotion
 
@@ -103,23 +90,19 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap W <Plug>(easymotion-w)
 nmap B <Plug>(easymotion-b)
 
+" Autocomplete
 
-" Searching
-
-set ignorecase smartcase
-
-" File type presets
-
-autocmd FileType css :setlocal ts=4 sw=4
-autocmd FileType c,cpp,cs,php,python,julia,Dockerfile :setlocal et ts=4 sw=4
-autocmd FileType lisp,arduino,haskell,cabal,lua,typescript,html,xml,cmake :setlocal et ts=2 sw=2
-autocmd FileType markdown,text,plaintex :setlocal foldcolumn=4 colorcolumn=79 textwidth=79 et ts=2 sw=2
-autocmd FileType nix,plantuml :setlocal indentexpr=
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#on_insert_enter = 0
+let g:deoplete#max_list = 7
 
 " Enable markdown section folding without the line characters.
 let g:markdown_folding = 1
 autocmd FileType markdown :setlocal foldcolumn=0 numberwidth=7
 
+" Clang-Format
+
+let g:clang_format#code_style = "llvm"
 
 " Rainbow parentheses
 
@@ -134,7 +117,6 @@ let g:rainbow_conf = {
 \	}
 \}
 let g:rainbow_active = 1
-
 
 " Status bar
 
@@ -196,10 +178,6 @@ function BufName()
 	return g:bufname_cache[name]
 endfunction
 
-" Clang-Format
-
-let g:clang_format#code_style = "llvm"
-
 " Commands
 
 command Term :belowright new | :terminal
@@ -218,7 +196,6 @@ function UploadBuffer()
 	execute 'silent :!rm' fnameescape(sourcepath)
 endfunction
 
-
 " Misc functions
 
 function Chomp(str)
@@ -230,3 +207,21 @@ function TempPath(...)
 	let random = Chomp(system('bash -c "echo \$RANDOM"'))
 	return '/tmp/' . random . '.' . ext
 endfunction
+
+" Workaround: Disable clipboard support until wl-clipboard
+" doesn't create new windows with wlroots compositors.
+
+if !empty($WAYLAND_DISPLAY)
+	let g:clipboard = {
+		  \   'name': 'myClipboard',
+		  \   'copy': {
+		  \      '+': ':',
+		  \      '*': ':',
+		  \    },
+		  \   'paste': {
+		  \      '+': ':',
+		  \      '*': ':',
+		  \   },
+		  \   'cache_enabled': 1,
+		  \ }
+endif
