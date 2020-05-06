@@ -67,7 +67,7 @@ RUN if [ "$INSTALL_LCOV" = true ]; then \
     ; else true; fi
 
 # Install additional ROS SLAM packages
-RUN sudo apt-get update && sudo apt-get install -y ros-melodic-hector-slam ros-melodic-gmapping ros-melodic-cartographer ros-melodic-slam-toolbox ros-melodic-slam-karto ros-melodic-amcl ros-melodic-mrpt-rbpf-slam ros-melodic-mrpt-ekf-slam-2d ros-melodic-mrpt-icp-slam-2d
+RUN sudo apt-get update && sudo apt-get install -y python-rosdep ros-melodic-hector-slam ros-melodic-gmapping ros-melodic-cartographer ros-melodic-slam-toolbox ros-melodic-slam-karto ros-melodic-amcl ros-melodic-mrpt-rbpf-slam ros-melodic-mrpt-ekf-slam-2d ros-melodic-mrpt-icp-slam-2d
 
 # Remove temporary files
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -80,6 +80,10 @@ RUN echo "source /opt/bashrc.sh" >> /etc/bash.bashrc
 RUN su casper -c "mkdir -p /home/casper/.cargo/registry"
 VOLUME /home/casper/.cargo/registry
 RUN su casper -c "export HOME=/home/casper; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+
+# Initialize rosdep
+RUN rosdep init
+RUN su casper -c "export HOME=/home/casper; rosdep update"
 
 # Copy configuration files
 COPY startup.sh /opt/startup.sh
