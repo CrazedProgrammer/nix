@@ -43,21 +43,12 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/ssd" =
-    { device = "/dev/disk/by-label/second";
-      fsType = "f2fs";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/2854a56b-660f-4add-8bfa-9efb36a1cc01"; }
     ];
 
   nix.maxJobs = 12;
   nix.buildCores = 12;
-
-  environment.systemPackages = with pkgs; [
-    hdparm
-  ];
 
   # AMD polaris firmware
   hardware.enableRedistributableFirmware = true;
