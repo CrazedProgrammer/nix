@@ -45,7 +45,8 @@
 
     # Games
     multimc gnome3.gnome-mines
-    steam steam.run ccemux the-powder-toy chip8 riko4
+    #steam steam.run
+    ccemux the-powder-toy chip8 riko4
 
     # Terminal and editor
     kitty-wrapped neovim alacritty-wrapped
