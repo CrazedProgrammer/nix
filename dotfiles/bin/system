@@ -55,8 +55,13 @@ function tlock {
 
 function suspend {
 	if [[ "$(hostname)" == "xenon" && 6700000 -gt $(vmstat -s | grep used\ memory | cut -d " " -f7) ]] ; then
-		systemctl hibernate
-		boot
+		# Prevent "double suspending".
+		if [ ! -f /tmp/.suspend ]; then
+			touch /tmp/.suspend
+			systemctl hibernate
+			sh -c "sleep 1; rm /tmp/.suspend" &
+			disown
+		fi
 	else
 		systemctl suspend
 	fi
