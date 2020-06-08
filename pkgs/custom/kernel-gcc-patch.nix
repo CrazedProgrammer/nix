@@ -5,8 +5,8 @@ let kernel_gcc_patch = stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "graysky2";
     repo = "kernel_gcc_patch";
-    rev = "0ebe06178ea25923b33397ff04e9d701356825a0";
-    sha256 = "07jhiy3grnwydyxw43mb525czhhk4hk4f06dlarw4rndh8cg7g4d";
+    rev = "8bbb34adf44784d870ffd8066c25ddf02011d001";
+    sha256 = "0aqvi23lpzghgn8pq4hf2a94kyzp8gfv2m11y5vljp9jwy3jrivz";
   };
   installPhase = ''
     mkdir -p $out/lib
@@ -15,5 +15,5 @@ let kernel_gcc_patch = stdenv.mkDerivation {
 }; in
 
 { name = "gcc_patch";
-  patch = builtins.toPath "${kernel_gcc_patch}/lib/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch";
+  patch = builtins.toPath "${kernel_gcc_patch}/lib/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch";
 }

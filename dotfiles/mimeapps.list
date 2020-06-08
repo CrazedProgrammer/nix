@@ -1,6 +1,6 @@
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
 image/svg+xml=firefox.desktop
-image/png=mirage.desktop
-image/jpeg=mirage.desktop
-image/gif=mirage.desktop
+image/png=viewnior.desktop
+image/jpeg=viewnior.desktop
+image/gif=viewnior.desktop

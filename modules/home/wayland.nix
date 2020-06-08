@@ -26,7 +26,7 @@ in
   programs.sway = {
     enable = true;
   };
-  services.xserver.displayManager.extraSessionFilePackages = [
+  services.xserver.displayManager.sessionPackages = [
     (pkgs.sway-session.override { configFile = swayConfigFile; })
   ];
 

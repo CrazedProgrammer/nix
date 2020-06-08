@@ -18,4 +18,5 @@ stdenv.mkDerivation {
     mkdir -p $out/share/xsessions
     cp ${sessionFile} $out/share/xsessions/sway.desktop
   '';
+  passthru.providedSessions = [ "sway" ];
 }

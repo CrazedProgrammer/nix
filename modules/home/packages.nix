@@ -70,7 +70,7 @@
     ffmpeg imagemagick
 
     # Multimedia
-    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) mirage
+    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) viewnior
     mpv gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
@@ -86,7 +86,7 @@
     plantuml arduino #fritzing
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils
+    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
     then lib.singleton (factorio.override (import /home/casper/.factorio.nix))
     else [ ]);
