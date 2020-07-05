@@ -5,9 +5,6 @@
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" ];
 
-    # Assume /dev/sda is an SSD, which benefits from the BFQ queue scheduler.
-    kernelModules = [ "bfq" ];
-
     kernelPatches = [
       {
         name = "config-global";
@@ -22,8 +19,6 @@
     ];
 
     kernelPackages = pkgs.linuxPackages_latest;
-
-    postBootCommands = "echo bfq > /sys/block/sda/queue/scheduler";
   };
 
   # /tmp on tmpfs.
