@@ -182,10 +182,10 @@ endfunction
 
 command Term :belowright new | :terminal
 command Upload :call UploadBuffer()
-command Pan :call Pandoc()
 command CF :ClangFormat
 command CFA :bufdo execute ":CF" | w
 command CH :HeaderguardAdd
+command QE :%bd|e#
 command C :w | :execute 'silent :!compiler' bufname('%') '&'
 command CO :w | :execute 'silent :!compiler' bufname('%') '--open' '&'
 
