@@ -83,6 +83,7 @@ set ignorecase smartcase
 " CtrlP
 
 let g:ctrlp_regexp = 1
+set wildignore+=*/venv/*
 
 " EasyMotion
 
