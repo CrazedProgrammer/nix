@@ -2,8 +2,8 @@
 
 let
   source = fetchurl {
-    url = "https://images7.alphacoders.com/898/898149.jpg";
-    sha256 = "1syy02nnb7yq0d3caki2raapsznbw9wdb3nfp41az5plb3499lc7";
+    url = "https://www.pixelstalk.net/wp-content/uploads/2016/10/Blank-Wallpaper-Full-HD.png";
+    sha256 = "1z2xg8ffqyg9lp9xhm70asnpiw952waq2l5irj1fydkp5hbbgaxx";
     name = "background-original.jpg";
   };
 in
