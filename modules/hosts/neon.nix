@@ -106,12 +106,6 @@
     extraArgs = [ "-s 1" "-b 0" ];
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0777"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", MODE="0777"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3752", MODE="0777"
-  '';
-
   services.xserver = {
     videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
     libinput = {

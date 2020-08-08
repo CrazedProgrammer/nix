@@ -54,6 +54,14 @@
     pulseaudio.support32Bit = true;
   };
 
+  # Allow VM to access ST-Link and Google Nexus devices.
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0777"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", MODE="0777"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3752", MODE="0777"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", MODE="0777"
+  '';
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
