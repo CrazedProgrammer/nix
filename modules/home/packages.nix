@@ -36,7 +36,7 @@
     gnumake cmake #gradle
 
     # Libraries
-    SDL2 SDL2_image
+    SDL2 SDL2_image libv4l
 
     # Languages
     lua5_3 luajit gcc julia elixir
