@@ -25,7 +25,7 @@
       ovpn = "sudo openvpn --config ~/.ovpn-client";
       radonsshr = "ssh -p 18903 casper@radon";
       radonssh = "radonsshr -t tmux";
-      qemu = "qemu-system-x86_64 -m 8192 --enable-kvm -smp (nproc --all) -vga virtio";
+      qemu = "qemu-system-x86_64 -m 8192 --enable-kvm -cpu host -smp (nproc --all) -vga virtio";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       iotop = "sudo iotop";
       bmon = "sudo bmon";

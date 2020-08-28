@@ -4,7 +4,7 @@
   # Allow only these unfree packages.
   nixpkgs.config.allowUnfreePredicate = pkg:
     pkgs.lib.elem (if (builtins.hasAttr "name" pkg) then (builtins.parseDrvName pkg.name).name else pkg.pname)
-    [ "steam" "steam-original" "steam-runtime" "factorio-alpha" ];
+    [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "virtualbox" ];
 
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
@@ -74,7 +74,7 @@
     mpv gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
-    openssh tigervnc networkmanagerapplet ncat #openvpn update-resolv-conf sshfs
+    openssh tigervnc networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
 
     # WM utilities
     (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped

@@ -31,6 +31,9 @@
     } ];
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  environment.systemPackages = with pkgs; [ vagrant ];
+
   networking.hostName = "xenon";
 
   fileSystems."/" =
