@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     # Basic tools
-    wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel
+    wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt
 
     # Version control
     git subversion #mercurial darcs

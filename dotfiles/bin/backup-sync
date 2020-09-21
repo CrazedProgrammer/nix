@@ -1,0 +1,65 @@
+#!/bin/sh
+
+DIRS_LOCATION="$HOME/.private/backup-list"
+PASSWD_LOCATION="$HOME/.private/backup-passwd"
+
+BACKUP_PATH="/var/lib/backup"
+BACKUP_ROOT_PATH="$BACKUP_PATH/root"
+BACKUP_ARCHIVE_PATH="$BACKUP_PATH/archive"
+
+ZIP_METHOD="lz4"
+ARCHIVE_NAME="backup-$(hostname)-$(date --iso-8601=date)"
+ARCHIVE_PATH="${BACKUP_ARCHIVE_PATH}/${ARCHIVE_NAME}.tar.${ZIP_METHOD}"
+
+sync_dirs()
+(
+	echo "Syncing directories..."
+	while read -r dir; do
+		mkdir -p "${BACKUP_ROOT_PATH}${dir}"
+		rsync -a "$dir/" "${BACKUP_ROOT_PATH}${dir}"
+	done < "$DIRS_LOCATION"
+)
+
+create_archive()
+(
+	mkdir -p "$BACKUP_ARCHIVE_PATH"
+
+	echo "Creating archive $ARCHIVE_NAME..."
+	cd "$BACKUP_ROOT_PATH" || exit 1
+	rm -f "$ARCHIVE_PATH"
+	tar -I "${ZIP_METHOD}" -cf "$ARCHIVE_PATH" .
+)
+
+encrypt_archive()
+(
+	echo "Encrypting archive..."
+	ccrypt --encrypt -f -k "$PASSWD_LOCATION" "$ARCHIVE_PATH"
+)
+
+calculate_checksum()
+(
+	echo "Calculating checksum..."
+	sha256sum -b "$ARCHIVE_PATH.cpt" | cut -d " " -f1 > "$ARCHIVE_PATH.cpt.sha256sum"
+)
+
+upload_archive()
+(
+	echo "Uploading archive to VPS..."
+	scp -q "$ARCHIVE_PATH.cpt" "$ARCHIVE_PATH.cpt.sha256sum" casper@radon:backup
+)
+
+if [ ! -f "$DIRS_LOCATION" ]; then
+	echo "Backup directory list missing from $DIRS_LOCATION"
+	exit 1
+elif [ ! -f "$PASSWD_LOCATION" ]; then
+	echo "Backup password missing from $PASSWD_LOCATION"
+	exit 1
+fi
+
+sync_dirs
+create_archive
+encrypt_archive
+calculate_checksum
+upload_archive
+
+echo "Done."

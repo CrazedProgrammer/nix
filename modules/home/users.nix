@@ -18,4 +18,7 @@
     home = "/home/casper";
     shell = pkgs.fish;
   };
+
+  # SSH config.
+  programs.ssh.extraConfig = builtins.readFile ../../dotfiles/ssh-config;
 }
