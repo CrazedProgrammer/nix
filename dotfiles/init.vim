@@ -36,6 +36,15 @@ autocmd FileType lisp :packadd rainbow | :RainbowToggleOn
 autocmd FileType c,cpp :packadd vim-clang-format | :packadd vim-headerguard
 autocmd FileType markdown :packadd vim-pandoc-syntax
 
+" Swap and backup file directory
+
+if !has('nvim')
+	set directory=$HOME/.vim/swap//
+	set backupdir=$HOME/.vim/backup//
+	execute 'silent :!mkdir -p' fnameescape(&directory)
+	execute 'silent :!mkdir -p' fnameescape(&backupdir)
+endif
+
 " File type extension registry
 
 au BufNewFile,BufRead *.inc setlocal ft=cpp
