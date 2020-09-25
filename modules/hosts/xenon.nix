@@ -25,7 +25,7 @@
       name = "config-xenon";
       patch = null;
       extraConfig = ''
-        MZEN y
+        MZEN2 y
         DRM_I915 n
         FB_NVIDIA_I2C n
         DRM_NOUVEAU n
@@ -36,8 +36,8 @@
   networking.hostName = "xenon";
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bf89abae-adae-487e-b625-d0306cc96865";
-      fsType = "f2fs";
+    { device = "/dev/disk/by-uuid/b9f43929-9b6e-4a05-82fc-f2820a3b2249";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
@@ -49,8 +49,8 @@
     [ { device = "/dev/disk/by-uuid/2854a56b-660f-4add-8bfa-9efb36a1cc01"; }
     ];
 
-  nix.maxJobs = 12;
-  nix.buildCores = 12;
+  nix.maxJobs = 24;
+  nix.buildCores = 24;
 
   # AMD polaris firmware
   hardware.enableRedistributableFirmware = true;
