@@ -11,4 +11,10 @@
       corefonts
     ];
   };
+
+  programs.fish.shellAliases = {
+    cdi = "cd ~/Documents/IAM";
+    ovpni = "sudo openvpn --config ~/Documents/IAM/VPN.ovpn";
+    socati = "sudo socat TCP-LISTEN:80,fork TCP:localhost:8080";
+  };
 }
