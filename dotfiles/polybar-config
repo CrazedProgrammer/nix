@@ -171,7 +171,7 @@ format-connected-underline = ${colors.secondary}
 
 [module/wired]
 type = internal/network
-interface = enp25s0
+interface = enp4s0
 interval = 1
 label-connected = NET %downspeed% %upspeed%
 format-connected-underline = ${colors.secondary}

@@ -46,12 +46,22 @@
   services.nscd.enable = false;
 
   hardware = {
-    # Enable PulseAudio.
-    pulseaudio.enable = true;
+    # Enable PulseAudio with Bluetooth support.
+    pulseaudio = {
+      enable = true;
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
+    };
 
     # 32 bit compatibility for Steam.
     opengl.driSupport32Bit = true;
     pulseaudio.support32Bit = true;
+  };
+
+  # Enable Bluetooth support.
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.pkgsUnstable.bluez; # Use latest BlueZ, contains needed fixes.
   };
 
   # Allow VM to access ST-Link and Google Nexus devices.

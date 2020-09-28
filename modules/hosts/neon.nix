@@ -120,14 +120,4 @@
       EndSection
     '';
   };
-
-  # Enable support for wireless headphones.
-  hardware.pulseaudio = {
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
-  };
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.pkgsUnstable.bluez; # Use latest BlueZ, contains needed fixes.
-  };
 }
