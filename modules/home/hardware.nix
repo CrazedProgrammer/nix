@@ -42,8 +42,6 @@
       167.86.113.178 radon
     '';
   };
-  # TODO: Figure out how to use nscd without it querying previous domains without asking.
-  services.nscd.enable = false;
 
   hardware = {
     # Enable PulseAudio with Bluetooth support.

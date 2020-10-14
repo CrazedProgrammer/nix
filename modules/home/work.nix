@@ -14,6 +14,7 @@
 
   programs.fish.shellAliases = {
     cdi = "cd ~/Documents/IAM";
+    sshi = "cd ~/Documents/IAM/VMs/sls; vagrant up; vagrant ssh";
     ovpni = "sudo openvpn --config ~/Documents/IAM/VPN.ovpn";
     socati = "sudo socat TCP-LISTEN:80,fork TCP:localhost:8080";
   };

@@ -65,6 +65,7 @@
     gimp #tiled
     cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
     audacity xfce.mousepad
+    sweethome3d.application
 
     # CLI A/V editors
     ffmpeg imagemagick
