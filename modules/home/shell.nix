@@ -47,7 +47,7 @@
 
     shellInit = ''
       set -g theme_date_format "+%H:%M:%S "
-      for file in ${pkgs.bobthefish}/lib/bobthefish/*.fish; . $file; end
+      for file in ${pkgs.bobthefish}/lib/bobthefish/{functions/,}*.fish; . $file; end
     '';
   };
 }

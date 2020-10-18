@@ -10,9 +10,9 @@
         name = "config-global";
         patch = null;
         extraConfig = ''
-          BTRFS_FS n
-          KERNEL_XZ n
-          MODULE_COMPRESS n
+          # BTRFS_FS n
+          # KERNEL_XZ n
+          # MODULE_COMPRESS n
         '';
       }
       pkgs.kernel-gcc-patch

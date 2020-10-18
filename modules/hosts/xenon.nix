@@ -26,7 +26,7 @@
       patch = null;
       extraConfig = ''
         MZEN2 y
-        DRM_I915 n
+        # DRM_I915 n
         FB_NVIDIA_I2C n
         DRM_NOUVEAU n
       '';

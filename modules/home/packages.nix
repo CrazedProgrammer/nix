@@ -9,7 +9,7 @@
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
   # Build EVD shell enviroment.
-  environment.variables.EVD_SHELL_PATH = "${import ../../dotfiles/evd-shell.nix { pkgs = pkgs; mkShell = false; }}";
+  # environment.variables.EVD_SHELL_PATH = "${import ../../dotfiles/evd-shell.nix { pkgs = pkgs; mkShell = false; }}";
 
   environment.systemPackages = with pkgs; [
     # Basic tools
@@ -39,7 +39,7 @@
     SDL2 SDL2_image libv4l
 
     # Languages
-    lua5_3 luajit gcc julia elixir
+    lua5_3 luajit gcc elixir
     cargo #openjdk
     (urn.override { useLuaJit = true; })
 
@@ -63,7 +63,7 @@
 
     # Visual editors
     gimp #tiled
-    cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
+    #cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
     audacity xfce.mousepad
     sweethome3d.application
 
