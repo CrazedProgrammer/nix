@@ -3,7 +3,7 @@
 { stdenv, fetchFromGitHub, callPackage, nodejs }:
 
 stdenv.mkDerivation {
-  name = "thelounge";
+  pname = "thelounge";
   version = "2.5.0-rc.5";
 
   src = fetchFromGitHub {

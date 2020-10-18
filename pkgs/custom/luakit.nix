@@ -11,7 +11,8 @@ in
 
 stdenv.mkDerivation {
 
-  name = "luakit-2018.01.05";
+  name = "luakit";
+  pname = "2018.01.05";
 
   src = fetchFromGitHub {
     owner = "luakit";

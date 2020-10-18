@@ -9,7 +9,7 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "esp32-toolchain";
+  pname = "esp32-toolchain";
   version = "1.22.0";
 
   src = fetchurl {

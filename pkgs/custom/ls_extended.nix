@@ -1,7 +1,7 @@
 { stdenv, fetchFromGitHub, makeWrapper }:
 
 stdenv.mkDerivation rec {
-  name = "ls-extended-${version}";
+  pname = "ls-extended";
   version = "1.1.0";
 
   src = fetchFromGitHub {

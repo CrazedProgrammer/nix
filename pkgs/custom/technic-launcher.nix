@@ -3,7 +3,8 @@
 let version = "4.355"; in
 
 stdenv.mkDerivation {
-  name = "technic-launcher-${version}";
+  pname = "technic-launcher";
+  version = version;
 
   jar = fetchurl {
     url = "http://launcher.technicpack.net/launcher${stdenv.lib.replaceStrings ["."] ["/"] version}/TechnicLauncher.jar";

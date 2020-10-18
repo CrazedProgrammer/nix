@@ -2,7 +2,7 @@
 
 let
   sdl_gpu = stdenv.mkDerivation rec {
-    name = "sdl_gpu-${version}";
+    pname = "sdl_gpu";
     version = "2018-07-26";
     src = fetchFromGitHub {
       owner = "grimfang4";
