@@ -30,12 +30,6 @@ if !empty(glob('~/.vim/autoload/plug.vim')) || !empty(glob('~/.local/share/nvim/
 	call plug#end()
 endif
 
-" Lazy plugins
-
-autocmd FileType lisp :packadd rainbow | :RainbowToggleOn
-autocmd FileType c,cpp :packadd vim-clang-format | :packadd vim-headerguard
-autocmd FileType markdown :packadd vim-pandoc-syntax
-
 " Swap and backup file directory
 
 if !has('nvim')
@@ -104,7 +98,7 @@ nmap B <Plug>(easymotion-b)
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#on_insert_enter = 0
-let g:deoplete#max_list = 7
+autocmd VimEnter * call deoplete#custom#option('max_list', 7)
 
 " Enable markdown section folding without the line characters.
 let g:markdown_folding = 1
