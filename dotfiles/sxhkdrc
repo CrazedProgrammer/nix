@@ -42,9 +42,6 @@ super + shift + a
 super + shift + r
 	system kill reload
 
-XF86Launch1
-	mpv https://i.crzd.me/install-gentoo.mp4 --fullscreen
-
 # volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {+,-}3%
@@ -136,6 +133,10 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# rename the current desktop
+super + shift + p
+	sh -c 'NAME=$(echo | rofi -dmenu -p "Enter new desktop name"); [ -n "$NAME" ] && bspc desktop -n "$NAME"'
 
 #
 # preselect
