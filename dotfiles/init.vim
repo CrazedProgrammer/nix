@@ -27,6 +27,7 @@ if !empty(glob('~/.vim/autoload/plug.vim')) || !empty(glob('~/.local/share/nvim/
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'rhysd/vim-clang-format'
 	Plug 'drmikehenry/vim-headerguard'
+	Plug 'rhysd/git-messenger.vim'
 	call plug#end()
 endif
 
@@ -54,13 +55,14 @@ autocmd FileType nix,plantuml :setlocal indentexpr=
 " GUI and colors
 
 set mouse=a guicursor= nu rnu noshowmode background=dark tabpagemax=999
-highlight Statement ctermfg=yellow
-highlight LineNr ctermfg=darkgrey
-highlight CursorLineNr ctermfg=grey
-highlight ColorColumn ctermbg=black
-highlight FoldColumn ctermbg=none
-highlight Pmenu ctermbg=darkgrey
-highlight MatchParen cterm=bold ctermbg=darkgrey ctermfg=none
+hi Statement ctermfg=yellow
+hi LineNr ctermfg=darkgrey
+hi CursorLineNr ctermfg=grey
+hi ColorColumn ctermbg=black
+hi FoldColumn ctermbg=none
+hi Pmenu ctermbg=darkgrey
+hi MatchParen cterm=bold ctermbg=darkgrey ctermfg=none
+hi gitmessengerPopupNormal term=None ctermfg=255 ctermbg=234
 
 " Keyboard mappings
 
