@@ -19,6 +19,7 @@
       bmon = "sudo bmon";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       radonssh = "ssh casper@radon -t tmux";
+      maps = "nix-shell -p chromium --run \"chromium https://maps.google.com\"";
       lgit = "git add -A; and git commit; and git push";
       lgitf = "git add -A; and git commit; and git pull; and git push";
       qemu = "qemu-system-x86_64 -m 8192 --enable-kvm -cpu host -smp (nproc --all) -vga virtio";
