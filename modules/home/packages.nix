@@ -88,6 +88,8 @@
 
     # System utilities
     pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
+    # Vagrant libvirtd support
+    bridge-utils ebtables libxslt libxml2 libvirt zlib libguestfs-with-appliance virt-manager
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
     then lib.singleton (factorio.override (import /home/casper/.factorio.nix))
     else [ ]);

@@ -12,7 +12,7 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [
-      "wheel" "networkmanager" "wireshark" "dialout" "docker"
+      "wheel" "networkmanager" "wireshark" "dialout" "docker" "libvirtd" "kvm"
     ];
     hashedPassword = "$6$ubbEPgKNVlt$OuKWoA.IqJyxxebEdCO8iDIX045XhtxWuhRvZwrFAp5eizycgMOt8rvdVuwwyAsKKtuXjjwOtYGsBJ6zV53SP/";
     home = "/home/casper";

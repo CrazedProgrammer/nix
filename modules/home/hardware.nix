@@ -78,6 +78,9 @@
     enable = true;
     enableOnBoot = false;
   };
+  virtualisation.libvirtd = {
+    enable = true;
+  };
   services.earlyoom.enable = true;
 
   # Improve boot time by not waiting for the network and time sync to come up.
