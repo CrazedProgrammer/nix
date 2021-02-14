@@ -15,5 +15,5 @@ let kernel_gcc_patch = stdenv.mkDerivation {
 }; in
 
 { name = "gcc_patch";
-  patch = builtins.toPath "${kernel_gcc_patch}/lib/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.8+.patch";
+  patch = builtins.toPath "${kernel_gcc_patch}/lib/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch";
 }

@@ -18,7 +18,8 @@
       pkgs.kernel-gcc-patch
     ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # Pinned because of https://github.com/NixOS/nixpkgs/issues/105762
+    kernelPackages = pkgs.linuxPackages_5_4;
   };
 
   # /tmp on tmpfs.
