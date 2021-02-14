@@ -42,11 +42,13 @@ super + shift + a
 super + shift + r
 	system kill reload
 
-# volume keys
+# multimedia keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {+,-}3%
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+{XF86AudioPlay,XF86AudioStop,XF86AudioNext,XF86AudioPrev}
+	playerctl {play-pause,stop,next,previous}
 
 # toggle between audio outputs
 super + a

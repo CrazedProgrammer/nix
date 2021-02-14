@@ -72,8 +72,9 @@
     ffmpeg imagemagick
 
     # Multimedia
-    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; }) viewnior
-    mpv gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
+    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
+    (mpv-with-scripts.override { scripts = [ mpvScripts.mpris ]; })
+    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
     openssh tigervnc networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
@@ -88,7 +89,7 @@
     plantuml arduino #fritzing
 
     # System utilities
-    pavucontrol polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
+    pavucontrol playerctl polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
     # Vagrant libvirtd support
     bridge-utils ebtables libxslt libxml2 libvirt zlib libguestfs-with-appliance virt-manager
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
