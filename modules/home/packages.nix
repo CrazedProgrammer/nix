@@ -40,7 +40,7 @@
 
     # Languages
     lua5_3 luajit gcc elixir
-    cargo #openjdk
+    cargo nodejs #openjdk
     (urn.override { useLuaJit = true; })
 
     # Games
@@ -66,6 +66,7 @@
     #cura qt5.full # See https://github.com/NixOS/nixpkgs/issues/56039
     audacity xfce.mousepad
     sweethome3d.application
+    fritzing
 
     # CLI A/V editors
     ffmpeg imagemagick
