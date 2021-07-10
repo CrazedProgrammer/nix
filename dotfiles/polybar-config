@@ -21,7 +21,7 @@ border = #dd111111
 [bar/xenon]
 modules-left = bspwm volume
 modules-center = title
-modules-right = cpuload temperature_desktop wired date
+modules-right = date
 
 monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
@@ -180,14 +180,9 @@ format-connected-underline = ${colors.secondary}
 type = internal/date
 interval = 10
 
-date = "%A, %B %d"
 time = %H:%M
 
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.ternary}
-
-label = %date% - %time%
+label = %time%
 
 [module/volume]
 type = internal/pulseaudio

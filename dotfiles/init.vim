@@ -100,9 +100,7 @@ nmap B <Plug>(easymotion-b)
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#on_insert_enter = 0
-if exists("*deoplete#custom#option")
-	autocmd VimEnter * call deoplete#custom#option('max_list', 7)
-endif
+autocmd VimEnter * call deoplete#custom#option('max_list', 7)
 
 " Enable markdown section folding without the line characters.
 let g:markdown_folding = 1
