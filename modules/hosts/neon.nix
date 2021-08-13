@@ -25,7 +25,7 @@
       patch = null;
       extraConfig = ''
         MIVYBRIDGE y
-        DRM_AMDGPU n
+        #DRM_AMDGPU n
       '';
     } ];
   };
