@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, SDL2, libGL, libGLU, luajit, cmake, curl }:
+{ lib, stdenv, fetchFromGitHub, SDL2, libGL, libGLU, luajit, cmake, curl }:
 
 let
   sdl_gpu = stdenv.mkDerivation rec {
@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
   '';
   enableParallelBuilding = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Fantasy console for pixel art game development";
     license = licenses.mit;
   };

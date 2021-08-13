@@ -62,13 +62,13 @@
   # kernel module cpufreq_stats does not exist for some reason, even with CONFIG_CPU_FREQ_STATS=y.
   services.tlp = {
     enable = true;
-    extraConfig = ''
-      CPU_SCALING_GOVERNOR_ON_AC=performance
-      CPU_SCALING_GOVERNOR_ON_BAT=powersave
-      START_CHARGE_THRESH_BAT0=70
-      STOP_CHARGE_THRESH_BAT0=78
-      DEVICES_TO_DISABLE_ON_BAT="bluetooth"
-    '';
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 78;
+      DEVICES_TO_DISABLE_ON_BAT = "bluetooth";
+    };
   };
   systemd.services = {
     tlp = {
@@ -109,7 +109,7 @@
     videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
     libinput = {
       enable = true;
-      naturalScrolling = false;
+      touchpad.naturalScrolling = false;
     };
     config = ''
       Section "Device"

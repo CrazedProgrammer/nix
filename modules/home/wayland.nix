@@ -29,6 +29,4 @@ in
   services.xserver.displayManager.sessionPackages = [
     (pkgs.sway-session.override { configFile = swayConfigFile; })
   ];
-
-  services.dbus.socketActivated = true;
 }
