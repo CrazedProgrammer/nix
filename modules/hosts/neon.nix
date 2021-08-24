@@ -67,7 +67,6 @@
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       START_CHARGE_THRESH_BAT0 = 70;
       STOP_CHARGE_THRESH_BAT0 = 78;
-      DEVICES_TO_DISABLE_ON_BAT = "bluetooth";
     };
   };
   systemd.services = {
@@ -87,6 +86,7 @@
       startAt = "*-*-* *:*:00";
     };
   };
+
   services.thinkfan-override = {
     enable = true;
     sensors = ''
@@ -106,7 +106,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
+    videoDrivers = [ "nouveau" "intel" "displaylink" "modesetting" "vesa" ];
     libinput = {
       enable = true;
       touchpad.naturalScrolling = false;
