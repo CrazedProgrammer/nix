@@ -13,9 +13,6 @@ function launch {
 	gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$GTK_ICON_THEME"
 	gsettings set org.gnome.desktop.interface cursor-theme "$GTK_ICON_THEME"
-	if [ "$(hostname)" = "neon" ] || [ "$(hostname)" = "xenon" ]; then
-		bluetoothctl connect 88:D0:39:40:A7:B6 & # Connect to wireless headphone
-	fi
 }
 
 function reload {

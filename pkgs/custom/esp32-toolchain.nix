@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "ESP32 toolchain";
     homepage = https://docs.espressif.com/projects/esp-idf/en/stable/get-started/linux-setup.html;
     license = licenses.gpl3;

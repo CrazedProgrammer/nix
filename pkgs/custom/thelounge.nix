@@ -33,7 +33,7 @@ stdenv.mkDerivation {
 
 
 
-# with stdenv.lib;
+# with lib;
 
 # let
 #   nodePackages = callPackage (import <nixpkgs/pkgs/top-level/node-packages.nix>) {
@@ -110,7 +110,7 @@ stdenv.mkDerivation {
 
 # { stdenv, fetchFromGitHub, callPackage, python, utillinux }:
 #
-# with stdenv.lib;
+# with lib;
 #
 # let
 #   nodePackages = callPackage (import ../../../../top-level/node-packages.nix) {

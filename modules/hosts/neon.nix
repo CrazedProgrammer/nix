@@ -25,7 +25,7 @@
       patch = null;
       extraConfig = ''
         MIVYBRIDGE y
-        DRM_AMDGPU n
+        #DRM_AMDGPU n
       '';
     } ];
   };
@@ -33,18 +33,17 @@
   networking.hostName = "neon"; # Define your hostname.
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/566cacb4-81ea-48bb-929f-a60951b852cf";
+    { device = "/dev/disk/by-uuid/37796d43-4ff7-4037-b3b4-6b7df7c5b78b";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6989-46C8";
+    { device = "/dev/disk/by-uuid/B829-AF71";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/bf1dc388-c115-40c2-bef6-644f717e19a7"; }
-      { device = "/dev/disk/by-uuid/0ddc6bd7-c98e-4ea9-b2b2-535c91f61595"; }
+    [ { device = "/dev/disk/by-uuid/9b01e592-1c2e-429d-8dbd-552c6b5788c1"; }
     ];
 
   nix.maxJobs = 8;
@@ -63,13 +62,12 @@
   # kernel module cpufreq_stats does not exist for some reason, even with CONFIG_CPU_FREQ_STATS=y.
   services.tlp = {
     enable = true;
-    extraConfig = ''
-      CPU_SCALING_GOVERNOR_ON_AC=performance
-      CPU_SCALING_GOVERNOR_ON_BAT=powersave
-      START_CHARGE_THRESH_BAT0=70
-      STOP_CHARGE_THRESH_BAT0=78
-      DEVICES_TO_DISABLE_ON_BAT="bluetooth"
-    '';
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 78;
+    };
   };
   systemd.services = {
     tlp = {
@@ -88,6 +86,7 @@
       startAt = "*-*-* *:*:00";
     };
   };
+
   services.thinkfan-override = {
     enable = true;
     sensors = ''
@@ -107,10 +106,10 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
+    videoDrivers = [ "nouveau" "intel" "displaylink" "modesetting" "vesa" ];
     libinput = {
       enable = true;
-      naturalScrolling = false;
+      touchpad.naturalScrolling = false;
     };
     config = ''
       Section "Device"
