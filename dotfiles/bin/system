@@ -6,6 +6,7 @@
 function kill {
 	pkill -f polybar
 	pkill -f dunst
+	pkill -f batsignal
 	pkill -f compton
 }
 
@@ -27,6 +28,7 @@ function reload {
 		sh -c "polybar --config=$(dotfiles)/polybar-config \$(hostname) || polybar --config=$(dotfiles)/polybar-config generic" &
 		dunst &
 		if [ "$(hostname)" == "neon" ]; then
+			batsignal -w 20 -c 15 &
 			if glxinfo | grep "OpenGL vendor string: nouveau"; then
 				compton --vsync=opengl
 			else
