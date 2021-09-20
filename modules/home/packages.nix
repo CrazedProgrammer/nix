@@ -10,6 +10,9 @@
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
 
+  # Disable telemetry on the .NET CLI.
+  environment.variables.DOTNET_CLI_TELEMETRY_OPTOUT = "1";
+
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt
@@ -41,14 +44,18 @@
     lua5_3 luajit gcc elixir
     cargo nodejs
     (urn.override { useLuaJit = true; })
+    dotnet-sdk_5
 
     # Games
     multimc gnome3.gnome-mines
     #steam steam.run
     ccemux the-powder-toy chip8 riko4
 
-    # Terminal and editor
-    kitty-wrapped neovim alacritty-wrapped
+    # Terminals
+    kitty-wrapped alacritty-wrapped
+
+    # Editors
+    neovim vscodium
 
     # Browsers
     firefox w3m

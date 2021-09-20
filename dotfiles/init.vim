@@ -108,7 +108,7 @@ autocmd FileType markdown :setlocal foldcolumn=0 numberwidth=7
 
 " Clang-Format
 
-let g:clang_format#code_style = "llvm"
+let g:clang_format#code_style = 'llvm'
 
 " Rainbow parentheses
 
@@ -131,7 +131,7 @@ let g:lightline = {
 \		'left': [ [ 'mode', 'paste' ],
 \			  [ 'readonly', 'buffername', 'modified' ] ],
 \		'right': [ [ 'lineinfo' ], [ 'percent' ],
-\			   [ 'fileformat', 'fileencoding', 'filetype', "totallines" ] ],
+\			   [ 'fileformat', 'fileencoding', 'filetype', 'totallines' ] ],
 \	},
 \	'inactive':{
 \		'left': [ [ 'buffername' ] ],
@@ -184,12 +184,23 @@ function BufName()
 	return g:bufname_cache[name]
 endfunction
 
+" Auto-load changes from disk
+
+if !exists('g:CheckUpdateStarted')
+    let g:CheckUpdateStarted = 1
+    call timer_start(1, 'CheckUpdate')
+endif
+function! CheckUpdate(timer)
+    silent! checktime
+    call timer_start(1000, 'CheckUpdate')
+endfunction
+
 " Commands
 
 command Term :belowright new | :terminal
 command Upload :call UploadBuffer()
 command CF :ClangFormat
-command CFA :bufdo execute ":CF" | w
+command CFA :bufdo execute ':CF' | w
 command CH :HeaderguardAdd
 command QE :%bd|e#
 command C :w | :execute 'silent :!compiler' bufname('%') '&'

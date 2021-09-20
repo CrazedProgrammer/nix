@@ -21,7 +21,7 @@ border = #dd111111
 [bar/xenon]
 modules-left = bspwm volume
 modules-center = title
-modules-right = date
+modules-right = cpuload temperature_xenon wired date
 
 monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
@@ -244,7 +244,7 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-[module/temperature_desktop]
+[module/temperature_xenon]
 type = internal/temperature
 hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
 thermal-zone = 0
