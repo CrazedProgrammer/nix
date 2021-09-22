@@ -36,8 +36,8 @@ endif
 if !has('nvim')
 	set directory=$HOME/.vim/swap//
 	set backupdir=$HOME/.vim/backup//
-	execute 'silent :!mkdir -p' fnameescape(&directory)
-	execute 'silent :!mkdir -p' fnameescape(&backupdir)
+	execute 'silent :!mkdir -p' shellescape(&directory)
+	execute 'silent :!mkdir -p' shellescape(&backupdir)
 endif
 
 " File type extension registry
@@ -203,14 +203,14 @@ command CF :ClangFormat
 command CFA :bufdo execute ':CF' | w
 command CH :HeaderguardAdd
 command QE :%bd|e#
-command C :w | :execute 'silent :!compiler' bufname('%') '&'
-command CO :w | :execute 'silent :!compiler' bufname('%') '--open' '&'
+command C :w | :execute 'silent :!compiler' shellescape(bufname('%')) '&'
+command CO :w | :execute 'silent :!compiler' shellescape(bufname('%')) '--open' '&'
 
 function UploadBuffer()
 	let sourcepath = TempPath()
 	execute 'w' fnameescape(sourcepath)
-	execute 'silent :!upload' fnameescape(sourcepath)
-	execute 'silent :!rm' fnameescape(sourcepath)
+	execute 'silent :!upload' shellescape(sourcepath)
+	execute 'silent :!rm' shellescape(sourcepath)
 endfunction
 
 " Misc functions
