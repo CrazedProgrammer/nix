@@ -55,7 +55,7 @@
   services.logind.lidSwitch = "ignore";
 
   environment.systemPackages = with pkgs; [
-    light tpacpi-bat config.boot.kernelPackages.cpupower
+    light tpacpi-bat config.boot.kernelPackages.cpupower batsignal
   ];
 
   # Using TLP because Powertop doesn't work. The cause of this is that the
