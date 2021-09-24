@@ -44,7 +44,7 @@
     lua5_3 luajit gcc elixir
     cargo nodejs
     (urn.override { useLuaJit = true; })
-    dotnet-sdk_5
+    dotnet-sdk_3
 
     # Games
     multimc gnome3.gnome-mines
