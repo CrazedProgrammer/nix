@@ -15,7 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     # Basic tools
-    wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt
+    wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt tree
 
     # Version control
     git subversion
@@ -44,7 +44,7 @@
     lua5_3 luajit gcc elixir
     cargo nodejs
     (urn.override { useLuaJit = true; })
-    dotnet-sdk_5
+    dotnet-sdk_3
 
     # Games
     multimc gnome3.gnome-mines
@@ -83,7 +83,7 @@
     viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
-    openssh tigervnc networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
+    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
 
     # WM utilities
     (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
