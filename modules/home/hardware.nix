@@ -5,19 +5,6 @@
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" ];
 
-    kernelPatches = [
-      {
-        name = "config-global";
-        patch = null;
-        extraConfig = ''
-          # BTRFS_FS n
-          # KERNEL_XZ n
-          # MODULE_COMPRESS n
-        '';
-      }
-      pkgs.kernel-gcc-patch
-    ];
-
     # Pinned because of https://github.com/NixOS/nixpkgs/issues/105762
     kernelPackages = pkgs.linuxPackages_5_4;
   };

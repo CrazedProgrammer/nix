@@ -20,14 +20,6 @@
     kernelModules = [ "kvm-intel" ];
     kernelParams = [ "i915.enable_psr=1" "i915.enable_fbc=1" "i915.fastboot=1" ];
     extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
-    kernelPatches = [ {
-      name = "config-neon";
-      patch = null;
-      extraConfig = ''
-        MIVYBRIDGE y
-        #DRM_AMDGPU n
-      '';
-    } ];
   };
 
   networking.hostName = "neon"; # Define your hostname.
@@ -106,7 +98,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nouveau" "intel" "displaylink" "modesetting" "vesa" ];
+    videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
     libinput = {
       enable = true;
       touchpad.naturalScrolling = false;
@@ -119,4 +111,11 @@
       EndSection
     '';
   };
+
+  # Enable printing to Canon Pixma MG5750.
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint ];
+  # Enable Avahi for printer discovery via mDNS.
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 }

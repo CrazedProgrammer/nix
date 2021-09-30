@@ -21,16 +21,19 @@
     kernelParams = [ "amdgpu.dc=1" ];
     kernelModules = [ "kvm-amd" ];
     blacklistedKernelModules = [ "snd_hda_codec_hdmi" ]; # Disable HDMI audio
-    kernelPatches = [ {
-      name = "config-xenon";
-      patch = null;
-      extraConfig = ''
-        MZEN2 y
-        # DRM_I915 n
-        FB_NVIDIA_I2C n
-        DRM_NOUVEAU n
-      '';
-    } ];
+    kernelPatches = [
+      {
+        name = "config-xenon";
+        patch = null;
+        extraConfig = ''
+          MZEN2 y
+          # DRM_I915 n
+          FB_NVIDIA_I2C n
+          DRM_NOUVEAU n
+        '';
+      }
+      pkgs.kernel-gcc-patch
+    ];
   };
 
   networking.hostName = "xenon";
