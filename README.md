@@ -5,7 +5,7 @@ My NixOS configuration files.
 # Structure
 
 `dotfiles/` contains dotfiles and scripts such as `init.vim` and
-`bin/upload`.
+`bin/gitree`.
 
 `modules/` contains NixOS configuration modules. Each machine has its
 "entry point" in `modules/hosts/<hostname>.nix`. `/etc/nixos/configuration.nix`

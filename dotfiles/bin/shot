@@ -20,4 +20,4 @@ else
 	maim "${args[@]}" "$path"
 fi
 
-upload "$path"
+xclip -selection clipboard -t image/png -i "$path"

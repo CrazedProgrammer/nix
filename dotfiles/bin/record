@@ -30,9 +30,6 @@ if [[ -f $REC_PATH ]]; then
 		ffmpeg -i "$REC_PATH" -c:v libx264 -b:v 4M -bufsize 4M -an "$OUT_PATH"
 	fi
 	rm "$REC_PATH"
-	if upload "$OUT_PATH"; then
-		# only delete output path if the upload failed
-		rm "$OUT_PATH"
-	fi
+	notify-send "Saved video to $OUT_PATH"
 fi
 

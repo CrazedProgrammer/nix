@@ -198,20 +198,12 @@ endfunction
 " Commands
 
 command Term :belowright new | :terminal
-command Upload :call UploadBuffer()
 command CF :ClangFormat
 command CFA :bufdo execute ':CF' | w
 command CH :HeaderguardAdd
 command QE :%bd|e#
 command C :w | :execute 'silent :!compiler' shellescape(bufname('%')) '&'
 command CO :w | :execute 'silent :!compiler' shellescape(bufname('%')) '--open' '&'
-
-function UploadBuffer()
-	let sourcepath = TempPath()
-	execute 'w' fnameescape(sourcepath)
-	execute 'silent :!upload' shellescape(sourcepath)
-	execute 'silent :!rm' shellescape(sourcepath)
-endfunction
 
 " Misc functions
 
