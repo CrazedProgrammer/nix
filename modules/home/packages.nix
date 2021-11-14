@@ -83,7 +83,7 @@
     viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
 
     # Networking
-    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
+    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn youtube-dl update-resolv-conf
 
     # WM utilities
     (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
