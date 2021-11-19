@@ -67,6 +67,7 @@
       ubuntu_font_family
       noto-fonts-cjk fira-code
       fantasque-sans-mono
+      inter-font
     ];
     fontconfig = {
       #hinting.enable = false;
