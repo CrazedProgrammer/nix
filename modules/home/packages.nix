@@ -58,7 +58,7 @@
     neovim vscodium
 
     # Browsers
-    firefox w3m
+    firefox ungoogled-chromium w3m
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme nordic shades-of-gray-theme
