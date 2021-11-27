@@ -21,7 +21,7 @@
     git subversion
 
     # Utilities
-    qemu pandoc plantuml graphviz flameGraph clang-tools rustfmt stress sysbench
+    qemu pandoc plantuml graphviz flameGraph clang-tools rustfmt stress sysbench jre
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
@@ -68,11 +68,10 @@
     gnome3.gnome-calculator libreoffice-fresh gnucash
 
     # Visual editors
-    gimp tiled
+    gimp tiled pencil
     audacity xfce.mousepad
     sweethome3d.application
-    fritzing
-    arduino
+    fritzing arduino
 
     # CLI A/V editors
     ffmpeg imagemagick
@@ -80,7 +79,7 @@
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
     (mpv-with-scripts.override { scripts = [ mpvScripts.mpris ]; })
-    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
+    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura guvcview
 
     # Networking
     openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn youtube-dl update-resolv-conf
