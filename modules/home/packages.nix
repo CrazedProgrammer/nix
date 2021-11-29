@@ -5,7 +5,8 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     pkgs.lib.elem (if (builtins.hasAttr "name" pkg) then (builtins.parseDrvName pkg.name).name else pkg.pname)
     [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "virtualbox"
-      "pycharm-professional" "clion" "corefonts" "font-bh-lucidatypewriter" ];
+      "pycharm-professional" "clion" "corefonts" "font-bh-lucidatypewriter"
+      "displaylink" ];
 
   # Fix glava not finding config files.
   environment.etc."xdg/glava".source = "${pkgs.glava}/etc/xdg/glava";
