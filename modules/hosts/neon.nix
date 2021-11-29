@@ -98,7 +98,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nouveau" "intel" "modesetting" "vesa" ];
+    videoDrivers = [ "displaylink" "nouveau" "intel" "modesetting" "vesa" ];
     libinput = {
       enable = true;
       touchpad.naturalScrolling = false;
