@@ -14,6 +14,11 @@ function launch {
 	gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
 	gsettings set org.gnome.desktop.interface icon-theme "$GTK_ICON_THEME"
 	gsettings set org.gnome.desktop.interface cursor-theme "$GTK_ICON_THEME"
+
+	if [ "$(hostname)" = "xenon" ]; then
+		# Unmute speakers.
+		amixer -c 1 sset "Auto-Mute Mode" Disabled
+	fi
 }
 
 function reload {

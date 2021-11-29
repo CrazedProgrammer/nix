@@ -22,7 +22,7 @@
     git subversion
 
     # Utilities
-    qemu pandoc plantuml graphviz flameGraph clang-tools rustfmt stress sysbench
+    qemu pandoc plantuml graphviz flameGraph clang-tools rustfmt stress sysbench jre
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
@@ -45,7 +45,7 @@
     lua5_3 luajit gcc elixir
     cargo nodejs
     (urn.override { useLuaJit = true; })
-    dotnet-sdk_3
+    dotnet-sdk_3 msbuild mono stdenv.cc.cc.lib
 
     # Games
     multimc gnome3.gnome-mines
@@ -59,7 +59,7 @@
     neovim vscodium
 
     # Browsers
-    firefox w3m
+    firefox ungoogled-chromium w3m
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme nordic shades-of-gray-theme
@@ -69,11 +69,10 @@
     gnome3.gnome-calculator libreoffice-fresh gnucash
 
     # Visual editors
-    gimp tiled
+    gimp tiled pencil
     audacity xfce.mousepad
     sweethome3d.application
-    fritzing
-    arduino
+    fritzing arduino
 
     # CLI A/V editors
     ffmpeg imagemagick
@@ -81,10 +80,10 @@
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
     (mpv-with-scripts.override { scripts = [ mpvScripts.mpris ]; })
-    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura
+    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura guvcview
 
     # Networking
-    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn #update-resolv-conf sshfs
+    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn youtube-dl update-resolv-conf
 
     # WM utilities
     (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped

@@ -6,7 +6,7 @@ PASSWD_LOCATION="$HOME/.private/backup-passwd"
 BACKUP_PATH="/var/lib/backup"
 BACKUP_ROOT_PATH="$BACKUP_PATH/root"
 BACKUP_ARCHIVE_PATH="$BACKUP_PATH/archive"
-REMOTE_BACKUP_ARCHIVE_PATH="/home/casper/backup"
+REMOTE_BACKUP_ARCHIVE_PATH="/home/casper/backup/$(hostname)"
 
 ZIP_METHOD="lz4"
 ARCHIVE_NAME="$(date --iso-8601=date)-backup-$(hostname)"
