@@ -17,6 +17,7 @@
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt tree
+    pass gnupg pinentry-gtk2
 
     # Version control
     git subversion
@@ -49,7 +50,6 @@
 
     # Games
     multimc gnome3.gnome-mines
-    #steam steam.run
     ccemux the-powder-toy chip8 riko4
 
     # Terminals
@@ -59,7 +59,7 @@
     neovim vscodium
 
     # Browsers
-    firefox ungoogled-chromium w3m
+    firefox ungoogled-chromium passff-host
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme nordic shades-of-gray-theme

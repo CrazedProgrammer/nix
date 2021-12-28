@@ -58,6 +58,8 @@
   # AMD polaris firmware
   hardware.enableRedistributableFirmware = true;
 
+  environment.systemPackages = with pkgs; [ steam ];
+
   services.xserver = {
     videoDrivers = [ "amdgpu" "modesetting" "vesa" ];
     config = ''
