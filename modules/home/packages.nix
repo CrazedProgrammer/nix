@@ -60,6 +60,8 @@
 
     # Browsers
     firefox ungoogled-chromium passff-host
+    # Mail client
+    thunderbird
 
     # GTK+ and icon theme (settings)
     arc-theme paper-icon-theme nordic shades-of-gray-theme
