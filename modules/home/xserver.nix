@@ -68,6 +68,8 @@
       noto-fonts-cjk fira-code
       fantasque-sans-mono
       inter-font
+      # Public domain fonts
+      vegur medio ferrum penna seshat aileron
     ];
     fontconfig = {
       #hinting.enable = false;
