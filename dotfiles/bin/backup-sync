@@ -14,7 +14,7 @@ ARCHIVE_PATH="${BACKUP_ARCHIVE_PATH}/${ARCHIVE_NAME}.tar.${ZIP_METHOD}"
 
 # Number of files to keep after pruning.
 # Set to "" to disable pruning.
-FILES_TO_KEEP=14
+FILES_TO_KEEP=8
 REMOTE_FILES_TO_KEEP=50
 
 sync_dirs()

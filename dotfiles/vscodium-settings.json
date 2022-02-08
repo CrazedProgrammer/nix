@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Default Dark+",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": -2,
     "omnisharp.useGlobalMono": "always",
     "csharp.referencesCodeLens.enabled": false,
     "plantuml.jar": "/home/casper/Downloads/plantuml-1.2021.14.jar",
@@ -16,5 +16,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true,
-    "csharp.testsCodeLens.enabled": false
+    "csharp.testsCodeLens.enabled": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "razor.devmode": true,
+    "razor.disableBlazorDebugPrompt": true,
+    "razor.languageServer.debug": true
 }
