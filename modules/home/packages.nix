@@ -17,7 +17,7 @@
   environment.systemPackages = with pkgs; [
     # Basic tools
     wget curl jq bc loc p7zip fdupes binutils-unwrapped ls_extended file parallel lz4 ccrypt tree
-    pass gnupg pinentry-gtk2
+    (pass.withExtensions (exts: [ exts.pass-otp ])) gnupg pinentry-gtk2
 
     # Version control
     git subversion

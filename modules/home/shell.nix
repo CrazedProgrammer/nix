@@ -17,6 +17,7 @@
       vim = "vim -p";
       iotop = "sudo iotop";
       bmon = "sudo bmon";
+      potp = "pass otp uuotp | clip";
       cargo = "env LIBRARY_PATH=/run/current-system/sw/lib cargo";
       radonssh = "ssh casper@radon -t tmux";
       ovpn = "sudo openvpn --config ~/.openvpn-(hostname)";
