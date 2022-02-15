@@ -88,7 +88,7 @@
     openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn youtube-dl update-resolv-conf
 
     # WM utilities
-    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
+    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped stalonetray
 
     # Scripts
     dotfiles-bin dotfiles-background
