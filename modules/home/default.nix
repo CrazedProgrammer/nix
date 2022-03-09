@@ -14,8 +14,8 @@
   nixpkgs.overlays = import ../../pkgs/overlays;
 
   nix = {
-    daemonIONiceLevel = 7;
-    daemonNiceLevel = 19;
+    daemonIOSchedPriority = 7;
+    daemonCPUSchedPolicy = "batch";
     useSandbox = true;
     extraOptions = ''
       fallback = true
