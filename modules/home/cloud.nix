@@ -14,7 +14,7 @@
       Type = "oneshot";
       User = "casper";
       WorkingDirectory = "/home/casper/Cloud";
-      ExecStart = "${pkgs.bitpocket}/bin/bitpocket sync";
+      ExecStart = "${pkgs.bitpocket}/bin/bitpocket sync --force";
       # Send notification in case sync fails.
       ExecStopPost = "${pkgs.bash}/bin/sh -c '[ \"$EXIT_STATUS\" = 0 ] || ${pkgs.libnotify}/bin/notify-send \"Failed to sync cloud directory. Check the cloud-sync.service logs for more info.\"'";
       # Wait for the process to exit instead of sending a SIGTERM signal

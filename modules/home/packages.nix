@@ -23,7 +23,9 @@
     git subversion
 
     # Utilities
-    qemu pandoc plantuml graphviz flameGraph doxygen clang-tools rustfmt stress sysbench jre
+    qemu stress sysbench jre
+    clang-tools rustfmt rls clippy
+    pandoc plantuml doxygen graphviz flameGraph
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
