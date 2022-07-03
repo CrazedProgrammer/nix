@@ -57,8 +57,8 @@
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      START_CHARGE_THRESH_BAT0 = 70;
-      STOP_CHARGE_THRESH_BAT0 = 78;
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 90;
     };
   };
   systemd.services = {
@@ -98,7 +98,8 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "displaylink" "nouveau" "modesetting" "vesa" ];
+    # Note: displaylink can be added for external USB-C monitor support
+    videoDrivers = [ "nouveau" "modesetting" "vesa" ];
     libinput = {
       enable = true;
       touchpad.naturalScrolling = false;
