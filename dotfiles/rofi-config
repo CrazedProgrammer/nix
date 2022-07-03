@@ -3,5 +3,5 @@ configuration {
 	modi: "combi";
 	show-icons: true;
 	combi-modi: "drun,run";
-	theme: "glue_pro_blue";
 }
+@theme "glue_pro_blue"

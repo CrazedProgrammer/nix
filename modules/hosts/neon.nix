@@ -82,7 +82,6 @@
   services.thinkfan-override = {
     enable = true;
     sensors = ''
-      hwmon /sys/class/thermal/thermal_zone1/temp
       hwmon /sys/class/thermal/thermal_zone0/temp
     '';
     levels = ''

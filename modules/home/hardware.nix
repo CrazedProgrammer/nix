@@ -35,7 +35,6 @@
     # Enable PulseAudio with Bluetooth support.
     pulseaudio = {
       enable = true;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
       package = pkgs.pulseaudioFull;
     };
 

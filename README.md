@@ -18,6 +18,6 @@ is empty and only contains an import of the corresponding entry point.
 In order to build this configuration, you need to use these channels:
 
 ```
-nixos https://nixos.org/channels/nixos-21.11
+nixos https://nixos.org/channels/nixos-22.05
 nixos-unstable https://nixos.org/channels/nixos-unstable
 ```

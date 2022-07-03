@@ -25,7 +25,7 @@
     # Utilities
     qemu stress sysbench jre
     clang-tools rustfmt rls clippy
-    pandoc plantuml doxygen graphviz flameGraph
+    pandoc plantuml doxygen graphviz flamegraph
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
     })
@@ -51,7 +51,7 @@
     pkgsUnstable.dotnet-sdk_6 msbuild mono stdenv.cc.cc.lib
 
     # Games
-    multimc gnome3.gnome-mines
+    polymc gnome3.gnome-mines
     ccemux the-powder-toy chip8 riko4
 
     # Terminals
@@ -87,7 +87,7 @@
     viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura guvcview
 
     # Networking
-    openssh tigervnc bitpocket networkmanagerapplet ncat socat openvpn youtube-dl update-resolv-conf
+    openssh tigervnc bitpocket networkmanagerapplet nmap socat openvpn youtube-dl update-resolv-conf
 
     # WM utilities
     (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped stalonetray
@@ -96,7 +96,7 @@
     dotfiles-bin dotfiles-background
 
     # System utilities
-    pavucontrol playerctl blueberry polkit_gnome exfat-utils ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
+    pavucontrol playerctl blueberry polkit_gnome exfat ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
     # Vagrant libvirtd support
     bridge-utils ebtables libxslt libxml2 libvirt zlib libguestfs-with-appliance virt-manager
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
