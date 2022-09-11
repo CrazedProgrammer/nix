@@ -19,6 +19,10 @@ function launch {
 		# Unmute speakers.
 		amixer -c 1 sset "Auto-Mute Mode" Disabled
 	fi
+	if [ "$(hostname)" = "helium" ]; then
+		# Remove tearing on display.
+		xrandr --output eDP --set TearFree on
+	fi
 }
 
 function reload {

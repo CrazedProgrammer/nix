@@ -18,7 +18,18 @@
     };
 
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+
+    # Pin kernel version for displaylink support.
+    kernelPackages = pkgs.linuxPackages_5_15;
   };
+
+  # Enable displaylink for USB external monitor support.
+  services.xserver = {
+    videoDrivers = [ "displaylink" "amdgpu" "radeon" "modesetting" "fbdev" ];
+  };
+
+  # Realtek wifi firmware
+  hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "helium";
 
@@ -38,6 +49,17 @@
 
   nix.maxJobs = 12;
   nix.buildCores = 12;
+
+  systemd.services = {
+    battery-watchdog = {
+      description = "Battery watchdog";
+      path = with pkgs; [ systemd ];
+      script = ''
+        ${../../dotfiles/bin/battery-watchdog}
+      '';
+      startAt = "*-*-* *:*:00";
+    };
+  };
 
   environment.systemPackages = with pkgs; [ steam ];
 }

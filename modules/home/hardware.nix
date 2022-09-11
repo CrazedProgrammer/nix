@@ -4,9 +4,6 @@
   boot = {
     # Quiet console at startup.
     kernelParams = [ "quiet" "vga=current" ];
-
-    # Pinned because of https://github.com/NixOS/nixpkgs/issues/105762
-    kernelPackages = pkgs.linuxPackages_5_4;
   };
 
   # /tmp on tmpfs.
