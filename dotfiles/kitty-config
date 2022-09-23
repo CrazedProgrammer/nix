@@ -11,6 +11,8 @@ adjust_line_height 110%
 
 scrollback_lines 10000
 
+confirm_os_window_close 0
+
 # bell
 enable_audio_bell no
 
