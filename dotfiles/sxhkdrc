@@ -24,7 +24,7 @@ super + shift + g
 
 # toggle redshift
 super + shift + z
-	sh -c 'pkill -9 -f redshift || redshift -l 52:5; echo hi'
+	sh -c 'if ! pkill -9 -f redshift; then redshift -l 52:5; fi &'
 
 # power management
 super + shift + u
