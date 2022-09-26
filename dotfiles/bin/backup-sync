@@ -13,9 +13,9 @@ ARCHIVE_NAME="$(date --iso-8601=date)-backup-$(hostname)"
 ARCHIVE_PATH="${BACKUP_ARCHIVE_PATH}/${ARCHIVE_NAME}.tar.${ZIP_METHOD}"
 
 # Number of files to keep after pruning.
-# Set to "" to disable pruning.
-FILES_TO_KEEP=8
-REMOTE_FILES_TO_KEEP=50
+MIN_FILES_TO_KEEP=2
+MAX_FILES_TO_KEEP=8
+MIN_DISK_GB_FREE_TO_KEEP=30
 
 sync_dirs()
 (
@@ -54,17 +54,17 @@ upload_archive()
 	scp -q "$ARCHIVE_PATH.cpt" "$ARCHIVE_PATH.cpt.sha256sum" "casper@radon:$REMOTE_BACKUP_ARCHIVE_PATH"
 )
 
-prune_archive()
+prune_archives()
 (
-	command_prefix="$1"
-	backup_archive_path="$2"
-	files_to_keep="$3"
+	cd "$BACKUP_ARCHIVE_PATH" || exit 1
 
-	# Only prune files if files_to_keep is set to something.
-	if [ -n "$files_to_keep" ]; then
-		old_files="$(${command_prefix} find "$backup_archive_path" -type f | sort | head "-n-$files_to_keep")"
-		echo "${old_files}" | ${command_prefix} xargs -r rm
-	fi
+	echo "Pruning archives..."
+	while [ "$(find . -maxdepth 1 -type f | wc -l)" -gt "$MAX_FILES_TO_KEEP" ] || [ "$(df . -B 1G | tail -n1 | tr -s " " | cut -d " " -f 4)" -lt "$MIN_DISK_GB_FREE_TO_KEEP" ]; do
+		if [ "$(find . -maxdepth 1 -type f | wc -l)" -le "$MIN_FILES_TO_KEEP" ]; then
+			break;
+		fi
+		rm "$(find . -maxdepth 1 -type f | sort | head -n1)"
+	done
 )
 
 if [ ! -f "$DIRS_LOCATION" ]; then
@@ -77,10 +77,14 @@ fi
 
 sync_dirs
 create_archive
-encrypt_archive
-calculate_checksum
-upload_archive
-prune_archive "" "$BACKUP_ARCHIVE_PATH" "$FILES_TO_KEEP"
-prune_archive "ssh casper@radon" "$REMOTE_BACKUP_ARCHIVE_PATH" "$REMOTE_FILES_TO_KEEP"
+
+# Uncomment to generate encrypted archives
+# encrypt_archive
+# calculate_checksum
+
+prune_archives
+
+# Uncomment to enable uploading back-ups to VPS
+#upload_archive
 
 echo "Done."

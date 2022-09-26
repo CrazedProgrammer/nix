@@ -56,7 +56,7 @@
       EndSection
       Section "Monitor"
         Identifier "DVI-D-0"
-        Option "RightOf" "DisplayPort-0"
+        Option "LeftOf" "DisplayPort-0"
       EndSection
       Section "Device"
         Identifier "AMD"

@@ -22,6 +22,10 @@ super + m
 super + shift + g
 	sh -c 'if ! pkill hhpc; then hhpc -i 0; fi &'
 
+# toggle redshift
+super + shift + z
+	sh -c 'if ! pkill -9 -f redshift; then redshift -l 52:5; fi &'
+
 # power management
 super + shift + u
 	poweroff

@@ -31,7 +31,7 @@
     })
 
     # X utilities
-    xclip maim slop lxrandr xdotool hhpc xorg.xhost glxinfo
+    xclip maim slop lxrandr xdotool hhpc xorg.xhost glxinfo redshift
     # Wayland utilities
     grim slurp wf-recorder wl-clipboard
 
@@ -96,7 +96,7 @@
     dotfiles-bin dotfiles-background
 
     # System utilities
-    pavucontrol playerctl blueberry polkit_gnome exfat ntfs3g iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
+    pavucontrol playerctl blueberry polkit_gnome exfat ntfs3g rdfind iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
     # Vagrant libvirtd support
     bridge-utils ebtables libxslt libxml2 libvirt zlib libguestfs-with-appliance virt-manager
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
