@@ -61,5 +61,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ steam ];
+  environment.systemPackages = with pkgs; [ steam light ];
 }
