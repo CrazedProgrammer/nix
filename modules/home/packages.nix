@@ -46,13 +46,13 @@
 
     # Languages
     lua5_3 luajit gcc elixir
-    cargo nodejs
+    cargo nodejs nim
     (urn.override { useLuaJit = true; })
     pkgsUnstable.dotnet-sdk_6 msbuild mono stdenv.cc.cc.lib
 
     # Games
-    polymc gnome3.gnome-mines
-    ccemux the-powder-toy chip8 riko4
+    #polymc
+    gnome3.gnome-mines ccemux the-powder-toy chip8 riko4
 
     # Terminals
     kitty-wrapped alacritty-wrapped
