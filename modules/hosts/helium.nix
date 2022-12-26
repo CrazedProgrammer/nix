@@ -26,6 +26,22 @@
   # Enable displaylink for USB external monitor support.
   services.xserver = {
     videoDrivers = [ "displaylink" "amdgpu" "radeon" "modesetting" "fbdev" ];
+
+    config = ''
+      Section "Monitor"
+        Identifier "HDMI-A-0"
+        Option "LeftOf" "eDP"
+        Option "TearFree" "true"
+      EndSection
+      Section "Monitor"
+        Identifier "eDP"
+        Option "TearFree" "true"
+      EndSection
+      Section "Device"
+        Identifier "AMD"
+        Driver "amdgpu"
+      EndSection
+    '';
   };
 
   # Realtek wifi firmware
