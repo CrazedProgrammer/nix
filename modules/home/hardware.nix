@@ -53,6 +53,9 @@
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3752", MODE="0777"
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", MODE="0777"
   '';
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 
   programs.wireshark = {
     enable = true;
