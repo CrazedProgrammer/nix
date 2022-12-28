@@ -24,7 +24,7 @@
 
     # Utilities
     qemu stress sysbench jre
-    clang-tools rustfmt rls clippy
+    clang-tools rustfmt rust-analyzer clippy
     pandoc plantuml doxygen graphviz flamegraph
     (texlive.combine {
       inherit (texlive) scheme-small enumitem sectsty;
@@ -51,8 +51,8 @@
     pkgsUnstable.dotnet-sdk_6 msbuild mono stdenv.cc.cc.lib
 
     # Games
-    #polymc
-    gnome3.gnome-mines ccemux the-powder-toy chip8 riko4
+    #polymc chip8
+    gnome3.gnome-mines ccemux the-powder-toy riko4
 
     # Terminals
     kitty-wrapped alacritty-wrapped
@@ -83,7 +83,7 @@
 
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
-    (mpv-with-scripts.override { scripts = [ mpvScripts.mpris ]; })
+    (mpv.override { scripts = [ mpvScripts.mpris ]; })
     viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura guvcview
 
     # Networking
