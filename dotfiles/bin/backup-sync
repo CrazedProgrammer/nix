@@ -76,13 +76,13 @@ elif [ ! -f "$PASSWD_LOCATION" ]; then
 fi
 
 sync_dirs
-create_archive
+#create_archive
 
 # Uncomment to generate encrypted archives
 # encrypt_archive
 # calculate_checksum
 
-prune_archives
+#prune_archives
 
 # Uncomment to enable uploading back-ups to VPS
 #upload_archive
