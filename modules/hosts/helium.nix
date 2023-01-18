@@ -3,7 +3,6 @@
 {
   imports = [
     ../home
-    ../home/work.nix
     ../home/backup.nix
   ];
 

@@ -65,6 +65,7 @@
       dejavu_fonts
       ubuntu_font_family
       noto-fonts-cjk fira-code
+      corefonts
     ];
     fontconfig = {
       subpixel.rgba = "none";
