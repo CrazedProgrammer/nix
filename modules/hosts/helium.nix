@@ -23,9 +23,11 @@
     kernelPackages = pkgs.linuxPackages_5_15;
   };
 
-  # Enable displaylink for USB external monitor support.
   services.xserver = {
-    videoDrivers = [ "displaylink" "amdgpu" "radeon" "modesetting" "fbdev" ];
+    videoDrivers = [
+      #"displaylink" # USB external monitor support
+      "amdgpu" "radeon" "modesetting" "fbdev"
+    ];
 
     config = ''
       Section "Monitor"
