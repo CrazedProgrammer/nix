@@ -23,7 +23,7 @@
     git subversion
 
     # Utilities
-    qemu stress sysbench jre
+    qemu stress sysbench 
     clang-tools rustfmt rust-analyzer clippy
     pandoc plantuml doxygen graphviz flamegraph
     (texlive.combine {
@@ -45,10 +45,11 @@
     SDL2 SDL2_image libv4l
 
     # Languages
-    lua5_3 luajit gcc elixir
-    cargo nodejs nim
+    gcc stdenv.cc.cc.lib
+    lua5_3 luajit elixir nim
+    cargo nodejs #jre
+    pkgsUnstable.dotnet-sdk_6 mono
     (urn.override { useLuaJit = true; })
-    pkgsUnstable.dotnet-sdk_6 msbuild mono stdenv.cc.cc.lib
 
     # Games
     #polymc chip8
@@ -61,7 +62,7 @@
     neovim vscodium
 
     # Browsers
-    firefox ungoogled-chromium passff-host
+    firefox
     # Mail client
     thunderbird
 
@@ -70,13 +71,12 @@
     glib gsettings-desktop-schemas
 
     # Office suite
-    gnome3.gnome-calculator libreoffice-fresh gnucash
+    gnome3.gnome-calculator libreoffice-fresh
 
     # Visual editors
-    gimp tiled pencil
-    audacity xfce.mousepad
-    sweethome3d.application
-    fritzing arduino
+    gimp audacity xfce.mousepad
+    #tiled pencil sweethome3d.application
+    #fritzing arduino
 
     # CLI A/V editors
     ffmpeg imagemagick
@@ -84,21 +84,23 @@
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
     (mpv.override { scripts = [ mpvScripts.mpris ]; })
-    viewnior gnome3.file-roller cli-visualizer-wrapped cava-wrapped glava zathura guvcview
+    viewnior zathura guvcview gnome3.file-roller #cli-visualizer-wrapped cava-wrapped glava
 
     # Networking
-    openssh tigervnc bitpocket networkmanagerapplet nmap socat openvpn youtube-dl update-resolv-conf
+    openssh bitpocket networkmanagerapplet nmap socat openvpn update-resolv-conf #tigervnc youtube-dl
 
     # WM utilities
-    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped stalonetray
+    (polybar.override { pulseSupport = true; }) rofi-wrapped feh dunst-wrapped libnotify xtrlock-pam compton-latest i3lock i3blocks-wrapped
 
     # Scripts
     dotfiles-bin dotfiles-background
 
     # System utilities
-    pavucontrol playerctl blueberry polkit_gnome exfat ntfs3g rdfind iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils docker-compose
+    pavucontrol playerctl blueberry polkit_gnome exfat ntfs3g rdfind iotop bmon linuxPackages.perf picocom gotop htop sysstat ncdu usbutils
+    # Virtualization
+    #docker-compose libguestfs-with-appliance virt-manager
     # Vagrant libvirtd support
-    bridge-utils ebtables libxslt libxml2 libvirt zlib libguestfs-with-appliance virt-manager
+    #bridge-utils ebtables libxslt libxml2 libvirt zlib
   ] ++ (if builtins.pathExists /home/casper/.factorio.nix
     then lib.singleton (factorio.override (import /home/casper/.factorio.nix))
     else [ ]);
