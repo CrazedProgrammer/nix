@@ -8,15 +8,15 @@
     ./users.nix
     ./xserver.nix
     ./wayland.nix
-    ./cloud.nix
+    # ./cloud.nix
   ];
 
   nixpkgs.overlays = import ../../pkgs/overlays;
 
   nix = {
+    settings.sandbox = true;
     daemonIOSchedPriority = 7;
     daemonCPUSchedPolicy = "batch";
-    useSandbox = true;
     extraOptions = ''
       fallback = true
     '';

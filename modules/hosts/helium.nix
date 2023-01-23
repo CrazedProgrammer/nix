@@ -64,8 +64,8 @@
     [ { device = "/dev/disk/by-uuid/2854a56b-660f-4add-8bfa-9efb36a1cc01"; }
     ];
 
-  nix.maxJobs = 12;
-  nix.buildCores = 12;
+  nix.settings.max-jobs = 12;
+  nix.settings.cores = 12;
 
   systemd.services = {
     battery-watchdog = {
