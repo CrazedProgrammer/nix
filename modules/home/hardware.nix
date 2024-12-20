@@ -57,6 +57,15 @@
     pkgs.android-udev-rules
   ];
 
+  # Ignore lid switch on laptop.
+  services.logind.extraConfig = ''
+    HandleSuspendKey=ignore
+    HandleHibernateKey=ignore
+    HandleLidSwitch=ignore
+    HandleLidSwitchExternalPower=ignore
+    HandleLidSwitchDocked=ignore
+  '';
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
