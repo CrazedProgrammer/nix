@@ -36,9 +36,11 @@
     };
 
     # 32 bit compatibility for Steam.
-    opengl.driSupport32Bit = true;
+    graphics.enable32Bit = true;
     pulseaudio.support32Bit = true;
   };
+
+  services.pipewire.enable = lib.mkForce false;
 
   # Enable Bluetooth support.
   hardware.bluetooth = {

@@ -6,8 +6,8 @@
     enable = true;
 
     # Keyboard options
-    layout = "us";
-    xkbOptions = "caps:escape,compose:ralt";
+    xkb.layout = "us";
+    xkb.options = "caps:escape,compose:ralt";
     autoRepeatDelay = 300;
     autoRepeatInterval = 30;
 
@@ -61,11 +61,12 @@
   '';
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       dejavu_fonts
       ubuntu_font_family
-      noto-fonts-cjk fira-code
-      corefonts
+      noto-fonts-cjk-sans fira-code
+      # Broken: EULA url returns 503.
+      # corefonts
     ];
     fontconfig = {
       subpixel.rgba = "none";

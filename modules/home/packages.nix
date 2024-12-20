@@ -4,7 +4,7 @@
   # Allow only these unfree packages.
   nixpkgs.config.allowUnfreePredicate = pkg:
     pkgs.lib.elem (if (builtins.hasAttr "name" pkg) then (builtins.parseDrvName pkg.name).name else pkg.pname)
-    [ "steam" "steam-original" "steam-runtime" "factorio-alpha" "virtualbox"
+    [ "steam" "steam-unwrapped" "steam-runtime" "factorio-alpha" "virtualbox"
       "pycharm-professional" "clion" "corefonts" "font-bh-lucidatypewriter"
       "displaylink" ];
 
@@ -23,7 +23,7 @@
     git subversion
 
     # Utilities
-    qemu stress sysbench 
+    qemu stress sysbench
     clang-tools rustfmt rust-analyzer clippy
     pandoc plantuml doxygen graphviz flamegraph
     (texlive.combine {
@@ -48,12 +48,12 @@
     gcc stdenv.cc.cc.lib
     lua5_3 luajit elixir nim
     cargo nodejs #jre
-    pkgsUnstable.dotnet-sdk_6 mono
+    dotnet-sdk mono
     (urn.override { useLuaJit = true; })
 
     # Games
-    #polymc chip8
-    gnome3.gnome-mines ccemux the-powder-toy riko4
+    #polymc chip8 riko4
+    gnome-mines ccemux the-powder-toy
 
     # Terminals
     kitty-wrapped alacritty-wrapped
@@ -71,7 +71,7 @@
     glib gsettings-desktop-schemas
 
     # Office suite
-    gnome3.gnome-calculator libreoffice-fresh
+    gnome-calculator libreoffice-fresh
 
     # Visual editors
     gimp audacity xfce.mousepad
@@ -84,7 +84,7 @@
     # Multimedia
     (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
     (mpv.override { scripts = [ mpvScripts.mpris ]; })
-    viewnior zathura guvcview gnome3.file-roller #cli-visualizer-wrapped cava-wrapped glava
+    viewnior zathura guvcview file-roller #cli-visualizer-wrapped cava-wrapped glava
 
     # Networking
     openssh bitpocket networkmanagerapplet nmap socat openvpn update-resolv-conf #tigervnc youtube-dl

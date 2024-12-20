@@ -22,13 +22,6 @@
     '';
   };
 
-  # Add "nix-unstable" command to run nix unstable with flakes support.
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "nix-unstable" ''
-      exec ${pkgs.nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
-    '')
-  ];
-
   # Internationalisation properties.
   console.keyMap = "us";
   i18n.defaultLocale = "en_US.UTF-8";

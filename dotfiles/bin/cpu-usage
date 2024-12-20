@@ -7,7 +7,7 @@ max_usage=$(echo "$all_usage" | tr " " "\n" | tail -n 1)
 sum_usage=0
 
 for usage in $all_usage; do
-	sum_usage=$(echo $sum_usage + "$usage" | bc -l)
+	sum_usage=$(echo "$sum_usage" + "$usage" | bc -l)
 done
 
 avg_usage=$(echo "$sum_usage / $(nproc)" | bc -l)

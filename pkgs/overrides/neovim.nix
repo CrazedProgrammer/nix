@@ -20,7 +20,7 @@ let
       sha256 = elemAt plugin 3;
     in
     { name = name;
-      value = vimUtils.buildVimPluginFrom2Nix {
+      value = vimUtils.buildVimPlugin {
         name = "${name}-${version}";
         version = version;
         src = fetchFromGitHub {
